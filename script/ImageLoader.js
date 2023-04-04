@@ -1,42 +1,41 @@
-class ImageLoader{
-    constructor(){
+class ImageLoader {
+    constructor() {
         this.listPaths = []
         this.listImgages = []
         this.callBack = null
         this.loadedImageCount = 0
     }
 
-    add(pImgPath){
+    add(pImgPath) {
         this.listPaths.push(pImgPath)
     }
 
-    getTotalImages(){
+    getTotalImages() {
         return this.listPaths.length
     }
 
-    getTotalImagesLoaded(){
+    getTotalImagesLoaded() {
         return this.loadedImageCount
     }
 
-    getListImages(){
+    getListImages() {
         return this.listImgages
     }
 
-    start(pCallBack){
+    start(pCallBack) {
         this.callBack = pCallBack
-
+        
         this.listPaths.forEach(path => {
-            let img = new Image();
-            img.onLoad = this.imageLoaded.bind(this)
+            let img = new Image()
+            img.onload = this.imageLoaded.bind(this)
             img.src = path
             this.listImgages[path] = img
-        });
+        })
     }
 
-    imageLoaded(e){
+    imageLoaded(e) {
         this.loadedImageCount++
-
-        if(this.loadedImageCount == this.listPaths.length){
+        if (this.loadedImageCount == this.listPaths.length) {
             this.callBack()
         }
     }

@@ -3,7 +3,11 @@ let timer
 
 let imageLoader = new ImageLoader()
 let gameReady = false
-let listSprite = []
+let listSprites = []
+
+function rnd(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
 
 function load(){
     // retrieves the activated and released keys
@@ -33,12 +37,12 @@ function load(){
 
 function startGame(){
 
-    listSprite = []
+    listSprites = []
     for(let image of Object.values(imageLoader.getListImages())){
-        let sprite = new Sprite(image)
-        sprite.x = rnd(1, 1000)
-        sprite.y = rnd(1, 600)
-        listSprite.push(sprite)
+        let mSprite = new Sprite(image)
+        mSprite.x = rnd(1, 800)
+        mSprite.y = rnd(1, 600)
+        listSprites.push(mSprite)
     }
 
     gameReady = true
@@ -48,7 +52,6 @@ function update(dt){
     if(!gameReady){
         return
     }
-
     timer += dt;
     character.move()
 }
@@ -58,7 +61,7 @@ function draw(pCtx){
         return
     }
 
-    listSprite.forEach(sprite => {
+    listSprites.forEach(sprite => {
         sprite.draw(pCtx)
     })
 
