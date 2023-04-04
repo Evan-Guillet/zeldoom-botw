@@ -39,4 +39,8 @@ class ImageLoader {
             this.callBack()
         }
     }
+
+    getImage(pPath){
+        return this.listImgages[pPath]
+    }
 }

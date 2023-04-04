@@ -23,6 +23,11 @@ function run(time){
 }
 
 function init(){
+    ctx.imageSmoothingEnabled = false
+    ctx.msImageSmoothingEnabled = false
+    ctx.webkitImageSmoothingEnabled = false
+    ctx.mozImageSmoothingEnabled = false
+
     load()
 
     // starts the "run" function
