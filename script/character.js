@@ -12,16 +12,16 @@ class Character{
 
     move(){
         if (KeyRight) {
-            character.x += 1;
+            character.x++;
         }
         if (KeyLeft) {
-            character.x -= 1;
+            character.x--;
         }
         if (KeyUp) {
-            character.y -= 1;
+            character.y--;
         }
         if (KeyDown) {
-            character.y += 1;
+            character.y++;
         }
     }
 }

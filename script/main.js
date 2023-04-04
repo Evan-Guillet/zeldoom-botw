@@ -1,15 +1,19 @@
 let canvas = document.getElementById("canvas")  // get the information of the game window by its id, here "canvas"
 let ctx = canvas.getContext("2d")   // gives the graphical context for the display functions, here "2d"
-let interval
-let lastUpdate = Date.now()
+let lastUpdate = 0
 
-function run(){
-    // last time reference recorded
-    let now = Date.now()
+function run(time){
+    // recall the "run" function recursively
+    requestAnimationFrame(run)
+
     // calculates the delta time by obtaining the difference between the last time reference and the current one
-    let dt = (now - lastUpdate)/1000
+    let dt = (time - lastUpdate)/1000
+
+    // if I want to limit fps
+    //if(dt < (1/60) - 0.001){return}
+
     // updates the last moment
-    lastUpdate = now
+    lastUpdate = time
 
     update(dt)
 
@@ -21,8 +25,8 @@ function run(){
 function init(){
     load()
 
-    // defines the time interval between each execution of the run function, here 60/sec
-    interval = setInterval(run, 1000/60)
+    // starts the "run" function
+    requestAnimationFrame(run)
 }
 
 init()
