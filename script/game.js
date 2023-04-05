@@ -15,7 +15,7 @@ function load(){
     timer = 0
     */
 
-    imageLoader.add("/asset/asset_pack/graphics/Actor/Characters/BlueSamurai/SeparateAnim/Walk.png")
+    imageLoader.add("/asset/asset_pack/graphics/Actor/Characters/BlueNinja/SpriteSheet.png")
     
     imageLoader.start(startGame)
 }
@@ -24,13 +24,13 @@ function startGame(){
 
     listSprites = []
 
-    let blueSamurai = imageLoader.getImage("/asset/asset_pack/graphics/Actor/Characters/BlueSamurai/SeparateAnim/Walk.png")
+    let blueSamurai = imageLoader.getImage("/asset/asset_pack/graphics/Actor/Characters/BlueNinja/SpriteSheet.png")
     spriteBlueSamurai = new Sprite(blueSamurai)
     spriteBlueSamurai.setTileSheet(16, 16)
     spriteBlueSamurai.setScale(4, 4)
-    spriteBlueSamurai.addAnimation("WALK_RIGHT", [0, 1, 2, 3], 0.1, false)
-    spriteBlueSamurai.addAnimation("WALK_UP", [0, 1, 2, 3], 0.1, true)
-    spriteBlueSamurai.startAnimation("WALK_RIGHT")
+    spriteBlueSamurai.addAnimation("WALK_RIGHT", [16, 17, 18, 19], 0.5, true)
+    spriteBlueSamurai.addAnimation("WALK_UP", [0, 1, 2, 3], 0.5, false)
+    spriteBlueSamurai.startAnimation("WALK_UP")
     
     listSprites.push(spriteBlueSamurai)
 
@@ -44,9 +44,7 @@ function update(dt){
     listSprites.forEach(sprite => {
         sprite.update(dt)
     })
-    if (spriteBlueSamurai.currentAnimation.name == "WALK_RIGHT" && spriteBlueSamurai.currentAnimation.end){
-        spriteBlueSamurai.startAnimation("WALK_UP")
-    }
+    spriteBlueSamurai.startAnimation("WALK_RIGHT")
 
     /*
     timer += dt;
