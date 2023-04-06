@@ -1,6 +1,3 @@
-let character
-let timer
-
 let imageLoader = new ImageLoader()
 let gameReady = false
 let listSprites = []
@@ -9,8 +6,6 @@ function load(){
     // retrieves the activated and released keys
     document.addEventListener("keydown", keyDown, false)
     document.addEventListener("keyup", keyUp, false)
-
-    timer = 0
 
     imageLoader.add("/asset/graphics/actor/characters/blue_ninja/sprite_sheet.png")
     
@@ -33,18 +28,27 @@ function startGame(){
     gameReady = true
 }
 
+
+
 function update(dt){
 
     if(!gameReady){return}
-
+    
     listSprites.forEach(sprite => {
         sprite.update(dt)
     })
 
     hero.startAnimation(animation)
-
-    timer += dt
     hero.move()
+}
+
+function cooldowns(pCooldownsMax){
+    // time in seconds 
+    let lastTime = Date.now()/1000
+    
+    while(Date.now()/1000 < lastTime + pCooldownsMax){}
+
+    return true
 }
 
 function draw(pCtx){

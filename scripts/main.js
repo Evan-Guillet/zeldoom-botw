@@ -3,7 +3,7 @@ let ctx = canvas.getContext("2d")   // gives the graphical context for the displ
 let lastUpdate = 0
 
 function run(time){
-    // recall the "run" function recursively
+    // callback the "run" function recursively
     requestAnimationFrame(run)
 
     // calculates the delta time by obtaining the difference between the last time reference and the current one
