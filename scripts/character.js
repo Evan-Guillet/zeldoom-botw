@@ -20,17 +20,17 @@ class Character{
     }
 
     move(){
-        if (KeyRight) {
-            this.x++
+        if (downKey) {
+            this.y++
         }
-        if (KeyLeft) {
-            this.x--
-        }
-        if (KeyUp) {
+        if (upKey) {
             this.y--
         }
-        if (KeyDown) {
-            this.y++
+        if (leftKey) {
+            this.x--
+        }
+        if (rightKey) {
+            this.x++
         }
     }
 
