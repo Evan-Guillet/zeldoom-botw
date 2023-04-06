@@ -7,13 +7,10 @@ let listSprites = []
 
 function load(){
     // retrieves the activated and released keys
-    document.addEventListener("keydown", keyDown, false);
-    document.addEventListener("keyup", keyUp, false);
+    document.addEventListener("keydown", keyDown, false)
+    document.addEventListener("keyup", keyUp, false)
 
-    /*
-    character = new Character("/asset/asset_pack/graphics/Actor/Characters/BlueNinja/Faceset.png")
     timer = 0
-    */
 
     imageLoader.add("/asset/graphics/actor/characters/blue_ninja/sprite_sheet.png")
     
@@ -24,15 +21,14 @@ function startGame(){
 
     listSprites = []
 
-    let blueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_ninja/sprite_sheet.png")
-    spriteBlueSamurai = new Sprite(blueSamurai)
-    spriteBlueSamurai.setTileSheet(16, 16)
-    spriteBlueSamurai.setScale(4, 4)
-    spriteBlueSamurai.addAnimation("WALK_RIGHT", [3, 7, 11, 15], 0.5, true)
-    spriteBlueSamurai.addAnimation("WALK_UP", [1, 5, 9, 14], 0.5, true)
-    spriteBlueSamurai.startAnimation("WALK_UP")
+    let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_ninja/sprite_sheet.png")
+    hero = new Character(spriteSheetBlueSamurai)
+    hero.setTileSheet(16, 16)
+    hero.setScale(4, 4)
+
+    setHeroAnimation()
     
-    listSprites.push(spriteBlueSamurai)
+    listSprites.push(hero)
 
     gameReady = true
 }
@@ -44,12 +40,11 @@ function update(dt){
     listSprites.forEach(sprite => {
         sprite.update(dt)
     })
-    spriteBlueSamurai.startAnimation("WALK_RIGHT")
 
-    /*
-    timer += dt;
-    character.move()
-    */
+    hero.startAnimation(animation)
+
+    timer += dt
+    hero.move()
 }
 
 function draw(pCtx){
@@ -59,6 +54,4 @@ function draw(pCtx){
     listSprites.forEach(sprite => {
         sprite.draw(pCtx)
     })
-
-    //character.draw(pCtx)
 }
