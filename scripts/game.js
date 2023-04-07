@@ -18,12 +18,15 @@ function startGame(){
 
     let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_ninja/sprite_sheet.png")
     hero = new Hero(spriteSheetBlueSamurai)
-    hero.setTileSheet(16, 16)
-    hero.setScale(4, 4)
-
-    setHeroAnimation()
-    
+    setHero()
     listSprites.push(hero)
+
+    /*
+    let sword2InHand = imageLoader.getImage("/asset/graphics/Items/weapons/sword_2/sprite_in_hand.png")
+    sword2 = new Hero(sword2InHand)
+    setSword()
+    listSprites.push(sword2)
+    */
 
     gameReady = true
 }

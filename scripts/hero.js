@@ -16,7 +16,7 @@ class Hero{
         this.tileSize = { x: 0, y: 0 }
         this.tileSheet = false
 
-        this.animations = []
+        this.animations = []    // stores all animations
     }
 
     move(){
@@ -111,7 +111,16 @@ class Hero{
             let x = column * this.tileSize.x
             let y = line * this.tileSize.y
 
-            pCtx.drawImage(this.img, x, y, this.tileSize.x, this.tileSize.y, this.x, this.y, this.tileSize.x * this.scaleX, this.tileSize.y * this.scaleY)
+            pCtx.drawImage(this.img,
+                            x,
+                            y,
+                            this.tileSize.x,
+                            this.tileSize.y,
+                            this.x,
+                            this.y,
+                            this.tileSize.x * this.scaleX,
+                            this.tileSize.y * this.scaleY
+                        )
         }
     }
 }
