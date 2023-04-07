@@ -17,7 +17,7 @@ function startGame(){
     listSprites = []
 
     let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_ninja/sprite_sheet.png")
-    hero = new Hero(spriteSheetBlueSamurai)
+    hero = new Sprite(spriteSheetBlueSamurai)
     setHero()
     listSprites.push(hero)
 

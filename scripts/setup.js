@@ -31,10 +31,19 @@ function setHero(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l1
     hero.startAnimation(animation)
 }
 
-function setSword(){
+let animationWeapon = "HIT_RIGHT"
+
+function setSword(l1, l2, l3, l4){
 
     sword2.setTileSheet(16, 16)
     sword2.setScale(4, 4)
+    sword2.x = hero.x
+    sword2.y = hero.y
 
-    sword2.addAnimation("IDLE_DOWN", [0], 0.25, l1)
+    sword2.addAnimation("HIT_DOWN", [0], 0.25, l1)
+    sword2.addAnimation("HIT_UP", [1], 0.25, l2)
+    sword2.addAnimation("HIT_LEFT", [2], 0.25, l3)
+    sword2.addAnimation("HIT_RIGHT", [3], 0.25, l4)
+
+    hero.startAnimation(animationWeapon)
 }
