@@ -1,4 +1,4 @@
-class Character{
+class Hero{
     constructor(pSrc, pX = 0, pY = 0){
         this.img = pSrc
 
