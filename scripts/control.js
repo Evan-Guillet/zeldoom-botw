@@ -45,39 +45,77 @@ function keyDown(k){
             setHeroAnimation(false, false, false, false, false, false, false, false, true, false, false, false)
 
             setTimeout(function() {
-                animation = "IDLE_DOWN"
-                movement = "IDLE_DOWN"
-                setHeroAnimation(true, false, false, false, false, false, false, false, false, false, false, false)
+                if(movement == "MOVEMENT_DOWN"){
+                    downKey = true
+                    animation = "WALK_DOWN"
+                    movement = "MOVEMENT_DOWN"
+                    setHeroAnimation(false, true, false, false, false, false, false, false, false, false, false, false)
+
+                } else if(movement == "IDLE_DOWN"){
+                    animation = "IDLE_DOWN"
+                    movement = "IDLE_DOWN"
+                    setHeroAnimation(true, false, false, false, false, false, false, false, false, false, false, false)
+                }
             }, 300)
+
+
 
         } else if(movement == "MOVEMENT_UP" || movement == "IDLE_UP"){
             animation = "ATTACK_UP"
             setHeroAnimation(false, false, false, false, false, false, false, false, false, true, false, false)
 
             setTimeout(function() {
-                animation = "IDLE_UP"
-                movement = "IDLE_UP"
-                setHeroAnimation(false, false, true, false, false, false, false, false, false, false, false, false)
+                if(movement == "MOVEMENT_UP"){
+                    upKey = true
+                    animation = "WALK_UP"
+                    movement = "MOVEMENT_UP"
+                    setHeroAnimation(false, false, false, true, false, false, false, false, false, false, false, false)
+
+                } else if(movement == "IDLE_UP"){
+                    animation = "IDLE_UP"
+                    movement = "IDLE_UP"
+                    setHeroAnimation(false, false, true, false, false, false, false, false, false, false, false, false)
+                }
             }, 300)
             
+
+
         } else if(movement == "MOVEMENT_LEFT" || movement == "IDLE_LEFT"){
             animation = "ATTACK_LEFT"
             setHeroAnimation(false, false, false, false, false, false, false, false, false, false, true, false)
 
             setTimeout(function() {
-                animation = "IDLE_LEFT"
-                movement = "IDLE_LEFT"
-                setHeroAnimation(false, false, false, false, true, false, false, false, false, false, false, false)
+                if(movement == "MOVEMENT_LEFT"){
+                    leftKey = true
+                    animation = "WALK_LEFT"
+                    movement = "MOVEMENT_LEFT"
+                    setHeroAnimation(false, false, false, false, false, true, false, false, false, false, false, false)
+
+                } else if(movement == "IDLE_LEFT"){
+                    animation = "IDLE_LEFT"
+                    movement = "IDLE_LEFT"
+                    setHeroAnimation(false, false, false, false, true, false, false, false, false, false, false, false)
+                }
             }, 300)
             
+
+
         } else if(movement == "MOVEMENT_RIGHT" || movement == "IDLE_RIGHT"){
             animation = "ATTACK_RIGHT"
             setHeroAnimation(false, false, false, false, false, false, false, false, false, false, false, true)
 
             setTimeout(function() {
-                animation = "IDLE_RIGHT"
-                movement = "IDLE_RIGHT"
-                setHeroAnimation(false, false, false, false, false, false, true, false, false, false, false, false)
+                if(movement == "MOVEMENT_RIGHT"){
+                    rightKey = true
+                    animation = "WALK_RIGHT"
+                    movement = "MOVEMENT_RIGHT"
+                    setHeroAnimation(false, false, false, false, false, false, false, true, false, false, false, false)
+
+                } else if(movement == "IDLE_RIGHT"){
+                    animation = "IDLE_RIGHT"
+                    movement = "IDLE_RIGHT"
+                    setHeroAnimation(false, false, false, false, false, false, true, false, false, false, false, false)
+                }
             }, 300)
         }
     }
@@ -118,39 +156,6 @@ function keyUp(k){
             movement = "IDLE_RIGHT"
             setHeroAnimation(false, false, false, false, false, false, true, false, false, false, false, false)
         }
-    }
-
-    // =============== ATTACK ===============
-    if(k.code == "Space"){
-        spaceKey = true
-
-        setTimeout(() => {
-            if(movement == "MOVEMENT_DOWN"){
-                downKey = true
-                animation = "WALK_DOWN"
-                movement = "MOVEMENT_DOWN"
-                setHeroAnimation(false, true, false, false, false, false, false, false, false, false, false, false)
-    
-            } else if(movement == "MOVEMENT_UP"){
-                upKey = true
-                animation = "WALK_UP"
-                movement = "MOVEMENT_UP"
-                setHeroAnimation(false, false, false, true, false, false, false, false, false, false, false, false)
-                
-            } else if(movement == "MOVEMENT_LEFT"){
-                leftKey = true
-                animation = "WALK_LEFT"
-                movement = "MOVEMENT_LEFT"
-                setHeroAnimation(false, false, false, false, false, true, false, false, false, false, false, false)
-                
-            } else if(movement == "MOVEMENT_RIGHT"){
-                rightKey = true
-                animation = "WALK_RIGHT"
-                movement = "MOVEMENT_RIGHT"
-                setHeroAnimation(false, false, false, false, false, false, false, true, false, false, false, false)
-
-            }
-        }, "300")
     }
 }
 
