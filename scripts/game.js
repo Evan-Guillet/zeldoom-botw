@@ -2,6 +2,9 @@ let imageLoader = new ImageLoader()
 let gameReady = false
 let listSprites = []
 
+let mouseX
+let mouseY
+
 function load(){
     // retrieves the activated and released keys
     document.addEventListener("keydown", keyDown, false)
@@ -28,8 +31,8 @@ function startGame(){
 
     let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_samurai/sprite_sheet.png")
     hero = new Sprite(spriteSheetBlueSamurai)
-    hero.x = 16*24
-    hero.y = 16*24
+    hero.x = 16*20
+    hero.y = 16*20
     setHero()
     listSprites.push(hero)
 
@@ -49,6 +52,11 @@ function update(dt){
 
     if(!gameReady){return}
     
+    
+
+    let id = getTileAt(hero.x, hero.y)
+    console.log(id)
+
     listSprites.forEach(sprite => {
         sprite.update(dt)
     })
@@ -57,19 +65,11 @@ function update(dt){
     hero.move()
 }
 
-function cooldowns(pCooldownsMax){
-    // time in seconds 
-    let lastTime = Date.now()/1000
-    
-    while(Date.now()/1000 < lastTime + pCooldownsMax){}
-
-    return true
-}
-
 function draw(pCtx){
 
     if(!gameReady){return}
-
+    
+    
     listMap.forEach(sprite => {
         sprite.draw(pCtx)
     })
