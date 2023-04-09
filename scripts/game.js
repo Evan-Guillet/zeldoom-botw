@@ -7,17 +7,29 @@ function load(){
     document.addEventListener("keydown", keyDown, false)
     document.addEventListener("keyup", keyUp, false)
 
-    imageLoader.add("/asset/graphics/actor/characters/blue_ninja/sprite_sheet.png")
+    imageLoader.add("/asset/graphics/actor/characters/blue_samurai/sprite_sheet.png")
+    imageLoader.add("/asset/graphics/map/grille_test.png")
     
     imageLoader.start(startGame)
 }
 
 function startGame(){
 
+    listMap = []
+
+    let mapTest = imageLoader.getImage("/asset/graphics/map/grille_test.png")
+    level = new Sprite(mapTest)
+    level.setTileSheet(224, 224)
+    level.setScale(4, 4)
+    listMap.push(level)
+
+
     listSprites = []
 
-    let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_ninja/sprite_sheet.png")
+    let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_samurai/sprite_sheet.png")
     hero = new Sprite(spriteSheetBlueSamurai)
+    hero.x = 16*24
+    hero.y = 16*24
     setHero()
     listSprites.push(hero)
 
@@ -57,6 +69,10 @@ function cooldowns(pCooldownsMax){
 function draw(pCtx){
 
     if(!gameReady){return}
+
+    listMap.forEach(sprite => {
+        sprite.draw(pCtx)
+    })
 
     listSprites.forEach(sprite => {
         sprite.draw(pCtx)

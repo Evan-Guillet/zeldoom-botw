@@ -1,8 +1,8 @@
 let canvas = document.getElementById("canvas")  // get the information of the game window by its id, here "canvas"
 let ctx = canvas.getContext("2d")   // gives the graphical context for the display functions, here "2d"
 
-canvas.width = 800
-canvas.height = 600
+canvas.width = 896 
+canvas.height = 896
 
 let lastUpdate = 0
 
