@@ -24,6 +24,7 @@ function getTileAt(pX, pY){
     let line = Math.floor(pY/(tileSize*tileScale)) + 1
 
     if((column >= 0) && (column <= map[0].length) && (line >= 0) && (line <= map.length)){
+        //console.log("X: " + column + " Y: " + line)
         let idCase = map[line][column]
         return idCase
     }

@@ -11,6 +11,8 @@ let movement = ""
 let firstAttack = "IDLE_DOWN"
 let firstSpecial = "IDLE_DOWN"
 
+let gridActive = false
+
 function keyDown(k){
     k.preventDefault()
 
@@ -239,6 +241,16 @@ function keyDown(k){
                 setHero(true, false, false, false, false, false, true, false, false, false, false, false)
             }
         }, 750)
+    }
+
+    // =============== DEV TOOL ===============
+    if(k.code == "KeyG"){
+        if(!gridActive){
+            gridActive = true
+
+        } else if(gridActive){
+            gridActive = false
+        }
     }
 }
 
