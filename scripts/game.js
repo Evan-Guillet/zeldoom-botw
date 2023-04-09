@@ -53,9 +53,6 @@ function update(dt){
 
     if(!gameReady){return}
 
-    let id = getTileAt(hero.x, hero.y)
-    console.log(id)
-
     listSprites.forEach(sprite => {
         sprite.update(dt)
     })
@@ -74,9 +71,11 @@ function draw(pCtx){
 
     // display grid
     if(gridActive){
+        let id = getTileAt(hero.x, hero.y)
+        console.log(id)
         grid.draw(pCtx)
         pCtx.strokeStyle = "yellow"
-        pCtx.lineWidth = 5
+        pCtx.lineWidth = 1
         pCtx.strokeRect(hero.x, hero.y, 16*4, 16*4)
     }
 

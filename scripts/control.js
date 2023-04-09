@@ -18,7 +18,13 @@ function keyDown(k){
 
     // =============== MOVEMENT ===============
     if(k.code == "KeyS"){
-        downKey = true
+        if(collideDown() == 0){
+            downKey = true
+
+        } else if(collideDown() == 1) {
+            downKey = false
+        }
+        
         animation = "WALK_DOWN"
         movement = "MOVEMENT_DOWN"
         firstAttack = ""
