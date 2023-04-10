@@ -10,7 +10,7 @@ Zeldoom: BOTW is a Zelda-like adventure game. Roam a map filled with hostile ene
 
 
 
-# *Goal 🎯
+# Goal 🎯
 Perform various actions while exploring or in combat: run, hit, dash, heal yourself, and cast spells. But also loot items, randomly generated, which you can store in your which you can store in your inventory. Confront enemies with simple artificial intelligence and gaining levels to increase your power. All this under a ambient music and sound design.
 
 If development proceeds quickly, it will also be possible to save your game, recording the level you were in before with your filled inventory. Perhaps even the possibility of solving sound-based puzzles to be replayed in order or to reconstitute an old statue to destroy.
@@ -27,7 +27,7 @@ If development proceeds quickly, it will also be possible to save your game, rec
 
 
 
-## Technical stuff ⚙️
+# Technical stuff ⚙️
 The whole project is coded in JavaScript + HTML and CSS. The project is saved and available on a Github repository.
 
 
@@ -47,6 +47,7 @@ They are released under the Creative Commons Zero license. All the assets in thi
 # Stages of development 👨‍💻
 
 \*main\*
+
 2 days :
 Make the map display with a tilemap system.
 
@@ -63,6 +64,7 @@ Develop the inventory system to give the player more possibilities to store new 
 Develop the level system to the player to gain power.
 
 \*optional\*
+
 3 days:
 Develop several different levels with hardening difficulty.
 
