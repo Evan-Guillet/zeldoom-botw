@@ -17,7 +17,7 @@ function keyDown(k){
     k.preventDefault()
 
     // =============== MOVEMENT ===============
-    if(k.code == "KeyS"){
+    if(k.code == "ArrowDown"){
         if(collideDown() == 0){
             downKey = true
 
@@ -30,21 +30,27 @@ function keyDown(k){
         firstAttack = ""
         setHero(false, true, false, false, false, false, false, false, false, false, false, false)
     }
-    if(k.code == "KeyW"){
-        upKey = true
+    if(k.code == "ArrowUp"){
+        if(collideUp() == 0){
+            upKey = true
+
+        } else if(collideUp() == 1) {
+            upKey = false
+        }
+        
         animation = "WALK_UP"
         movement = "MOVEMENT_UP"
         firstAttack = ""
         setHero(false, false, false, true, false, false, false, false, false, false, false, false)
     }
-    if(k.code == "KeyA"){
+    if(k.code == "ArrowLeft"){
         leftKey = true
         animation = "WALK_LEFT"
         movement = "MOVEMENT_LEFT"
         firstAttack = ""
         setHero(false, false, false, false, false, true, false, false, false, false, false, false)
     }
-    if(k.code == "KeyD"){
+    if(k.code == "ArrowRight"){
         rightKey = true
         animation = "WALK_RIGHT"
         movement = "MOVEMENT_RIGHT"
@@ -138,7 +144,7 @@ function keyDown(k){
     }
 
     // =============== SPECIAL 1 ===============
-    if(k.code == "Digit1"){
+    if(k.code == "KeyA"){
         digit1Key = true
 
         animation = "SPECIAL_1"
@@ -194,7 +200,7 @@ function keyDown(k){
     }
 
     // =============== SPECIAL 2 ===============
-    if(k.code == "Digit2"){
+    if(k.code == "KeyS"){
         digit2Key = true
 
         animation = "SPECIAL_2"
@@ -264,7 +270,7 @@ function keyUp(k){
     k.preventDefault()
 
     // =============== MOVEMENT ===============
-    if(k.code == "KeyS"){
+    if(k.code == "ArrowDown"){
         downKey = false
         if(!upKey && !leftKey && !rightKey){
             animation = "IDLE_DOWN"
@@ -272,7 +278,7 @@ function keyUp(k){
             setHero(true, false, false, false, false, false, false, false, false, false, false, false)
         }
     }
-    if(k.code == "KeyW"){
+    if(k.code == "ArrowUp"){
         upKey = false
         if(!downKey && !leftKey && !rightKey){
             animation = "IDLE_UP"
@@ -280,7 +286,7 @@ function keyUp(k){
             setHero(false, false, true, false, false, false, false, false, false, false, false, false)
         }
     }
-    if(k.code == "KeyA"){
+    if(k.code == "ArrowLeft"){
         leftKey = false
         if(!downKey && !upKey && !rightKey){
             animation = "IDLE_LEFT"
@@ -288,7 +294,7 @@ function keyUp(k){
             setHero(false, false, false, false, true, false, false, false, false, false, false, false)
         }
     }
-    if(k.code == "KeyD"){
+    if(k.code == "ArrowRight"){
         rightKey = false
         if(!downKey && !upKey && !leftKey){
             animation = "IDLE_RIGHT"

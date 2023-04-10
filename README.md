@@ -33,6 +33,16 @@ They are released under the Creative Commons Zero license. All the assets in thi
 
 
 
+# Controls ⌨
+| Key | Description |
+| :---: | :---: |
+| `Arrow Keys` | Move |
+| `Space Bar` | Attack |
+| `Q` | Special 1 |
+| `S` | Special 2 |
+
+
+
 ## **Development time**
 3 avril – 11 mai • 39 jours
 

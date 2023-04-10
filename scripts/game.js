@@ -39,8 +39,8 @@ function startGame(){
 
     let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_samurai/sprite_sheet.png")
     hero = new Sprite(spriteSheetBlueSamurai)
-    hero.x = (16*4)*6
-    hero.y = (16*4)*4
+    hero.x = (16*4)*8
+    hero.y = (16*4)*8
     setHero()
     listSprites.push(hero)
 
