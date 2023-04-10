@@ -46,6 +46,7 @@ They are released under the Creative Commons Zero license. All the assets in thi
 
 # Stages of development 👨‍💻
 
+| :---: | :---: |
 | 2 days | Make the map display with a tilemap system. |
 | 2 days | Have the Player Character (PJ) displayed first, then code his various movement moves, and finally his attacks and potions. |
 | 4 days | Have the Non-Player Characters (NPC) displayed first, then code their various movement moves, and finally their attacks and potions. |
@@ -54,6 +55,7 @@ They are released under the Creative Commons Zero license. All the assets in thi
 
 # Development bonuses ➕
 
+| :---: | :---: |
 | 3 days | Develop several different levels with hardening difficulty. |
 | 2 days | Develop the puzzle system with a hardening difficulty level. |
 | 3 days | Develop the save system, taking into account the level we are in, our inventory and the levels we inventory and the levels gained for our character and equipment. |
