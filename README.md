@@ -48,11 +48,11 @@ They are released under the Creative Commons Zero license. All the assets in thi
 
 | Time | Description |
 | :---: | :---: |
-| `2 days` | Make the map display with a tilemap system. |
-| `2 days` | Have the Player Character (PJ) displayed first, then code his various movement moves, and finally his attacks and potions. |
-| `4 days` | Have the Non-Player Characters (NPC) displayed first, then code their various movement moves, and finally their attacks and potions. |
-| `3 days` | Develop the inventory system to give the player more possibilities to store new items (weapons, armor, potions, miscellaneous items, etc.) |
-| `3 days` | Develop the level system to the player to gain power. |
+| 2 days | Make the map display with a tilemap system. |
+| 2 days | Have the Player Character (PJ) displayed first, then code his various movement moves, and finally his attacks and potions. |
+| 4 days | Have the Non-Player Characters (NPC) displayed first, then code their various movement moves, and finally their attacks and potions. |
+| 3 days | Develop the inventory system to give the player more possibilities to store new items (weapons, armor, potions, miscellaneous items, etc.) |
+| 3 days | Develop the level system to the player to gain power. |
 
 **2 DAYS :**<br/>
 Make the map display with a tilemap system.
