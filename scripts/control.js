@@ -19,10 +19,11 @@ function keyDown(k){
 
     // =============== MOVEMENT ===============
     if(k.code == "ArrowDown"){
+
         if(collideDown() == 0){
             downKey = true
 
-        } else if(collideDown() == 1) {
+        } else if(collideDown() == 1){
             downKey = false
         }
         
@@ -35,7 +36,7 @@ function keyDown(k){
         if(collideUp() == 0){
             upKey = true
 
-        } else if(collideUp() == 1) {
+        } else if(collideUp() == 1){
             upKey = false
         }
         
@@ -48,7 +49,7 @@ function keyDown(k){
         if(collideLeft() == 0){
             leftKey = true
 
-        } else if(collideLeft() == 1) {
+        } else if(collideLeft() == 1){
             leftKey = false
         }
 
@@ -61,7 +62,7 @@ function keyDown(k){
         if(collideRight() == 0){
             rightKey = true
 
-        } else if(collideRight() == 1) {
+        } else if(collideRight() == 1){
             rightKey = false
         }
         

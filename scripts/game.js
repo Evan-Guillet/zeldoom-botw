@@ -39,8 +39,8 @@ function startGame(){
 
     let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_samurai/sprite_sheet.png")
     hero = new Sprite(spriteSheetBlueSamurai)
-    hero.x = (tileSize*tileScale)*9
-    hero.y = (tileSize*tileScale)*9
+    hero.x = (tileSize*tileScale)*3
+    hero.y = (tileSize*tileScale)*0
     setHero()
     listSprites.push(hero)
 
@@ -73,7 +73,7 @@ function draw(pCtx){
     // display grid
     if(displayGrid){
         let id = getTileAt(hero.x, hero.y)
-        console.log(id)
+        //console.log(id)
         grid.draw(pCtx)
         pCtx.strokeStyle = "yellow"
         pCtx.lineWidth = 1
