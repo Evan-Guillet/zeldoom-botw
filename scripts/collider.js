@@ -1,6 +1,3 @@
-const tileSize = 16
-const tileScale = 4
-
 const map = [
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -33,22 +30,22 @@ function getTileAt(pX, pY){
 }
 
 function collideDown(){
-    let id1 = getTileAt(hero.x + 1, hero.y + 16*4)
-    let id2 = getTileAt(hero.x + 14, hero.y + 16*4)
+    let id1 = getTileAt(hero.x + (1*tileScale), hero.y + (16*tileScale))
+    let id2 = getTileAt(hero.x + (14*tileScale), hero.y + (16*tileScale))
     return id1 || id2
 }
 function collideUp(){
-    let id1 = getTileAt(hero.x + 1, hero.y + 8*4)
-    let id2 = getTileAt(hero.x + 14, hero.y + 8*4)
+    let id1 = getTileAt(hero.x + (1*tileScale), hero.y + (8*4))
+    let id2 = getTileAt(hero.x + (14*tileScale), hero.y + (8*4))
     return id1 || id2
 }
 function collideLeft(){
-    let id1 = getTileAt(hero.x -1, hero.y + 3)
-    let id2 = getTileAt(hero.x -1, hero.y + 14)
+    let id1 = getTileAt(hero.x, hero.y + (10*tileScale))
+    let id2 = getTileAt(hero.x, hero.y + (14*tileScale))
     return id1 || id2
 }
 function collideRight(){
-    let id1 = getTileAt(hero.x + 16*4, hero.y + 3)
-    let id2 = getTileAt(hero.x + 16*4, hero.y + 14)
+    let id1 = getTileAt(hero.x + (15*tileScale), hero.y + (10*tileScale))
+    let id2 = getTileAt(hero.x + (15*tileScale), hero.y + (14*tileScale))
     return id1 || id2
 }

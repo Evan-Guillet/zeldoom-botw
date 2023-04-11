@@ -11,7 +11,8 @@ let movement = ""
 let firstAttack = "IDLE_DOWN"
 let firstSpecial = "IDLE_DOWN"
 
-let gridActive = false
+let displayGrid = false
+let displayHotspots = false
 
 function keyDown(k){
     k.preventDefault()
@@ -257,11 +258,19 @@ function keyDown(k){
 
     // =============== DEV TOOL ===============
     if(k.code == "KeyG"){
-        if(!gridActive){
-            gridActive = true
+        if(!displayGrid){
+            displayGrid = true
 
-        } else if(gridActive){
-            gridActive = false
+        } else if(displayGrid){
+            displayGrid = false
+        }
+    }
+    if(k.code == "KeyH"){
+        if(!displayHotspots){
+            displayHotspots = true
+
+        } else if(displayHotspots){
+            displayHotspots = false
         }
     }
 }
