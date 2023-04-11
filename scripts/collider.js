@@ -35,8 +35,8 @@ function collideDown(){
     return id1 || id2
 }
 function collideUp(){
-    let id1 = getTileAt(hero.x + (1*tileScale), hero.y + (8*4))
-    let id2 = getTileAt(hero.x + (14*tileScale), hero.y + (8*4))
+    let id1 = getTileAt(hero.x + (1*tileScale), hero.y + (8*tileScale))
+    let id2 = getTileAt(hero.x + (14*tileScale), hero.y + (8*tileScale))
     return id1 || id2
 }
 function collideLeft(){

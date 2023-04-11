@@ -12,7 +12,7 @@ let firstAttack = "IDLE_DOWN"
 let firstSpecial = "IDLE_DOWN"
 
 let displayGrid = false
-let displayHotspots = false
+let displayHotspots = true
 
 function keyDown(k){
     k.preventDefault()
@@ -45,14 +45,26 @@ function keyDown(k){
         setHero(false, false, false, true, false, false, false, false, false, false, false, false)
     }
     if(k.code == "ArrowLeft"){
-        leftKey = true
+        if(collideLeft() == 0){
+            leftKey = true
+
+        } else if(collideLeft() == 1) {
+            leftKey = false
+        }
+
         animation = "WALK_LEFT"
         movement = "MOVEMENT_LEFT"
         firstAttack = ""
         setHero(false, false, false, false, false, true, false, false, false, false, false, false)
     }
     if(k.code == "ArrowRight"){
-        rightKey = true
+        if(collideRight() == 0){
+            rightKey = true
+
+        } else if(collideRight() == 1) {
+            rightKey = false
+        }
+        
         animation = "WALK_RIGHT"
         movement = "MOVEMENT_RIGHT"
         firstAttack = ""
