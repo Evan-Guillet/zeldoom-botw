@@ -1,9 +1,7 @@
 let imageLoader = new ImageLoader()
 let gameReady = false
+let listMap = []
 let listSprites = []
-
-let mouseX
-let mouseY
 
 function load(){
     // retrieves the activated and released keys
@@ -38,11 +36,11 @@ function startGame(){
     listSprites = []
 
     let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_samurai/sprite_sheet.png")
-    hero = new Sprite(spriteSheetBlueSamurai)
-    hero.x = (tileSize*tileScale)*2
-    hero.y = (tileSize*tileScale)*6
-    setHero()
-    listSprites.push(hero)
+    player = new Sprite(spriteSheetBlueSamurai)
+    player.x = (tileSize*tileScale)*2
+    player.y = (tileSize*tileScale)*6
+    setplayer()
+    listSprites.push(player)
 
     gameReady = true
 }
@@ -57,7 +55,8 @@ function update(dt){
         sprite.update(dt)
     })
 
-    hero.startAnimation(animation)
+    player.startAnimation(animation)
+    move(dt)
 }
 
 function draw(pCtx){
@@ -71,12 +70,12 @@ function draw(pCtx){
 
     // display grid
     if(displayGrid){
-        let id = getTileAt(hero.x, hero.y)
+        let id = getTileAt(player.x, player.y)
         //console.log(id)
         grid.draw(pCtx)
         pCtx.strokeStyle = "yellow"
         pCtx.lineWidth = 1
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x, hero.y, 16*tileScale, 16*tileScale)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y, 16*tileScale, 16*tileScale)}
     }
 
     // display player
@@ -89,30 +88,32 @@ function draw(pCtx){
 
         pCtx.strokeStyle = "blue"
         // player position [x,y]
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x, hero.y, 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y, 2, 2)}
 
+        /*
         pCtx.strokeStyle = "white"
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (1*tileScale), hero.y + (16*tileScale), 50, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (1*tileScale), hero.y + (8*tileScale), 50, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x, hero.y + (9*tileScale), 2, 25)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (15*tileScale), hero.y + (9*tileScale), 2, 25)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (1*tileScale), player.y + (16*tileScale), 50, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (1*tileScale), player.y + (8*tileScale), 50, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (9*tileScale), 2, 25)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (9*tileScale), 2, 25)}
+        */
 
         pCtx.strokeStyle = "red"
         // hotspots down
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (1*tileScale), hero.y + (16*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (8*tileScale), hero.y + (16*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (14*tileScale), hero.y + (16*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (1*tileScale), player.y + (16*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (8*tileScale), player.y + (16*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (14*tileScale), player.y + (16*tileScale), 2, 2)}
         // hotspots up
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (1*tileScale), hero.y + (8*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (8*tileScale), hero.y + (8*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (14*tileScale), hero.y + (8*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (1*tileScale), player.y + (8*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (8*tileScale), player.y + (8*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (14*tileScale), player.y + (8*tileScale), 2, 2)}
         // hotspots left
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x, hero.y + (9*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x, hero.y + (12*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x, hero.y + (15*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (9*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (12*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (15*tileScale), 2, 2)}
         // hotspots right
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (15*tileScale), hero.y + (9*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (15*tileScale), hero.y + (12*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (15*tileScale), hero.y + (15*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (9*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (12*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (15*tileScale), 2, 2)}
     }
 }
