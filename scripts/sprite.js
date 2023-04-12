@@ -6,7 +6,8 @@ class Sprite{
 
         this.x = pX
         this.y = pY
-
+        this.w = 16*4
+        this.h = 16*4
         this.scaleX = 1
         this.scaleY = 1
 

@@ -17,55 +17,34 @@ let displayHotspots = true
 function keyDown(k){
     k.preventDefault()
 
-    let oldPos = { x: hero.x,
-                   y: hero.y }
-
     // =============== MOVEMENT ===============
     if(k.code == "ArrowDown"){
-
-        if(collideDown() == 0){
-            hero.y = hero.y + 60 * dt
-        }
-        
+        downKey = true
         animation = "WALK_DOWN"
         movement = "MOVEMENT_DOWN"
         firstAttack = ""
         setplayer(false, true, false, false, false, false, false, false, false, false, false, false)
     }
     if(k.code == "ArrowUp"){
-        if(collideUp() == 0){
-            hero.y = hero.y - 60 * dt
-        }
-        
+        upKey = true
         animation = "WALK_UP"
         movement = "MOVEMENT_UP"
         firstAttack = ""
         setplayer(false, false, false, true, false, false, false, false, false, false, false, false)
     }
     if(k.code == "ArrowLeft"){
-        if(collideLeft() == 0){
-            hero.x = hero.x - 60 * dt
-        }
-
+        leftKey = true
         animation = "WALK_LEFT"
         movement = "MOVEMENT_LEFT"
         firstAttack = ""
         setplayer(false, false, false, false, false, true, false, false, false, false, false, false)
     }
     if(k.code == "ArrowRight"){
-        if(collideRight() == 0){
-            hero.x = hero.x + 60 * dt
-        }
-        
+        rightKey = true
         animation = "WALK_RIGHT"
         movement = "MOVEMENT_RIGHT"
         firstAttack = ""
         setplayer(false, false, false, false, false, false, false, true, false, false, false, false)
-    }
-
-    if(collideMap()){
-        hero.x = oldPos.x
-        hero.y = oldPos.y
     }
 
     // =============== ATTACK ===============
@@ -265,7 +244,7 @@ function keyDown(k){
         }, 750)
     }
 
-    // =============== DEV TOOL ===============
+    // =============== DEVTOOLS ===============
     if(k.code == "KeyG"){
         if(!displayGrid){
             displayGrid = true
@@ -319,5 +298,30 @@ function keyUp(k){
             movement = "IDLE_RIGHT"
             setplayer(false, false, false, false, false, false, true, false, false, false, false, false)
         }
+    }
+}
+
+function move(dt){
+    let oldPos = {
+        x: player.x,
+        y: player.y
+    }
+    
+    if(downKey){
+        player.y = player.y + 224 * dt
+    }
+    if(upKey){
+        player.y = player.y - 224 * dt
+    }
+    if(leftKey){
+        player.x = player.x - 224 * dt
+    }
+    if(rightKey){
+        player.x = player.x + 224 * dt
+    }
+
+    if(collideMap()){
+        player.x = oldPos.x
+        player.y = oldPos.y
     }
 }
