@@ -1,6 +1,6 @@
 let mapCollider = []
 
-const mapData = [
+const map = [
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
     [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
@@ -28,16 +28,18 @@ function collideMap(){
         for (let c = 0; c < mapCollider[l].length; c++) {
             let cell = mapCollider[l][c]
             if(cell.id == 1){
+                console.log("cell.id == 1")
                 if(checkCollision(player.x,player.y,player.w,player.h, cell.x,cell.y,cell.w,cell.h)){
+                    console.log("True")
                     return true
                 }
             }
         }
     }
+    console.log("False")
     return false
 }
 
-// Retrieved data from the collision table
 function mapManager(){
     mapCollider = []
 
@@ -46,21 +48,16 @@ function mapManager(){
     let fW = tileSize
     let fH = tileSize
 
-    for (let l = 0; l < mapData.length; l++) {
+    for (let l = 0; l < map.length; l++) {
         mapCollider[l] = []
-        for (let c = 0; c < mapData[l].length; c++) {
-            mapCollider[l][c] = { id: mapData[l][c], x: fX, y: fY, w: fW, h: fH }
+        for (let c = 0; c < map[l].length; c++) {
+            mapCollider[l][c] = { id: map[l][c], x: fX, y: fY, w: fW, h: fH }
             fX += fW
         }
         fX = 0
         fY += fH
     }
 }
-
-
-
-
-
 
 function getTileAt(pX, pY){
 
@@ -75,6 +72,7 @@ function getTileAt(pX, pY){
     return "ERROR : outside the map !"
 }
 
+// hotspots
 function collideDown(){
     let id1 = getTileAt(player.x + (1*tileScale), player.y + (16*tileScale))
     let id2 = getTileAt(player.x + (8*tileScale), player.y + (16*tileScale))

@@ -19,28 +19,44 @@ function keyDown(k){
 
     // =============== MOVEMENT ===============
     if(k.code == "ArrowDown"){
-        downKey = true
+
+        if(collideDown() == 0){
+            downKey = true
+        }
+
         animation = "WALK_DOWN"
         movement = "MOVEMENT_DOWN"
         firstAttack = ""
         setplayer(false, true, false, false, false, false, false, false, false, false, false, false)
     }
     if(k.code == "ArrowUp"){
-        upKey = true
+
+        if(collideUp() == 0){
+            upKey = true
+        }
+
         animation = "WALK_UP"
         movement = "MOVEMENT_UP"
         firstAttack = ""
         setplayer(false, false, false, true, false, false, false, false, false, false, false, false)
     }
     if(k.code == "ArrowLeft"){
-        leftKey = true
+        
+        if(collideLeft() == 0){
+            leftKey = true
+        }
+        
         animation = "WALK_LEFT"
         movement = "MOVEMENT_LEFT"
         firstAttack = ""
         setplayer(false, false, false, false, false, true, false, false, false, false, false, false)
     }
     if(k.code == "ArrowRight"){
-        rightKey = true
+
+        if(collideRight() == 0){
+            rightKey = true
+        }
+        
         animation = "WALK_RIGHT"
         movement = "MOVEMENT_RIGHT"
         firstAttack = ""

@@ -45,8 +45,6 @@ function startGame(){
     gameReady = true
 }
 
-
-
 function update(dt){
 
     if(!gameReady){return}
