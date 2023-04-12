@@ -49,6 +49,8 @@ function update(dt){
 
     if(!gameReady){return}
 
+    getdt(dt)
+
     listSprites.forEach(sprite => {
         sprite.update(dt)
     })
@@ -114,4 +116,8 @@ function draw(pCtx){
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (12*tileScale), 2, 2)}
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (15*tileScale), 2, 2)}
     }
+}
+
+function getdt(dt){
+    return dt
 }

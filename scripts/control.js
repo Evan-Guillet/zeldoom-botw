@@ -21,7 +21,7 @@ function keyDown(k){
     if(k.code == "ArrowDown"){
 
         if(collideDown() == 0){
-            downKey = true
+            player.y += 100*0.1
         }
 
         animation = "WALK_DOWN"
@@ -32,7 +32,7 @@ function keyDown(k){
     if(k.code == "ArrowUp"){
 
         if(collideUp() == 0){
-            upKey = true
+            player.y -= 100*0.1
         }
 
         animation = "WALK_UP"
@@ -43,7 +43,7 @@ function keyDown(k){
     if(k.code == "ArrowLeft"){
         
         if(collideLeft() == 0){
-            leftKey = true
+            player.x -= 100*0.1
         }
         
         animation = "WALK_LEFT"
@@ -54,7 +54,7 @@ function keyDown(k){
     if(k.code == "ArrowRight"){
 
         if(collideRight() == 0){
-            rightKey = true
+            player.x += 100*0.1
         }
         
         animation = "WALK_RIGHT"
