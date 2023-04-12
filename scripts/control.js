@@ -17,14 +17,14 @@ let displayHotspots = true
 function keyDown(k){
     k.preventDefault()
 
+    let oldPos = { x: hero.x,
+                   y: hero.y }
+
     // =============== MOVEMENT ===============
     if(k.code == "ArrowDown"){
 
         if(collideDown() == 0){
-            downKey = true
-
-        } else if(collideDown() == 1){
-            downKey = false
+            hero.y = hero.y + 60 * dt
         }
         
         animation = "WALK_DOWN"
@@ -34,10 +34,7 @@ function keyDown(k){
     }
     if(k.code == "ArrowUp"){
         if(collideUp() == 0){
-            upKey = true
-
-        } else if(collideUp() == 1){
-            upKey = false
+            hero.y = hero.y - 60 * dt
         }
         
         animation = "WALK_UP"
@@ -47,10 +44,7 @@ function keyDown(k){
     }
     if(k.code == "ArrowLeft"){
         if(collideLeft() == 0){
-            leftKey = true
-
-        } else if(collideLeft() == 1){
-            leftKey = false
+            hero.x = hero.x - 60 * dt
         }
 
         animation = "WALK_LEFT"
@@ -60,16 +54,18 @@ function keyDown(k){
     }
     if(k.code == "ArrowRight"){
         if(collideRight() == 0){
-            rightKey = true
-
-        } else if(collideRight() == 1){
-            rightKey = false
+            hero.x = hero.x + 60 * dt
         }
         
         animation = "WALK_RIGHT"
         movement = "MOVEMENT_RIGHT"
         firstAttack = ""
         setplayer(false, false, false, false, false, false, false, true, false, false, false, false)
+    }
+
+    if(collideMap()){
+        hero.x = oldPos.x
+        hero.y = oldPos.y
     }
 
     // =============== ATTACK ===============
@@ -324,11 +320,4 @@ function keyUp(k){
             setplayer(false, false, false, false, false, false, true, false, false, false, false, false)
         }
     }
-}
-
-function move(){
-    if(downKey){player.y++}
-    if(upKey){player.y--}
-    if(leftKey){player.x--}
-    if(rightKey){player.x++}
 }
