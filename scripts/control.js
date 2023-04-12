@@ -6,6 +6,9 @@ let spaceKey = false    // ATTACK
 let digit1Key = false   // SPECIAL
 let digit2Key = false   // SPECIAL
 
+let vx = 1
+let vy = 1
+
 let animation = ""
 let movement = ""
 let firstAttack = "IDLE_DOWN"
@@ -21,10 +24,7 @@ function keyDown(k){
     if(k.code == "ArrowDown"){
 
         if(collideDown() == 0){
-            downKey = true
-
-        } else if(collideDown() == 1){
-            downKey = false
+            hero.y += 5
         }
         
         animation = "WALK_DOWN"
@@ -34,10 +34,7 @@ function keyDown(k){
     }
     if(k.code == "ArrowUp"){
         if(collideUp() == 0){
-            upKey = true
-
-        } else if(collideUp() == 1){
-            upKey = false
+            hero.y -= 5
         }
         
         animation = "WALK_UP"
@@ -47,10 +44,7 @@ function keyDown(k){
     }
     if(k.code == "ArrowLeft"){
         if(collideLeft() == 0){
-            leftKey = true
-
-        } else if(collideLeft() == 1){
-            leftKey = false
+            hero.x -= 5
         }
 
         animation = "WALK_LEFT"
@@ -60,10 +54,7 @@ function keyDown(k){
     }
     if(k.code == "ArrowRight"){
         if(collideRight() == 0){
-            rightKey = true
-
-        } else if(collideRight() == 1){
-            rightKey = false
+            hero.x += 5
         }
         
         animation = "WALK_RIGHT"

@@ -21,21 +21,6 @@ class Sprite{
         this.animations = []
     }
 
-    move(){
-        if (downKey) {
-            this.y++
-        }
-        if (upKey) {
-            this.y--
-        }
-        if (leftKey) {
-            this.x--
-        }
-        if (rightKey) {
-            this.x++
-        }
-    }
-
     setTileSheet(pSizeX, pSizeY){
         this.tileSheet = true
         this.tileSize.x = pSizeX

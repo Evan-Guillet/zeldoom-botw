@@ -57,10 +57,7 @@ function update(dt){
         sprite.update(dt)
     })
 
-    console.log(hero.y)
-
     hero.startAnimation(animation)
-    hero.move()
 }
 
 function draw(pCtx){
