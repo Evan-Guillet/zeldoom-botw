@@ -14,7 +14,7 @@ function run(time){
     let dt = (time - lastUpdate)/1000
 
     // if I want to limit fps
-    //if(dt < (1/60) - 0.001){return}
+    // if(dt < (1/60) - 0.001){return}
 
     // updates the last moment
     lastUpdate = time
