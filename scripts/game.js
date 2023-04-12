@@ -39,8 +39,8 @@ function startGame(){
 
     let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_samurai/sprite_sheet.png")
     hero = new Sprite(spriteSheetBlueSamurai)
-    hero.x = (tileSize*tileScale)*4
-    hero.y = (tileSize*tileScale)*1
+    hero.x = (tileSize*tileScale)*2
+    hero.y = (tileSize*tileScale)*6
     setHero()
     listSprites.push(hero)
 
@@ -93,6 +93,12 @@ function draw(pCtx){
         pCtx.strokeStyle = "blue"
         // player position [x,y]
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x, hero.y, 2, 2)}
+
+        pCtx.strokeStyle = "white"
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (1*tileScale), hero.y + (16*tileScale), 50, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (1*tileScale), hero.y + (8*tileScale), 50, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x, hero.y + (9*tileScale), 2, 25)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(hero.x + (15*tileScale), hero.y + (9*tileScale), 2, 25)}
 
         pCtx.strokeStyle = "red"
         // hotspots down
