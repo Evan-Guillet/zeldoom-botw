@@ -12,7 +12,7 @@ const map = [
     [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
     [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
     [1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1],
-    [1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,1],
+    [1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1],
     [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 ]
@@ -33,25 +33,33 @@ function getTileAt(pX, pY){
 // hotspots
 function collideDown(){
     let id1 = getTileAt(player.x + (1*tileScale), player.y + (16*tileScale))
-    let id2 = getTileAt(player.x + (8*tileScale), player.y + (16*tileScale))
-    let id3 = getTileAt(player.x + (14*tileScale), player.y + (16*tileScale))
-    return id1 || id2 || id3
+    let id2 = getTileAt(player.x + (4*tileScale), player.y + (16*tileScale))
+    let id3 = getTileAt(player.x + (8*tileScale), player.y + (16*tileScale))
+    let id4 = getTileAt(player.x + (12*tileScale), player.y + (16*tileScale))
+    let id5 = getTileAt(player.x + (14*tileScale), player.y + (16*tileScale))
+    return id1 || id2 || id3 || id4 || id5
 }
 function collideUp(){
     let id1 = getTileAt(player.x + (1*tileScale), player.y)
-    let id2 = getTileAt(player.x + (8*tileScale), player.y)
-    let id3 = getTileAt(player.x + (14*tileScale), player.y)
-    return id1 || id2 || id3
+    let id2 = getTileAt(player.x + (4*tileScale), player.y)
+    let id3 = getTileAt(player.x + (8*tileScale), player.y)
+    let id4 = getTileAt(player.x + (12*tileScale), player.y)
+    let id5 = getTileAt(player.x + (14*tileScale), player.y)
+    return id1 || id2 || id3 || id4 || id5
 }
 function collideLeft(){
     let id1 = getTileAt(player.x, player.y + (1*tileScale))
-    let id2 = getTileAt(player.x, player.y + (8*tileScale))
-    let id3 = getTileAt(player.x, player.y + (15*tileScale))
-    return id1 || id2 || id3
+    let id2 = getTileAt(player.x, player.y + (4*tileScale))
+    let id3 = getTileAt(player.x, player.y + (8*tileScale))
+    let id4 = getTileAt(player.x, player.y + (12*tileScale))
+    let id5 = getTileAt(player.x, player.y + (15*tileScale))
+    return id1 || id2 || id3 || id4 || id5
 }
 function collideRight(){
     let id1 = getTileAt(player.x + (15*tileScale), player.y + (1*tileScale))
-    let id2 = getTileAt(player.x + (15*tileScale), player.y + (8*tileScale))
-    let id3 = getTileAt(player.x + (15*tileScale), player.y + (15*tileScale))
-    return id1 || id2 || id3
+    let id2 = getTileAt(player.x + (15*tileScale), player.y + (4*tileScale))
+    let id3 = getTileAt(player.x + (15*tileScale), player.y + (8*tileScale))
+    let id4 = getTileAt(player.x + (15*tileScale), player.y + (12*tileScale))
+    let id5 = getTileAt(player.x + (15*tileScale), player.y + (15*tileScale))
+    return id1 || id2 || id3 || id4 || id5
 }

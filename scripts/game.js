@@ -66,6 +66,10 @@ function update(dt){
     
     player.startAnimation(player.animationType)
     move(dt)
+    moveDown()
+    moveUp()
+    moveLeft()
+    moveRight()
 }
 
 function draw(pCtx){
@@ -102,19 +106,27 @@ function draw(pCtx){
         pCtx.strokeStyle = "red"
         // hotspots down
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (1*tileScale), player.y + (16*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (4*tileScale), player.y + (16*tileScale), 2, 2)}
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (8*tileScale), player.y + (16*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (12*tileScale), player.y + (16*tileScale), 2, 2)}
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (14*tileScale), player.y + (16*tileScale), 2, 2)}
         // hotspots up
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (1*tileScale), player.y, 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (4*tileScale), player.y, 2, 2)}
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (8*tileScale), player.y, 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (12*tileScale), player.y, 2, 2)}
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (14*tileScale), player.y, 2, 2)}
         // hotspots left
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (1*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (4*tileScale), 2, 2)}
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (8*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (12*tileScale), 2, 2)}
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (15*tileScale), 2, 2)}
         // hotspots right
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (1*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (4*tileScale), 2, 2)}
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (8*tileScale), 2, 2)}
+        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (12*tileScale), 2, 2)}
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (15*tileScale), 2, 2)}
     }
 }

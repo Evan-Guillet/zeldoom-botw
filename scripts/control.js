@@ -18,72 +18,44 @@ function keyDown(k){
     k.preventDefault()
 
     // ===============| MOVEMENT |===============
-    if(k.code == "ArrowDown" || downKey){
-        console.log("DOWN")
-        if(collideDown() == 0){
-            isLockDown = false
-        }
-        if(collideDown() == 0 && !isLockDown){
-            downKey = true
+    if(k.code == "ArrowDown"){
 
-        } else if(collideDown() == 1){
-            downKey = false
-            isLockDown = true
-        }
+        downKey = true
+
+        moveDown(downKey)
 
         player.animationType = "WALK_DOWN"
         player.movement = "MOVEMENT_DOWN"
         player.firstAttack = ""
         setplayer(false, true, false, false, false, false, false, false, false, false, false, false)
     }
-    if(k.code == "ArrowUp" || upKey){
-        console.log("UP")
-        if(collideUp() == 0){
-            isLockUp = false
-        }
-        if(collideUp() == 0 && !isLockUp){
-            upKey = true
+    if(k.code == "ArrowUp"){
 
-        } else if(collideUp() == 1){
-            upKey = false
-            isLockUp = true
-        }
+        upKey = true
+
+        moveUp(upKey)
 
         player.animationType = "WALK_UP"
         player.movement = "MOVEMENT_UP"
         player.firstAttack = ""
         setplayer(false, false, false, true, false, false, false, false, false, false, false, false)
     }
-    if(k.code == "ArrowLeft" || leftKey){
-        console.log("LEFT")
-        if(collideLeft() == 0){
-            isLockLeft = false
-        }
-        if(collideLeft() == 0 && !isLockLeft){
-            leftKey = true
+    if(k.code == "ArrowLeft"){
 
-        } else if(collideLeft() == 1){
-            leftKey = false
-            isLockLeft = true
-        }
+        leftKey = true
+
+        moveLeft(leftKey)
         
         player.animationType = "WALK_LEFT"
         player.movement = "MOVEMENT_LEFT"
         player.firstAttack = ""
         setplayer(false, false, false, false, false, true, false, false, false, false, false, false)
     }
-    if(k.code == "ArrowRight" || rightKey){
-        console.log("RIGHT")
-        if(collideRight() == 0){
-            isLockRight = false
-        }
-        if(collideRight() == 0 && !isLockRight){
-            rightKey = true
+    if(k.code == "ArrowRight"){
 
-        } else if(collideRight() == 1){
-            rightKey = false
-            isLockRight = true
-        }
+        rightKey = true
+
+        moveRight(rightKey)
         
         player.animationType = "WALK_RIGHT"
         player.movement = "MOVEMENT_RIGHT"
@@ -357,5 +329,62 @@ function move(dt){
     }
     if(rightKey){
         player.x += 100*dt
+    }
+}
+
+function moveDown(pKeyDown){
+    if(pKeyDown){
+        if(collideDown() == 0){
+            isLockDown = false
+        }
+        if(collideDown() == 0 && !isLockDown){
+            downKey = true
+    
+        } else if(collideDown() == 1){
+            downKey = false
+            isLockDown = true
+        }
+    }
+}
+function moveUp(pKeyUp){
+    if(pKeyUp){
+        if(collideUp() == 0){
+            isLockUp = false
+        }
+        if(collideUp() == 0 && !isLockUp){
+            upKey = true
+
+        } else if(collideUp() == 1){
+            upKey = false
+            isLockUp = true
+        }
+    }
+}
+function moveLeft(pKeyLeft){
+    if(pKeyLeft){
+        if(collideLeft() == 0){
+            isLockLeft = false
+        }
+        if(collideLeft() == 0 && !isLockLeft){
+            leftKey = true
+
+        } else if(collideLeft() == 1){
+            leftKey = false
+            isLockLeft = true
+        }
+    }
+}
+function moveRight(pKeyRight){
+    if(pKeyRight){
+        if(collideRight() == 0){
+            isLockRight = false
+        }
+        if(collideRight() == 0 && !isLockRight){
+            rightKey = true
+
+        } else if(collideRight() == 1){
+            rightKey = false
+            isLockRight = true
+        }
     }
 }
