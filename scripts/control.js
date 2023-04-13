@@ -38,6 +38,7 @@ function keyDown(k){
     }
     if(k.code == "ArrowUp"){
 
+        console.log("up")
         if(collideUp() == 0 && !isLockUp){
             upKey = true
             if(collideDown() == 0){
