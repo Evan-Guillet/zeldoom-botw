@@ -11,7 +11,7 @@ function load(){
     document.addEventListener("keydown", keyDown, false)
     document.addEventListener("keyup", keyUp, false)
 
-    imageLoader.add("/asset/graphics/actor/characters/green_ninja/sprite_sheet.png")
+    imageLoader.add("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
     imageLoader.add("/asset/graphics/Actor/Monsters/Owl.png")
     imageLoader.add("/asset/graphics/map/map.png")
     imageLoader.add("/asset/graphics/map/grid.png")
@@ -39,8 +39,8 @@ function startGame(){
 
     listCharacter = []
 
-    let spritesheetGreenNinja = imageLoader.getImage("/asset/graphics/actor/characters/green_ninja/sprite_sheet.png")
-    player = new Sprite(spritesheetGreenNinja)
+    let spritesheetDarkNinja = imageLoader.getImage("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
+    player = new Sprite(spritesheetDarkNinja)
     player.x = (tileSize*tileScale)*5
     player.y = (tileSize*tileScale)*9
     setplayer()
