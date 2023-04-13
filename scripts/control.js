@@ -6,10 +6,15 @@ let spaceKey = false    // ATTACK
 let aKey = false        // SPECIAL
 let sKey = false        // SPECIAL
 
-let isLockDown = false
-let isLockUp = false
-let isLockLeft = false
-let isLockRight = false
+let isLockDown = true
+let isLockUp = true
+let isLockLeft = true
+let isLockRight = true
+
+let isActiveDown = false
+let isActiveUp = false
+let isActiveLeft = false
+let isActiveRight = false
 
 let displayGrid = false
 let displayHotspots = false
@@ -20,9 +25,8 @@ function keyDown(k){
     // ===============| MOVEMENT |===============
     if(k.code == "ArrowDown"){
 
-        downKey = true
-
-        moveDown(downKey)
+        isActiveDown = true
+        moveDown()
 
         player.animationType = "WALK_DOWN"
         player.movement = "MOVEMENT_DOWN"
@@ -31,9 +35,8 @@ function keyDown(k){
     }
     if(k.code == "ArrowUp"){
 
-        upKey = true
-
-        moveUp(upKey)
+        isActiveUp = true
+        moveUp()
 
         player.animationType = "WALK_UP"
         player.movement = "MOVEMENT_UP"
@@ -42,9 +45,8 @@ function keyDown(k){
     }
     if(k.code == "ArrowLeft"){
 
-        leftKey = true
-
-        moveLeft(leftKey)
+        isActiveLeft = true
+        moveLeft()
         
         player.animationType = "WALK_LEFT"
         player.movement = "MOVEMENT_LEFT"
@@ -53,9 +55,8 @@ function keyDown(k){
     }
     if(k.code == "ArrowRight"){
 
-        rightKey = true
-
-        moveRight(rightKey)
+        isActiveRight = true
+        moveRight()
         
         player.animationType = "WALK_RIGHT"
         player.movement = "MOVEMENT_RIGHT"
@@ -285,6 +286,7 @@ function keyUp(k){
     // ===============| MOVEMENT |===============
     if(k.code == "ArrowDown"){
         downKey = false
+        isActiveDown = false
         if(!upKey && !leftKey && !rightKey){
             player.animationType = "IDLE_DOWN"
             player.movement = "IDLE_DOWN"
@@ -293,6 +295,7 @@ function keyUp(k){
     }
     if(k.code == "ArrowUp"){
         upKey = false
+        isActiveUp = false
         if(!downKey && !leftKey && !rightKey){
             player.animationType = "IDLE_UP"
             player.movement = "IDLE_UP"
@@ -301,6 +304,7 @@ function keyUp(k){
     }
     if(k.code == "ArrowLeft"){
         leftKey = false
+        isActiveLeft = false
         if(!downKey && !upKey && !rightKey){
             player.animationType = "IDLE_LEFT"
             player.movement = "IDLE_LEFT"
@@ -309,6 +313,7 @@ function keyUp(k){
     }
     if(k.code == "ArrowRight"){
         rightKey = false
+        isActiveRight = false
         if(!downKey && !upKey && !leftKey){
             player.animationType = "IDLE_RIGHT"
             player.movement = "IDLE_RIGHT"
@@ -319,21 +324,21 @@ function keyUp(k){
 
 function move(dt){
     if(downKey){
-        player.y += 100*dt
+        player.y += 200*dt
     }
     if(upKey){
-        player.y -= 100*dt
+        player.y -= 200*dt
     }
     if(leftKey){
-        player.x -= 100*dt
+        player.x -= 200*dt
     }
     if(rightKey){
-        player.x += 100*dt
+        player.x += 200*dt
     }
 }
 
-function moveDown(pKeyDown){
-    if(pKeyDown){
+function moveDown(){
+    if(isActiveDown){
         if(collideDown() == 0){
             isLockDown = false
         }
@@ -346,42 +351,45 @@ function moveDown(pKeyDown){
         }
     }
 }
-function moveUp(pKeyUp){
-    if(pKeyUp){
+function moveUp(){
+    if(isActiveUp){
         if(collideUp() == 0){
             isLockUp = false
         }
+        console.log("collideUp(): " + collideUp() + "   " + "isLockUp: " + isLockUp)
+        console.log("upKey_1: " + upKey)
         if(collideUp() == 0 && !isLockUp){
             upKey = true
-
+            console.log("upKey_2: " + upKey)
+    
         } else if(collideUp() == 1){
             upKey = false
             isLockUp = true
         }
     }
 }
-function moveLeft(pKeyLeft){
-    if(pKeyLeft){
+function moveLeft(){
+    if(isActiveLeft){
         if(collideLeft() == 0){
             isLockLeft = false
         }
         if(collideLeft() == 0 && !isLockLeft){
             leftKey = true
-
+    
         } else if(collideLeft() == 1){
             leftKey = false
             isLockLeft = true
         }
     }
 }
-function moveRight(pKeyRight){
-    if(pKeyRight){
+function moveRight(){
+    if(isActiveRight){
         if(collideRight() == 0){
             isLockRight = false
         }
         if(collideRight() == 0 && !isLockRight){
             rightKey = true
-
+    
         } else if(collideRight() == 1){
             rightKey = false
             isLockRight = true
