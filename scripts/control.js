@@ -3,8 +3,8 @@ let upKey = false       // MOVE_UP
 let leftKey = false     // MOVE_LEFT
 let rightKey = false    // MOVE_RIGHT
 let spaceKey = false    // ATTACK
-let aKey = false   // SPECIAL
-let sKey = false   // SPECIAL
+let aKey = false        // SPECIAL
+let sKey = false        // SPECIAL
 
 let animation = ""
 let movement = ""
@@ -12,7 +12,7 @@ let firstAttack = "IDLE_DOWN"
 let firstSpecial = "IDLE_DOWN"
 
 let displayGrid = false
-let displayHotspots = true
+let displayHotspots = false
 
 function keyDown(k){
     k.preventDefault()
@@ -314,30 +314,5 @@ function keyUp(k){
             movement = "IDLE_RIGHT"
             setplayer(false, false, false, false, false, false, true, false, false, false, false, false)
         }
-    }
-}
-
-function move(dt){
-    let oldPos = {
-        x: player.x,
-        y: player.y
-    }
-    
-    if(downKey){
-        player.y = player.y + 224 * dt
-    }
-    if(upKey){
-        player.y = player.y - 224 * dt
-    }
-    if(leftKey){
-        player.x = player.x - 224 * dt
-    }
-    if(rightKey){
-        player.x = player.x + 224 * dt
-    }
-
-    if(collideMap()){
-        player.x = oldPos.x
-        player.y = oldPos.y
     }
 }

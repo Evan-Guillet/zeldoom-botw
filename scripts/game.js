@@ -56,7 +56,6 @@ function update(dt){
     })
 
     player.startAnimation(animation)
-    move(dt)
 }
 
 function draw(pCtx){
