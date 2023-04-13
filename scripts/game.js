@@ -1,7 +1,7 @@
 let imageLoader = new ImageLoader()
 let gameReady = false
 let listMap = []
-let listSprites = []
+let listCharacter = []
 
 function load(){
     // retrieves the activated and released keys
@@ -9,6 +9,7 @@ function load(){
     document.addEventListener("keyup", keyUp, false)
 
     imageLoader.add("/asset/graphics/actor/characters/blue_samurai/sprite_sheet.png")
+    imageLoader.add("/asset/graphics/Actor/Monsters/Owl.png")
     imageLoader.add("/asset/graphics/map/map.png")
     imageLoader.add("/asset/graphics/map/grid.png")
     
@@ -33,14 +34,21 @@ function startGame(){
     grid.setScale(4, 4)
     grid.name = "grid"
 
-    listSprites = []
+    listCharacter = []
 
     let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_samurai/sprite_sheet.png")
     player = new Sprite(spriteSheetBlueSamurai)
     player.x = (tileSize*tileScale)*2
     player.y = (tileSize*tileScale)*6
     setplayer()
-    listSprites.push(player)
+    listCharacter.push(player)
+
+    let spritesheetOwl = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
+    owl = new Sprite(spritesheetOwl)
+    owl.x = (tileSize*tileScale)*10
+    owl.y = (tileSize*tileScale)*9
+    setOwl()
+    listCharacter.push(owl)
 
     gameReady = true
 }
@@ -49,13 +57,12 @@ function update(dt){
 
     if(!gameReady){return}
 
-    getdt(dt)
-
-    listSprites.forEach(sprite => {
+    listCharacter.forEach(sprite => {
         sprite.update(dt)
     })
-
-    player.startAnimation(animation)
+    
+    player.startAnimation(player.animationType)
+    move(dt)
 }
 
 function draw(pCtx){
@@ -78,7 +85,7 @@ function draw(pCtx){
     }
 
     // display player
-    listSprites.forEach(sprite => {
+    listCharacter.forEach(sprite => {
         sprite.draw(pCtx)
     })
 
@@ -115,8 +122,4 @@ function draw(pCtx){
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (12*tileScale), 2, 2)}
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (15*tileScale), 2, 2)}
     }
-}
-
-function getdt(dt){
-    return dt
 }

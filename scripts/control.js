@@ -6,11 +6,6 @@ let spaceKey = false    // ATTACK
 let aKey = false        // SPECIAL
 let sKey = false        // SPECIAL
 
-let animation = ""
-let movement = ""
-let firstAttack = "IDLE_DOWN"
-let firstSpecial = "IDLE_DOWN"
-
 let displayGrid = false
 let displayHotspots = false
 
@@ -21,45 +16,57 @@ function keyDown(k){
     if(k.code == "ArrowDown"){
 
         if(collideDown() == 0){
-            player.y += 100*0.1
+            downKey = true
+
+        } else if(collideDown() == 1){
+            downKey = false
         }
 
-        animation = "WALK_DOWN"
-        movement = "MOVEMENT_DOWN"
-        firstAttack = ""
+        player.animationType = "WALK_DOWN"
+        player.movement = "MOVEMENT_DOWN"
+        player.firstAttack = ""
         setplayer(false, true, false, false, false, false, false, false, false, false, false, false)
     }
     if(k.code == "ArrowUp"){
 
         if(collideUp() == 0){
-            player.y -= 100*0.1
+            upKey = true
+
+        } else if(collideUp() == 1){
+            upKey = false
         }
 
-        animation = "WALK_UP"
-        movement = "MOVEMENT_UP"
-        firstAttack = ""
+        player.animationType = "WALK_UP"
+        player.movement = "MOVEMENT_UP"
+        player.firstAttack = ""
         setplayer(false, false, false, true, false, false, false, false, false, false, false, false)
     }
     if(k.code == "ArrowLeft"){
         
         if(collideLeft() == 0){
-            player.x -= 100*0.1
+            leftKey = true
+
+        } else if(collideLeft() == 1){
+            leftKey = false
         }
         
-        animation = "WALK_LEFT"
-        movement = "MOVEMENT_LEFT"
-        firstAttack = ""
+        player.animationType = "WALK_LEFT"
+        player.movement = "MOVEMENT_LEFT"
+        player.firstAttack = ""
         setplayer(false, false, false, false, false, true, false, false, false, false, false, false)
     }
     if(k.code == "ArrowRight"){
 
         if(collideRight() == 0){
-            player.x += 100*0.1
+            rightKey = true
+
+        } else if(collideRight() == 1){
+            rightKey = false
         }
         
-        animation = "WALK_RIGHT"
-        movement = "MOVEMENT_RIGHT"
-        firstAttack = ""
+        player.animationType = "WALK_RIGHT"
+        player.movement = "MOVEMENT_RIGHT"
+        player.firstAttack = ""
         setplayer(false, false, false, false, false, false, false, true, false, false, false, false)
     }
 
@@ -67,81 +74,81 @@ function keyDown(k){
     if(k.code == "Space"){
         spaceKey = true
 
-        if(movement == "MOVEMENT_DOWN" || movement == "IDLE_DOWN" || firstAttack == "IDLE_DOWN"){
-            animation = "ATTACK_DOWN"
+        if(player.movement == "MOVEMENT_DOWN" || player.movement == "IDLE_DOWN" || player.firstAttack == "IDLE_DOWN"){
+            player.animationType = "ATTACK_DOWN"
             setplayer(false, false, false, false, false, false, false, false, true, false, false, false)
 
             setTimeout(function() {
-                if(movement == "MOVEMENT_DOWN"){
-                    animation = "WALK_DOWN"
-                    movement = "MOVEMENT_DOWN"
-                    firstAttack = ""
+                if(player.movement == "MOVEMENT_DOWN"){
+                    player.animationType = "WALK_DOWN"
+                    player.movement = "MOVEMENT_DOWN"
+                    player.firstAttack = ""
                     setplayer(false, true, false, false, false, false, false, false, false, false, false, false)
 
-                } else if(movement == "IDLE_DOWN" || firstAttack == "IDLE_DOWN"){
-                    animation = "IDLE_DOWN"
-                    movement = "IDLE_DOWN"
-                    firstAttack = ""
+                } else if(player.movement == "IDLE_DOWN" || player.firstAttack == "IDLE_DOWN"){
+                    player.animationType = "IDLE_DOWN"
+                    player.movement = "IDLE_DOWN"
+                    player.firstAttack = ""
                     setplayer(true, false, false, false, false, false, false, false, false, false, false, false)
                 }
             }, 350)
 
 
 
-        } else if(movement == "MOVEMENT_UP" || movement == "IDLE_UP"){
-            animation = "ATTACK_UP"
-            firstAttack = ""
+        } else if(player.movement == "MOVEMENT_UP" || player.movement == "IDLE_UP"){
+            player.animationType = "ATTACK_UP"
+            player.firstAttack = ""
             setplayer(false, false, false, false, false, false, false, false, false, true, false, false)
 
             setTimeout(function() {
-                if(movement == "MOVEMENT_UP"){
-                    animation = "WALK_UP"
-                    movement = "MOVEMENT_UP"
+                if(player.movement == "MOVEMENT_UP"){
+                    player.animationType = "WALK_UP"
+                    player.movement = "MOVEMENT_UP"
                     setplayer(false, false, false, true, false, false, false, false, false, false, false, false)
 
-                } else if(movement == "IDLE_UP"){
-                    animation = "IDLE_UP"
-                    movement = "IDLE_UP"
+                } else if(player.movement == "IDLE_UP"){
+                    player.animationType = "IDLE_UP"
+                    player.movement = "IDLE_UP"
                     setplayer(false, false, true, false, false, false, false, false, false, false, false, false)
                 }
             }, 350)
             
 
 
-        } else if(movement == "MOVEMENT_LEFT" || movement == "IDLE_LEFT"){
-            animation = "ATTACK_LEFT"
-            firstAttack = ""
+        } else if(player.movement == "MOVEMENT_LEFT" || player.movement == "IDLE_LEFT"){
+            player.animationType = "ATTACK_LEFT"
+            player.firstAttack = ""
             setplayer(false, false, false, false, false, false, false, false, false, false, true, false)
 
             setTimeout(function() {
-                if(movement == "MOVEMENT_LEFT"){
-                    animation = "WALK_LEFT"
-                    movement = "MOVEMENT_LEFT"
+                if(player.movement == "MOVEMENT_LEFT"){
+                    player.animationType = "WALK_LEFT"
+                    player.movement = "MOVEMENT_LEFT"
                     setplayer(false, false, false, false, false, true, false, false, false, false, false, false)
 
-                } else if(movement == "IDLE_LEFT"){
-                    animation = "IDLE_LEFT"
-                    movement = "IDLE_LEFT"
+                } else if(player.movement == "IDLE_LEFT"){
+                    player.animationType = "IDLE_LEFT"
+                    player.movement = "IDLE_LEFT"
                     setplayer(false, false, false, false, true, false, false, false, false, false, false, false)
                 }
             }, 350)
             
 
 
-        } else if(movement == "MOVEMENT_RIGHT" || movement == "IDLE_RIGHT"){
-            animation = "ATTACK_RIGHT"
-            firstAttack = ""
+        } else if(player.movement == "MOVEMENT_RIGHT" || player.movement == "IDLE_RIGHT"){
+            player.animationType = "ATTACK_RIGHT"
+            player.firstAttack = ""
             setplayer(false, false, false, false, false, false, false, false, false, false, false, true)
 
             setTimeout(function() {
-                if(movement == "MOVEMENT_RIGHT"){
-                    animation = "WALK_RIGHT"
-                    movement = "MOVEMENT_RIGHT"
+                if(player.movement == "MOVEMENT_RIGHT"){
+                    player.animationType = "WALK_RIGHT"
+                    player.movement = "MOVEMENT_RIGHT"
                     setplayer(false, false, false, false, false, false, false, true, false, false, false, false)
 
-                } else if(movement == "IDLE_RIGHT"){
-                    animation = "IDLE_RIGHT"
-                    movement = "IDLE_RIGHT"
+                } else if(player.movement == "IDLE_RIGHT"){
+                    player.animationType = "IDLE_RIGHT"
+                    player.movement = "IDLE_RIGHT"
                     setplayer(false, false, false, false, false, false, true, false, false, false, false, false)
                 }
             }, 350)
@@ -152,53 +159,53 @@ function keyDown(k){
     if(k.code == "KeyA"){
         aKey = true
 
-        animation = "SPECIAL_1"
+        player.animationType = "SPECIAL_1"
         setplayer(false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false)
 
         setTimeout(function(){
-            if(movement == "MOVEMENT_DOWN"){
+            if(player.movement == "MOVEMENT_DOWN"){
                 downKey = true
-                animation = "WALK_DOWN"
-                movement = "MOVEMENT_DOWN"
+                player.animationType = "WALK_DOWN"
+                player.movement = "MOVEMENT_DOWN"
                 setplayer(false, true, false, false, false, false, false, false, false, false, false, false)
 
-            } else if(movement == "MOVEMENT_UP"){
+            } else if(player.movement == "MOVEMENT_UP"){
                 upKey = true
-                animation = "WALK_UP"
-                movement = "MOVEMENT_UP"
+                player.animationType = "WALK_UP"
+                player.movement = "MOVEMENT_UP"
                 setplayer(false, false, false, true, false, false, false, false, false, false, false, false)
                 
-            } else if(movement == "MOVEMENT_LEFT"){
+            } else if(player.movement == "MOVEMENT_LEFT"){
                 leftKey = true
-                animation = "WALK_LEFT"
-                movement = "MOVEMENT_LEFT"
+                player.animationType = "WALK_LEFT"
+                player.movement = "MOVEMENT_LEFT"
                 setplayer(false, false, false, false, false, true, false, false, false, false, false, false)
 
-            } else if(movement == "MOVEMENT_RIGHT"){
+            } else if(player.movement == "MOVEMENT_RIGHT"){
                 rightKey = true
-                animation = "WALK_RIGHT"
-                movement = "MOVEMENT_RIGHT"
+                player.animationType = "WALK_RIGHT"
+                player.movement = "MOVEMENT_RIGHT"
                 setplayer(false, false, false, false, false, false, false, true, false, false, false, false)
 
-            } else if(movement == "IDLE_DOWN" || firstSpecial == "IDLE_DOWN"){
-                animation = "IDLE_DOWN"
-                movement = "IDLE_DOWN"
-                firstSpecial = ""
+            } else if(player.movement == "IDLE_DOWN" || player.firstSpecial == "IDLE_DOWN"){
+                player.animationType = "IDLE_DOWN"
+                player.movement = "IDLE_DOWN"
+                player.firstSpecial = ""
                 setplayer(true, false, false, false, false, false, false, false, false, false, false, false)
 
-            } else if(movement == "IDLE_UP"){
-                animation = "IDLE_UP"
-                movement = "IDLE_UP"
+            } else if(player.movement == "IDLE_UP"){
+                player.animationType = "IDLE_UP"
+                player.movement = "IDLE_UP"
                 setplayer(false, false, true, false, false, false, false, false, false, false, false, false)
 
-            } else if(movement == "IDLE_LEFT"){
-                animation = "IDLE_LEFT"
-                movement = "IDLE_LEFT"
+            } else if(player.movement == "IDLE_LEFT"){
+                player.animationType = "IDLE_LEFT"
+                player.movement = "IDLE_LEFT"
                 setplayer(false, false, false, false, true, false, false, false, false, false, false, false)
 
-            } else if(movement == "IDLE_RIGHT"){
-                animation = "IDLE_RIGHT"
-                movement = "IDLE_RIGHT"
+            } else if(player.movement == "IDLE_RIGHT"){
+                player.animationType = "IDLE_RIGHT"
+                player.movement = "IDLE_RIGHT"
                 setplayer(true, false, false, false, false, false, true, false, false, false, false, false)
             }
         }, 750)
@@ -208,53 +215,53 @@ function keyDown(k){
     if(k.code == "KeyS"){
         sKey = true
 
-        animation = "SPECIAL_2"
+        player.animationType = "SPECIAL_2"
         setplayer(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true)
 
         setTimeout(function() {
-            if(movement == "MOVEMENT_DOWN"){
+            if(player.movement == "MOVEMENT_DOWN"){
                 downKey = true
-                animation = "WALK_DOWN"
-                movement = "MOVEMENT_DOWN"
+                player.animationType = "WALK_DOWN"
+                player.movement = "MOVEMENT_DOWN"
                 setplayer(false, true, false, false, false, false, false, false, false, false, false, false)
 
-            } else if(movement == "MOVEMENT_UP"){
+            } else if(player.movement == "MOVEMENT_UP"){
                 upKey = true
-                animation = "WALK_UP"
-                movement = "MOVEMENT_UP"
+                player.animationType = "WALK_UP"
+                player.movement = "MOVEMENT_UP"
                 setplayer(false, false, false, true, false, false, false, false, false, false, false, false)
                 
-            } else if(movement == "MOVEMENT_LEFT"){
+            } else if(player.movement == "MOVEMENT_LEFT"){
                 leftKey = true
-                animation = "WALK_LEFT"
-                movement = "MOVEMENT_LEFT"
+                player.animationType = "WALK_LEFT"
+                player.movement = "MOVEMENT_LEFT"
                 setplayer(false, false, false, false, false, true, false, false, false, false, false, false)
 
-            } else if(movement == "MOVEMENT_RIGHT"){
+            } else if(player.movement == "MOVEMENT_RIGHT"){
                 rightKey = true
-                animation = "WALK_RIGHT"
-                movement = "MOVEMENT_RIGHT"
+                player.animationType = "WALK_RIGHT"
+                player.movement = "MOVEMENT_RIGHT"
                 setplayer(false, false, false, false, false, false, false, true, false, false, false, false)
 
-            } else if(movement == "IDLE_DOWN" || firstSpecial == "IDLE_DOWN"){
-                animation = "IDLE_DOWN"
-                movement = "IDLE_DOWN"
-                firstSpecial = ""
+            } else if(player.movement == "IDLE_DOWN" || player.firstSpecial == "IDLE_DOWN"){
+                player.animationType = "IDLE_DOWN"
+                player.movement = "IDLE_DOWN"
+                player.firstSpecial = ""
                 setplayer(true, false, false, false, false, false, false, false, false, false, false, false)
 
-            } else if(movement == "IDLE_UP"){
-                animation = "IDLE_UP"
-                movement = "IDLE_UP"
+            } else if(player.movement == "IDLE_UP"){
+                player.animationType = "IDLE_UP"
+                player.movement = "IDLE_UP"
                 setplayer(false, false, true, false, false, false, false, false, false, false, false, false)
 
-            } else if(movement == "IDLE_LEFT"){
-                animation = "IDLE_LEFT"
-                movement = "IDLE_LEFT"
+            } else if(player.movement == "IDLE_LEFT"){
+                player.animationType = "IDLE_LEFT"
+                player.movement = "IDLE_LEFT"
                 setplayer(false, false, false, false, true, false, false, false, false, false, false, false)
 
-            } else if(movement == "IDLE_RIGHT"){
-                animation = "IDLE_RIGHT"
-                movement = "IDLE_RIGHT"
+            } else if(player.movement == "IDLE_RIGHT"){
+                player.animationType = "IDLE_RIGHT"
+                player.movement = "IDLE_RIGHT"
                 setplayer(true, false, false, false, false, false, true, false, false, false, false, false)
             }
         }, 750)
@@ -286,33 +293,58 @@ function keyUp(k){
     if(k.code == "ArrowDown"){
         downKey = false
         if(!upKey && !leftKey && !rightKey){
-            animation = "IDLE_DOWN"
-            movement = "IDLE_DOWN"
+            player.animationType = "IDLE_DOWN"
+            player.movement = "IDLE_DOWN"
             setplayer(true, false, false, false, false, false, false, false, false, false, false, false)
         }
     }
     if(k.code == "ArrowUp"){
         upKey = false
         if(!downKey && !leftKey && !rightKey){
-            animation = "IDLE_UP"
-            movement = "IDLE_UP"
+            player.animationType = "IDLE_UP"
+            player.movement = "IDLE_UP"
             setplayer(false, false, true, false, false, false, false, false, false, false, false, false)
         }
     }
     if(k.code == "ArrowLeft"){
         leftKey = false
         if(!downKey && !upKey && !rightKey){
-            animation = "IDLE_LEFT"
-            movement = "IDLE_LEFT"
+            player.animationType = "IDLE_LEFT"
+            player.movement = "IDLE_LEFT"
             setplayer(false, false, false, false, true, false, false, false, false, false, false, false)
         }
     }
     if(k.code == "ArrowRight"){
         rightKey = false
         if(!downKey && !upKey && !leftKey){
-            animation = "IDLE_RIGHT"
-            movement = "IDLE_RIGHT"
+            player.animationType = "IDLE_RIGHT"
+            player.movement = "IDLE_RIGHT"
             setplayer(false, false, false, false, false, false, true, false, false, false, false, false)
         }
+    }
+}
+
+function move(dt){
+    let oldPos = {
+        x: player.x,
+        y: player.y
+    }
+    
+    if(downKey){
+        player.y += 100*dt
+    }
+    if(upKey){
+        player.y -= 100*dt
+    }
+    if(leftKey){
+        player.x -= 100*dt
+    }
+    if(rightKey){
+        player.x += 100*dt
+    }
+
+    if(collideMap()){
+        player.x = oldPos.x
+        player.y = oldPos.y
     }
 }

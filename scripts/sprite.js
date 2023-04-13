@@ -6,8 +6,6 @@ class Sprite{
 
         this.x = pX
         this.y = pY
-        this.w = 16*4
-        this.h = 16*4
         this.scaleX = 1
         this.scaleY = 1
 
@@ -19,7 +17,12 @@ class Sprite{
         this.tileSize = { x: 0, y: 0 }
         this.tileSheet = false
 
+        this.animationType = ""
+        this.movement = ""
         this.animations = []
+
+        this.firstAttack = "IDLE_DOWN"
+        this.firstSpecial = "IDLE_DOWN"
     }
 
     setTileSheet(pSizeX, pSizeY){
