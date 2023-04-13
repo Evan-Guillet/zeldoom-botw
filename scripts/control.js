@@ -17,14 +17,14 @@ let displayHotspots = false
 function keyDown(k){
     k.preventDefault()
 
-    // =============== MOVEMENT ===============
-    if(k.code == "ArrowDown"){
-
+    // ===============| MOVEMENT |===============
+    if(k.code == "ArrowDown" || downKey){
+        console.log("DOWN")
+        if(collideDown() == 0){
+            isLockDown = false
+        }
         if(collideDown() == 0 && !isLockDown){
             downKey = true
-            if(collideUp() == 0){
-                isLockUp = false
-            }
 
         } else if(collideDown() == 1){
             downKey = false
@@ -36,14 +36,13 @@ function keyDown(k){
         player.firstAttack = ""
         setplayer(false, true, false, false, false, false, false, false, false, false, false, false)
     }
-    if(k.code == "ArrowUp"){
-
-        console.log("up")
+    if(k.code == "ArrowUp" || upKey){
+        console.log("UP")
+        if(collideUp() == 0){
+            isLockUp = false
+        }
         if(collideUp() == 0 && !isLockUp){
             upKey = true
-            if(collideDown() == 0){
-                isLockDown = false
-            }
 
         } else if(collideUp() == 1){
             upKey = false
@@ -55,13 +54,13 @@ function keyDown(k){
         player.firstAttack = ""
         setplayer(false, false, false, true, false, false, false, false, false, false, false, false)
     }
-    if(k.code == "ArrowLeft"){
-        
+    if(k.code == "ArrowLeft" || leftKey){
+        console.log("LEFT")
+        if(collideLeft() == 0){
+            isLockLeft = false
+        }
         if(collideLeft() == 0 && !isLockLeft){
             leftKey = true
-            if(collideRight() == 0){
-                isLockRight = false
-            }
 
         } else if(collideLeft() == 1){
             leftKey = false
@@ -73,13 +72,13 @@ function keyDown(k){
         player.firstAttack = ""
         setplayer(false, false, false, false, false, true, false, false, false, false, false, false)
     }
-    if(k.code == "ArrowRight"){
-
+    if(k.code == "ArrowRight" || rightKey){
+        console.log("RIGHT")
+        if(collideRight() == 0){
+            isLockRight = false
+        }
         if(collideRight() == 0 && !isLockRight){
             rightKey = true
-            if(collideLeft() == 0){
-                isLockLeft = false
-            }
 
         } else if(collideRight() == 1){
             rightKey = false
@@ -92,7 +91,7 @@ function keyDown(k){
         setplayer(false, false, false, false, false, false, false, true, false, false, false, false)
     }
 
-    // =============== ATTACK ===============
+    // ===============| ATTACK |===============
     if(k.code == "Space"){
         spaceKey = true
 
@@ -177,7 +176,7 @@ function keyDown(k){
         }
     }
 
-    // =============== SPECIAL 1 ===============
+    // ===============| SPECIAL 1 |===============
     if(k.code == "KeyA"){
         aKey = true
 
@@ -233,7 +232,7 @@ function keyDown(k){
         }, 750)
     }
 
-    // =============== SPECIAL 2 ===============
+    // ===============| SPECIAL 2 |===============
     if(k.code == "KeyS"){
         sKey = true
 
@@ -289,7 +288,7 @@ function keyDown(k){
         }, 750)
     }
 
-    // =============== DEVTOOLS ===============
+    // ===============| DEVTOOLS |===============
     if(k.code == "KeyG"){
         if(!displayGrid){
             displayGrid = true
@@ -311,7 +310,7 @@ function keyDown(k){
 function keyUp(k){
     k.preventDefault()
 
-    // =============== MOVEMENT ===============
+    // ===============| MOVEMENT |===============
     if(k.code == "ArrowDown"){
         downKey = false
         if(!upKey && !leftKey && !rightKey){
@@ -347,11 +346,6 @@ function keyUp(k){
 }
 
 function move(dt){
-    let oldPos = {
-        x: player.x,
-        y: player.y
-    }
-    
     if(downKey){
         player.y += 100*dt
     }
