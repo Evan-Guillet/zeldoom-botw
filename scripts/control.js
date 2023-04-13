@@ -6,6 +6,11 @@ let spaceKey = false    // ATTACK
 let aKey = false        // SPECIAL
 let sKey = false        // SPECIAL
 
+let isLockDown = false
+let isLockUp = false
+let isLockLeft = false
+let isLockRight = false
+
 let displayGrid = false
 let displayHotspots = false
 
@@ -15,11 +20,15 @@ function keyDown(k){
     // =============== MOVEMENT ===============
     if(k.code == "ArrowDown"){
 
-        if(collideDown() == 0){
+        if(collideDown() == 0 && !isLockDown){
             downKey = true
+            if(collideUp() == 0){
+                isLockUp = false
+            }
 
         } else if(collideDown() == 1){
             downKey = false
+            isLockDown = true
         }
 
         player.animationType = "WALK_DOWN"
@@ -29,11 +38,15 @@ function keyDown(k){
     }
     if(k.code == "ArrowUp"){
 
-        if(collideUp() == 0){
+        if(collideUp() == 0 && !isLockUp){
             upKey = true
+            if(collideDown() == 0){
+                isLockDown = false
+            }
 
         } else if(collideUp() == 1){
             upKey = false
+            isLockUp = true
         }
 
         player.animationType = "WALK_UP"
@@ -43,11 +56,15 @@ function keyDown(k){
     }
     if(k.code == "ArrowLeft"){
         
-        if(collideLeft() == 0){
+        if(collideLeft() == 0 && !isLockLeft){
             leftKey = true
+            if(collideRight() == 0){
+                isLockRight = false
+            }
 
         } else if(collideLeft() == 1){
             leftKey = false
+            isLockLeft = true
         }
         
         player.animationType = "WALK_LEFT"
@@ -57,11 +74,15 @@ function keyDown(k){
     }
     if(k.code == "ArrowRight"){
 
-        if(collideRight() == 0){
+        if(collideRight() == 0 && !isLockRight){
             rightKey = true
+            if(collideLeft() == 0){
+                isLockLeft = false
+            }
 
         } else if(collideRight() == 1){
             rightKey = false
+            isLockRight = true
         }
         
         player.animationType = "WALK_RIGHT"
@@ -341,10 +362,5 @@ function move(dt){
     }
     if(rightKey){
         player.x += 100*dt
-    }
-
-    if(collideMap()){
-        player.x = oldPos.x
-        player.y = oldPos.y
     }
 }

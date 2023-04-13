@@ -3,6 +3,9 @@ let gameReady = false
 let listMap = []
 let listCharacter = []
 
+let columnCase
+let lineCase
+
 function load(){
     // retrieves the activated and released keys
     document.addEventListener("keydown", keyDown, false)
@@ -38,8 +41,8 @@ function startGame(){
 
     let spriteSheetBlueSamurai = imageLoader.getImage("/asset/graphics/actor/characters/blue_samurai/sprite_sheet.png")
     player = new Sprite(spriteSheetBlueSamurai)
-    player.x = (tileSize*tileScale)*2
-    player.y = (tileSize*tileScale)*6
+    player.x = (tileSize*tileScale)*7
+    player.y = (tileSize*tileScale)*11
     setplayer()
     listCharacter.push(player)
 
@@ -56,13 +59,17 @@ function startGame(){
 function update(dt){
 
     if(!gameReady){return}
-
+    
     listCharacter.forEach(sprite => {
         sprite.update(dt)
     })
     
     player.startAnimation(player.animationType)
     move(dt)
+
+    let caseX = Math.floor(player.x/(tileSize*tileScale)) + 1
+    let caseY = Math.floor(player.y/(tileSize*tileScale)) + 1
+    console.log(caseX, caseY)
 }
 
 function draw(pCtx){
