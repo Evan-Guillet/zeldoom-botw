@@ -33,7 +33,7 @@ The whole project is coded in JavaScript + HTML and CSS. The project is saved an
 
 
 # Development time ⌛
-3 avril – 12 mai • 40 jours
+3 april – 12 mai • 40 days
 
 
 
