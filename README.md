@@ -22,8 +22,8 @@ If development proceeds quickly, it will also be possible to save your game, rec
 | :---: | :---: |
 | `Arrow Keys` | Move |
 | `Space Bar` | Attack |
-| `Q` | Special 1 |
-| `S` | Special 2 |
+| `Shift Left` | Special 1 |
+| `Control Left` | Special 2 |
 
 
 
@@ -32,12 +32,12 @@ The whole project is coded in JavaScript + HTML and CSS. The project is saved an
 
 
 
+# Development time ⌛
+3 avril – 12 mai • 40 jours
+
+
+
 # Copyright ©️
 The assets used for the game come from the Ninja Adventure Asset Pack, created by Pixelboy and AAA.
 
 They are released under the Creative Commons Zero license. All the assets in this pack are usable in other pack can be used in other video game projects even for commercial use.
-
-
-
-# Development time ⌛
-3 avril – 12 mai • 40 jours
