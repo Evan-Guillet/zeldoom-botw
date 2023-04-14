@@ -20,7 +20,7 @@ If development proceeds quickly, it will also be possible to save your game, rec
 # Controls ⌨
 | Key | Description |
 | :---: | :---: |
-| `Arrow Keys` | Move |
+| `ZQSD` | Move |
 | `Space Bar` | Attack |
 | `Shift Left` | Special 1 |
 | `Control Left` | Special 2 |
