@@ -356,11 +356,8 @@ function moveUp(){
         if(collideUp() == 0){
             isLockUp = false
         }
-        console.log("collideUp(): " + collideUp() + "   " + "isLockUp: " + isLockUp)
-        console.log("upKey_1: " + upKey)
         if(collideUp() == 0 && !isLockUp){
             upKey = true
-            console.log("upKey_2: " + upKey)
     
         } else if(collideUp() == 1){
             upKey = false

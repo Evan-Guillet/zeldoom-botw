@@ -3,8 +3,8 @@ let gameReady = false
 let listMap = []
 let listCharacter = []
 
-let columnCase
-let lineCase
+const tileSize = 16
+const tileScale = 4
 
 function load(){
     // retrieves the activated and released keys
@@ -18,7 +18,7 @@ function load(){
     
     imageLoader.start(startGame)
 
-    console.log("PRESS 'G': to display the grid.\nPRESS 'H': to display the hotspots collider.")
+    console.log("PRESS 'G': to display the grid.\nPRESS 'H': to display the hotspots collider.\nPRESS 'J': to display the detecion area.")
 }
 
 function startGame(){
@@ -39,19 +39,8 @@ function startGame(){
 
     listCharacter = []
 
-    let spritesheetDarkNinja = imageLoader.getImage("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
-    player = new Sprite(spritesheetDarkNinja)
-    player.x = (tileSize*tileScale)*5
-    player.y = (tileSize*tileScale)*9
-    setplayer()
-    listCharacter.push(player)
-
-    let spritesheetOwl = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
-    owl = new Sprite(spritesheetOwl)
-    owl.x = (tileSize*tileScale)*10
-    owl.y = (tileSize*tileScale)*9
-    setOwl()
-    listCharacter.push(owl)
+    player()
+    enimies()
 
     gameReady = true
 }
