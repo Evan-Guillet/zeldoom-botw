@@ -5,10 +5,14 @@ function enimies(){
     enemy.setTileSheet(16, 16)
     enemy.setScale(4, 4)
 
-    let angle = getAngle(enemy.x, enemy.y, getRandInterval(0, canvas.width), getRandInterval(0, canvas.height))
-
     enemy.x = (tileSize*tileScale)*10
     enemy.y = (tileSize*tileScale)*9
+
+    enemy.speed = getRandInterval(5, 50)
+
+    let angle = getAngle(enemy.x, enemy.y, getRandInterval(0, canvas.width), getRandInterval(0, canvas.height))
+    enemy.vx = enemy.speed * Math.cos(angle)
+    enemy.vy = enemy.speed * Math.sin(angle)
 
     setEnemy()
     listCharacter.push(enemy)
@@ -41,4 +45,9 @@ function setEnemy(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l
     enemy.addAnimation("SPECIAL_2", [27], 0.25, l16)
 
     enemy.startAnimation(enemy.animationType)
+}
+
+function velocityEnemy(dt){
+    enemy.x += enemy.vx*dt
+    enemy.y += enemy.vy*dt
 }

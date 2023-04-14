@@ -59,6 +59,8 @@ function update(dt){
     moveUp()
     moveLeft()
     moveRight()
+
+    velocityEnemy(dt)
 }
 
 function draw(pCtx){
