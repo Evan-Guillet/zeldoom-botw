@@ -1,18 +1,21 @@
 function enimies(){
     let spritesheetEnemy = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
     enemy = new Sprite(spritesheetEnemy)
+
+    enemy.setTileSheet(16, 16)
+    enemy.setScale(4, 4)
+
+    let angle = getAngle(enemy.x, enemy.y, getRandInterval(0, canvas.width), getRandInterval(0, canvas.height))
+
     enemy.x = (tileSize*tileScale)*10
     enemy.y = (tileSize*tileScale)*9
+
     setEnemy()
     listCharacter.push(enemy)
 }
 
 function setEnemy(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16){
     
-    enemy.setTileSheet(16, 16)
-    enemy.setScale(4, 4)
-    
-
     enemy.addAnimation("IDLE_DOWN", [0], 0.25, l1)
     enemy.addAnimation("WALK_DOWN", [0, 4, 8, 12], 0.25, l2)
 

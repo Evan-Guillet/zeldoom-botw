@@ -1,19 +1,19 @@
 function player(){
     let spritesheetDarkNinja = imageLoader.getImage("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
     player = new Sprite(spritesheetDarkNinja)
+
+    player.setTileSheet(16, 16)
+    player.setScale(4, 4)
+
     player.x = (tileSize*tileScale)*5
     player.y = (tileSize*tileScale)*9
+    
     setplayer()
     listCharacter.push(player)
 }
 
 function setplayer(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16){
     
-    player.setTileSheet(16, 16)
-    player.setScale(4, 4)
-    player.name = "player"
-    
-
     player.addAnimation("IDLE_DOWN", [0], 0.25, l1)
     player.addAnimation("WALK_DOWN", [0, 4, 8, 12], 0.25, l2)
 
@@ -40,5 +40,3 @@ function setplayer(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, 
 
     player.startAnimation(player.animationType)
 }
-
-
