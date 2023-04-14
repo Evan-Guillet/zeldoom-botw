@@ -6,9 +6,6 @@ class Sprite{
 
         this.x = pX
         this.y = pY
-        this.vx = 0
-        this.vy = 0
-        this.speed = 0
 
         this.scaleX = 1
         this.scaleY = 1

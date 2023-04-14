@@ -60,6 +60,7 @@ function update(dt){
     moveLeft()
     moveRight()
 
+    updateEnemy(enemy)
     velocityEnemy(dt)
 }
 
