@@ -40,24 +40,4 @@ They are released under the Creative Commons Zero license. All the assets in thi
 
 
 # Development time ⌛
-3 avril – 11 mai • 39 jours
-
-
-
-# Stages of development 👨‍💻
-
-| Time | Description |
-| :---: | :---: |
-| 2 days | Make the map display with a tilemap system. |
-| 2 days | Have the Player Character (PJ) displayed first, then code his various movement moves, and finally his attacks and potions. |
-| 4 days | Have the Non-Player Characters (NPC) displayed first, then code their various movement moves, and finally their attacks and potions. |
-| 3 days | Develop the inventory system to give the player more possibilities to store new items (weapons, armor, potions, miscellaneous items, etc.) |
-| 3 days | Develop the level system to the player to gain power. |
-
-# Development bonuses ➕
-
-| Time | Description |
-| :---: | :---: |
-| 3 days | Develop several different levels with hardening difficulty. |
-| 2 days | Develop the puzzle system with a hardening difficulty level. |
-| 3 days | Develop the save system, taking into account the level we are in, our inventory and the levels we inventory and the levels gained for our character and equipment. |
+3 avril – 12 mai • 40 jours
