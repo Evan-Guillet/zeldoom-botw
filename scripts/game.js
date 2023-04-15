@@ -114,3 +114,5 @@ function draw(pCtx){
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (15*tileScale), 2, 2)}
     }
 }
+
+// Test
