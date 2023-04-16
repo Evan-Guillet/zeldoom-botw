@@ -18,6 +18,11 @@ function load(){
     
     imageLoader.start(startGame)
 
+    listCharacter = []
+
+    player()
+    enimies()
+
     console.log("PRESS 'G': to display the grid.\nPRESS 'H': to display the hotspots collider.\nPRESS 'J': to display the detecion area.")
 }
 
@@ -37,10 +42,7 @@ function startGame(){
     grid.setScale(4, 4)
     grid.name = "grid"
 
-    listCharacter = []
-
-    player()
-    enimies()
+    
 
     gameReady = true
 }

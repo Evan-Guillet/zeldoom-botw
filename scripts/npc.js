@@ -13,6 +13,8 @@ function enimies(){
 
     enemy.x = (tileSize*tileScale)*10
     enemy.y = (tileSize*tileScale)*9
+    enemy.vx = 0
+    enemy.vy = 0
 
     enemy.speed = getRandInterval(5, 50)
 
