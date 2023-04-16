@@ -339,13 +339,14 @@ function move(dt){
 
 function moveDown(){
     if(isActiveDown){
-        if(collideDown() == 0){
+        if(collideDown(player) == 0){
             isLockDown = false
+
+            if(!isLockDown){
+                downKey = true
+            }
         }
-        if(collideDown() == 0 && !isLockDown){
-            downKey = true
-    
-        } else if(collideDown() == 1){
+        if(collideDown(player) == 1){
             downKey = false
             isLockDown = true
         }
@@ -353,13 +354,14 @@ function moveDown(){
 }
 function moveUp(){
     if(isActiveUp){
-        if(collideUp() == 0){
+        if(collideUp(player) == 0){
             isLockUp = false
+
+            if(!isLockUp){
+                upKey = true
+            }
         }
-        if(collideUp() == 0 && !isLockUp){
-            upKey = true
-    
-        } else if(collideUp() == 1){
+        if(collideUp(player) == 1){
             upKey = false
             isLockUp = true
         }
@@ -367,13 +369,14 @@ function moveUp(){
 }
 function moveLeft(){
     if(isActiveLeft){
-        if(collideLeft() == 0){
+        if(collideLeft(player) == 0){
             isLockLeft = false
+
+            if(!isLockLeft){
+                leftKey = true
+            }
         }
-        if(collideLeft() == 0 && !isLockLeft){
-            leftKey = true
-    
-        } else if(collideLeft() == 1){
+        if(collideLeft(player) == 1){
             leftKey = false
             isLockLeft = true
         }
@@ -381,13 +384,14 @@ function moveLeft(){
 }
 function moveRight(){
     if(isActiveRight){
-        if(collideRight() == 0){
+        if(collideRight(player) == 0){
             isLockRight = false
+
+            if(!isLockRight){
+                rightKey = true
+            }
         }
-        if(collideRight() == 0 && !isLockRight){
-            rightKey = true
-    
-        } else if(collideRight() == 1){
+        if(collideRight(player) == 1){
             rightKey = false
             isLockRight = true
         }

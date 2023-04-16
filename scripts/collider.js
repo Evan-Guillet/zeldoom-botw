@@ -31,27 +31,27 @@ function getTileAt(pX, pY){
 }
 
 // hotspots
-function collideDown(){
-    let id1 = getTileAt(player.x + (1*tileScale), player.y + (16*tileScale))
-    let id2 = getTileAt(player.x + (8*tileScale), player.y + (16*tileScale))
-    let id3 = getTileAt(player.x + (14*tileScale), player.y + (16*tileScale))
+function collideDown(pCharacter){
+    let id1 = getTileAt(pCharacter.x + (1*tileScale), pCharacter.y + (16*tileScale))
+    let id2 = getTileAt(pCharacter.x + (8*tileScale), pCharacter.y + (16*tileScale))
+    let id3 = getTileAt(pCharacter.x + (14*tileScale), pCharacter.y + (16*tileScale))
     return id1 || id2 || id3
 }
-function collideUp(){
-    let id1 = getTileAt(player.x + (1*tileScale), player.y + (8*tileScale))
-    let id2 = getTileAt(player.x + (8*tileScale), player.y + (8*tileScale))
-    let id3 = getTileAt(player.x + (14*tileScale), player.y + (8*tileScale))
+function collideUp(pCharacter){
+    let id1 = getTileAt(pCharacter.x + (1*tileScale), pCharacter.y + (8*tileScale))
+    let id2 = getTileAt(pCharacter.x + (8*tileScale), pCharacter.y + (8*tileScale))
+    let id3 = getTileAt(pCharacter.x + (14*tileScale), pCharacter.y + (8*tileScale))
     return id1 || id2 || id3
 }
-function collideLeft(){
-    let id1 = getTileAt(player.x, player.y + (9*tileScale))
-    let id2 = getTileAt(player.x, player.y + (12*tileScale))
-    let id3 = getTileAt(player.x, player.y + (15*tileScale))
+function collideLeft(pCharacter){
+    let id1 = getTileAt(pCharacter.x, pCharacter.y + (9*tileScale))
+    let id2 = getTileAt(pCharacter.x, pCharacter.y + (12*tileScale))
+    let id3 = getTileAt(pCharacter.x, pCharacter.y + (15*tileScale))
     return id1 || id2 || id3
 }
-function collideRight(){
-    let id1 = getTileAt(player.x + (15*tileScale), player.y + (9*tileScale))
-    let id2 = getTileAt(player.x + (15*tileScale), player.y + (12*tileScale))
-    let id3 = getTileAt(player.x + (15*tileScale), player.y + (15*tileScale))
+function collideRight(pCharacter){
+    let id1 = getTileAt(pCharacter.x + (15*tileScale), pCharacter.y + (9*tileScale))
+    let id2 = getTileAt(pCharacter.x + (15*tileScale), pCharacter.y + (12*tileScale))
+    let id3 = getTileAt(pCharacter.x + (15*tileScale), pCharacter.y + (15*tileScale))
     return id1 || id2 || id3
 }
