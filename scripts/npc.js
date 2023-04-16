@@ -1,9 +1,3 @@
-const NONE = "NONE"
-const WALK = "WALK"
-const ATTACK = "ATTACK"
-const HIT = "HIT"
-const CHANGEDIR = "CHANGEDIR"
-
 function enimies(){
     let spritesheetEnemy = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
     enemy = new Sprite(spritesheetEnemy)
@@ -18,7 +12,7 @@ function enimies(){
 
     enemy.speed = getRandInterval(5, 50)
 
-    enemy.state = NONE
+    enemy.state = "NONE"
 
     setEnemy()
     listCharacter.push(enemy)
@@ -61,31 +55,31 @@ function velocityEnemy(dt){
 function updateEnemy(pEnemy){
 
     switch (pEnemy.state) {
-        case NONE:
+        case "NONE":
             console.log("State: " + enemy.state)
-            pEnemy.state = CHANGEDIR
-            console.log("State: " + enemy.state)
-
-            break
-
-        case WALK:
+            pEnemy.state = "CHANGEDIR"
             console.log("State: " + enemy.state)
 
             break
 
-        case ATTACK:
+        case "WALK":
+            console.log("State: " + enemy.state)
+
+            break
+
+        case "ATTACK":
           
             break
 
-        case HIT:
+        case "HIT":
         
             break
 
-        case CHANGEDIR:
+        case "CHANGEDIR":
             let angle = getAngle(pEnemy.x, pEnemy.y, getRandInterval(0, canvas.width), getRandInterval(0, canvas.height))
             pEnemy.vx = pEnemy.speed * Math.cos(angle)
             pEnemy.vy = pEnemy.speed * Math.sin(angle)
-            pEnemy.state = WALK
+            pEnemy.state = "WALK"
             console.log("State: " + enemy.state)
             break
       }
