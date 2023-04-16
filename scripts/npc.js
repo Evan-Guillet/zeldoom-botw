@@ -65,6 +65,19 @@ function updateEnemy(pEnemy){
         case "WALK":
             console.log("State: " + enemy.state)
 
+            if(collideDown(pEnemy) == 1){
+                pEnemy.state = "CHANGEDIR"
+            }
+            if(moveUp(pEnemy) == 1){
+                pEnemy.state = "CHANGEDIR"
+            }
+            if(moveLeft(pEnemy) == 1){
+                pEnemy.state = "CHANGEDIR"
+            }
+            if(collideRight(pEnemy) == 1){
+                pEnemy.state = "CHANGEDIR"
+            }
+
             break
 
         case "ATTACK":
