@@ -67,8 +67,10 @@ function updateEnemy(pEnemy, pEntities){
         if(pEnemy.target == null){
             pEnemy.state = "IDLE"
 
-        } else if(getDist((pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y > pEnemy.range) && (pEnemy.target.type == "player"))){
-            pEnemy.target == "IDLE"
+        } else if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) > pEnemy.range && pEnemy.target.type == "player"){
+            pEnemy.vx = 0
+            pEnemy.vy = 0
+            pEnemy.state = "IDLE"
 
         } else {
             let destX, destY
