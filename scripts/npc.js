@@ -6,14 +6,18 @@ function enimies(){
     enemy.setTileSheet(16, 16)
     enemy.setScale(4, 4)
 
-    enemy.x = (tileSize*tileScale)*10
-    enemy.y = (tileSize*tileScale)*9
+    enemy.spawnX = (tileSize*tileScale)*10
+    enemy.spawnY = (tileSize*tileScale)*9
+
+    enemy.x = enemy.spawnX
+    enemy.y = enemy.spawnY
     enemy.vx = 0
     enemy.vy = 0
 
     enemy.speed = 50
     enemy.range = 200
     enemy.target = null
+    enemy.mustTeleport = false
 
     enemy.state = "NONE"
 
@@ -71,6 +75,7 @@ function updateEnemy(pEnemy, pEntities){
             pEnemy.vx = 0
             pEnemy.vy = 0
             pEnemy.state = "IDLE"
+            pEnemy.mustTeleport = true
 
         } else {
             let destX, destY
@@ -84,19 +89,28 @@ function updateEnemy(pEnemy, pEntities){
         break
 
     case "HIT":
-    
+        
         break
 
     case "IDLE":
-        pEntities.forEach(entity => {
-            if(entity.type == "player"){
-                let dist = getDist(pEnemy.x, pEnemy.y, entity.x, entity.y)
-                if(dist < pEnemy.range){
-                    pEnemy.state = "ATTACK"
-                    pEnemy.target = entity
-                }
-            }
-        })
+        if(pEnemy.mustTeleport){
+            let cooldownTeleport = new Promise(function(resolve, reject) {
+                setTimeout(function() {
+                  resolve()
+                }, 5000)
+            })
+        
+            cooldownTeleport.then(() => {
+                enemy.x = enemy.spawnX
+                enemy.y = enemy.spawnY
+                pEnemy.mustTeleport = false
+            })
+        }
+        let dist = getDist(pEnemy.x, pEnemy.y, player.x, player.y)
+        if(dist < pEnemy.range){
+            pEnemy.state = "ATTACK"
+            pEnemy.target = player
+        }
         break
     }
 }
