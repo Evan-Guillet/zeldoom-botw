@@ -61,7 +61,7 @@ function velocityEnemy(dt){
     enemy.y += enemy.vy*dt
 }
 
-function updateEnemy(pEnemy, pEntities){
+function updateEnemy(pEnemy){
 
     switch (pEnemy.state){
     case "NONE":
@@ -76,6 +76,7 @@ function updateEnemy(pEnemy, pEntities){
         warning.y = enemy.y - (7*tileScale)
 
         if(pEnemy.target == null){
+            pEnemy.mustTeleport = false
             pEnemy.state = "IDLE"
 
         } else if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) > pEnemy.range && pEnemy.target.type == "player"){
@@ -83,8 +84,10 @@ function updateEnemy(pEnemy, pEntities){
             pEnemy.vy = 0
             pEnemy.state = "IDLE"
             pEnemy.mustTeleport = true
-
+            
         } else {
+            pEnemy.mustTeleport = false
+
             let destX, destY
             destX = getRand(pEnemy.target.x-25, pEnemy.target.x+25)
             destY = getRand(pEnemy.target.y-25, pEnemy.target.y+25)
@@ -108,14 +111,19 @@ function updateEnemy(pEnemy, pEntities){
             pEnemy.target = player
             pEnemy.mustTeleport = false
 
-        } else {
-            setTimeout(function(){
-                if(pEnemy.mustTeleport){
-                    pEnemy.x = enemy.spawnX
-                    pEnemy.y = enemy.spawnY
-                    pEnemy.mustTeleport = false
-                }
-            }, 5000)
+        } else{
+            console.log("1.")
+            if(pEnemy.mustTeleport){
+                setTimeout(function(){
+                    console.log("2.")
+                    if(pEnemy.mustTeleport){
+                        console.log("3.")
+                        pEnemy.x = pEnemy.spawnX
+                        pEnemy.y = pEnemy.spawnY
+                        pEnemy.mustTeleport = false
+                    }
+                }, 5000)
+            }
         }
         break
     }
