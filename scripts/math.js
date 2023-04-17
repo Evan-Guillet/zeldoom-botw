@@ -9,6 +9,6 @@ function getAngle(x1,y1, x2,y2){
 }
 
 // return a random number is returned between a min value (included) and a max value (excluded)
-function getRandInterval(min, max){
+function getRand(min, max){
     return Math.random() * (max - min) + min
 }

@@ -18,6 +18,7 @@ let isActiveRight = false
 
 let displayGrid = false
 let displayHotspots = false
+let displayState = false
 
 function keyDown(k){
     k.preventDefault()
@@ -276,6 +277,14 @@ function keyDown(k){
 
         } else if(displayHotspots){
             displayHotspots = false
+        }
+    }
+    if(k.code == "KeyJ"){
+        if(!displayState){
+            displayState = true
+
+        } else if(displayState){
+            displayState = false
         }
     }
 }

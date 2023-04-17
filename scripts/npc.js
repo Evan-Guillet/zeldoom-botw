@@ -1,6 +1,7 @@
 function enimies(){
     let spritesheetEnemy = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
     enemy = new Sprite(spritesheetEnemy)
+    enemy.type = "enemy"
 
     enemy.setTileSheet(16, 16)
     enemy.setScale(4, 4)
@@ -10,7 +11,9 @@ function enimies(){
     enemy.vx = 0
     enemy.vy = 0
 
-    enemy.speed = getRandInterval(5, 50)
+    enemy.speed = 50
+    enemy.range = 200
+    enemy.target = null
 
     enemy.state = "NONE"
 
@@ -52,48 +55,46 @@ function velocityEnemy(dt){
     enemy.y += enemy.vy*dt
 }
 
-function updateEnemy(pEnemy){
+function updateEnemy(pEnemy, pEntities){
 
-    switch (pEnemy.state) {
-        case "NONE":
-            console.log("State: " + enemy.state)
-            pEnemy.state = "CHANGEDIR"
-            console.log("State: " + enemy.state)
+    switch (pEnemy.state){
+    case "NONE":
+        pEnemy.state = "IDLE"
+        break
 
-            break
+    case "ATTACK":
 
-        case "WALK":
-            console.log("State: " + enemy.state)
+        if(pEnemy.target == null){
+            pEnemy.state = "IDLE"
 
-            if(collideDown(pEnemy) == 1){
-                pEnemy.state = "CHANGEDIR"
-            }
-            if(moveUp(pEnemy) == 1){
-                pEnemy.state = "CHANGEDIR"
-            }
-            if(moveLeft(pEnemy) == 1){
-                pEnemy.state = "CHANGEDIR"
-            }
-            if(collideRight(pEnemy) == 1){
-                pEnemy.state = "CHANGEDIR"
-            }
+        } else if(getDist((pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y > pEnemy.range) && (pEnemy.target.type == "player"))){
+            pEnemy.target == "IDLE"
 
-            break
+        } else {
+            let destX, destY
+            destX = getRand(pEnemy.target.x-25, pEnemy.target.x+25)
+            destY = getRand(pEnemy.target.y-25, pEnemy.target.y+25)
 
-        case "ATTACK":
-          
-            break
-
-        case "HIT":
-        
-            break
-
-        case "CHANGEDIR":
-            let angle = getAngle(pEnemy.x, pEnemy.y, getRandInterval(0, canvas.width), getRandInterval(0, canvas.height))
+            let angle = getAngle(pEnemy.x, pEnemy.y, destX, destY)
             pEnemy.vx = pEnemy.speed * Math.cos(angle)
             pEnemy.vy = pEnemy.speed * Math.sin(angle)
-            pEnemy.state = "WALK"
-            console.log("State: " + enemy.state)
-            break
-      }
+        }
+        break
+
+    case "HIT":
+    
+        break
+
+    case "IDLE":
+        pEntities.forEach(entity => {
+            if(entity.type == "player"){
+                let dist = getDist(pEnemy.x, pEnemy.y, entity.x, entity.y)
+                if(dist < pEnemy.range){
+                    pEnemy.state = "ATTACK"
+                    pEnemy.target = entity
+                }
+            }
+        })
+        break
+    }
 }

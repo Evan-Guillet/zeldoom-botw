@@ -3,6 +3,7 @@ class Sprite{
     constructor(pSrc, pX = 0, pY = 0, pName = ""){
         this.img = pSrc
         this.name = pName
+        this.type = ""
 
         this.x = pX
         this.y = pY

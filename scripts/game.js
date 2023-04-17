@@ -60,7 +60,7 @@ function update(dt){
     moveLeft()
     moveRight()
 
-    updateEnemy(enemy)
+    updateEnemy(enemy, listCharacter)
     velocityEnemy(dt)
 }
 
@@ -83,9 +83,25 @@ function draw(pCtx){
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y, 16*tileScale, 16*tileScale)}
     }
 
-    // display player
+    // display character
     listCharacter.forEach(sprite => {
         sprite.draw(pCtx)
+
+        if(sprite.type == "enemy"){
+            if(displayState){
+
+                pCtx.beginPath()
+                pCtx.arc(enemy.x + 8*4, enemy.y + 8*4, 230, 0, Math.PI * 2, true)
+                pCtx.strokeStyle = "yellow"
+                pCtx.lineWidth = 3
+                pCtx.stroke()
+
+                pCtx.font = "30px Calibri"
+                pCtx.textAlign = "center"
+                pCtx.fillStyle = "yellow"
+                pCtx.fillText(enemy.state, enemy.x + 8*4, enemy.y - 16)
+            }
+        }
     })
 
     // display hotspots collider
@@ -114,5 +130,3 @@ function draw(pCtx){
         for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (15*tileScale), 2, 2)}
     }
 }
-
-// Test
