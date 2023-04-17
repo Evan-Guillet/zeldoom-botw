@@ -1,3 +1,5 @@
+let displayWarning = false
+
 function enimies(){
     let spritesheetEnemy = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
     enemy = new Sprite(spritesheetEnemy)
@@ -67,6 +69,11 @@ function updateEnemy(pEnemy, pEntities){
         break
 
     case "ATTACK":
+        pEnemy.mustTeleport = false
+
+        displayWarning = true
+        warning.x = enemy.x + (7*tileScale)
+        warning.y = enemy.y - (7*tileScale)
 
         if(pEnemy.target == null){
             pEnemy.state = "IDLE"
@@ -93,23 +100,22 @@ function updateEnemy(pEnemy, pEntities){
         break
 
     case "IDLE":
-        if(pEnemy.mustTeleport){
-            let cooldownTeleport = new Promise(function(resolve, reject) {
-                setTimeout(function() {
-                  resolve()
-                }, 5000)
-            })
-        
-            cooldownTeleport.then(() => {
-                enemy.x = enemy.spawnX
-                enemy.y = enemy.spawnY
-                pEnemy.mustTeleport = false
-            })
-        }
+        displayWarning = false
+
         let dist = getDist(pEnemy.x, pEnemy.y, player.x, player.y)
         if(dist < pEnemy.range){
             pEnemy.state = "ATTACK"
             pEnemy.target = player
+            pEnemy.mustTeleport = false
+
+        } else {
+            setTimeout(function(){
+                if(pEnemy.mustTeleport){
+                    pEnemy.x = enemy.spawnX
+                    pEnemy.y = enemy.spawnY
+                    pEnemy.mustTeleport = false
+                }
+            }, 5000)
         }
         break
     }

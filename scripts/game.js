@@ -15,6 +15,7 @@ function load(){
     imageLoader.add("/asset/graphics/Actor/Monsters/Owl.png")
     imageLoader.add("/asset/graphics/map/map.png")
     imageLoader.add("/asset/graphics/map/grid.png")
+    imageLoader.add("/asset/graphics/hud/warning.png")
     
     imageLoader.start(startGame)
 
@@ -41,6 +42,11 @@ function startGame(){
 
     player()
     enimies()
+
+    let spritesheetWarning = imageLoader.getImage("/asset/graphics/hud/warning.png")
+    warning = new Sprite(spritesheetWarning)
+    warning.setTileSheet(16, 16)
+    warning.setScale(4, 4)
 
     gameReady = true
 }
@@ -104,6 +110,10 @@ function draw(pCtx){
         }
     })
 
+    if(displayWarning){
+        warning.draw(pCtx)
+    }
+    
     // display hotspots collider
     if(displayHotspots){
 
