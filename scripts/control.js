@@ -18,7 +18,7 @@ let isActiveRight = false
 
 let displayGrid = false
 let displayHotspots = false
-let displayState = true
+let displayState = false
 
 function keyDown(k){
     k.preventDefault()
