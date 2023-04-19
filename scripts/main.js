@@ -4,6 +4,8 @@ let ctx = canvas.getContext("2d")   // gives the graphical context for the displ
 canvas.width = 896 
 canvas.height = 896
 
+const frameRate = 144
+
 let lastUpdate = 0
 
 function run(time){
@@ -14,12 +16,13 @@ function run(time){
     let dt = (time - lastUpdate)/1000
 
     // if I want to limit fps
-    // if(dt < (1/60) - 0.001){return}
+    if(dt < (1/frameRate) - 0.001){return}
 
     // updates the last moment
     lastUpdate = time
 
     update(dt)
+    tempo(dt)
 
     // clears the screen before redrawing the screen each time the image is refreshed
     ctx.clearRect(0, 0, canvas.width, canvas.height)

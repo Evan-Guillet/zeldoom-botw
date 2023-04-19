@@ -112,12 +112,9 @@ function updateEnemy(pEnemy){
             pEnemy.mustTeleport = false
 
         } else{
-            console.log("1.")
             if(pEnemy.mustTeleport){
                 setTimeout(function(){
-                    console.log("2.")
                     if(pEnemy.mustTeleport){
-                        console.log("3.")
                         pEnemy.x = pEnemy.spawnX
                         pEnemy.y = pEnemy.spawnY
                         pEnemy.mustTeleport = false
