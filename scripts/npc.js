@@ -113,6 +113,18 @@ function updateEnemy(pEnemy){
 
         } else{
             if(pEnemy.mustTeleport){
+
+                let cooldown = new Promise((resolve, reject) => {
+                    
+                })
+
+                cooldown.then(() => {
+                    pEnemy.x = pEnemy.spawnX
+                    pEnemy.y = pEnemy.spawnY
+                    pEnemy.mustTeleport = false
+                })
+
+                /*
                 setTimeout(function(){
                     if(pEnemy.mustTeleport){
                         pEnemy.x = pEnemy.spawnX
@@ -120,6 +132,7 @@ function updateEnemy(pEnemy){
                         pEnemy.mustTeleport = false
                     }
                 }, 5000)
+                */
             }
         }
         break
