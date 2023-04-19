@@ -29,19 +29,19 @@ function enimies(){
     listCharacter.push(enemy)
 }
 
-function setEnemy(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13){
+function setEnemy(){
     
-    enemy.addAnimation("IDLE_DOWN", [0], 0.25, l1)
-    enemy.addAnimation("WALK_DOWN", [0, 4, 8, 12], 0.25, l2)
+    enemy.addAnimation("IDLE_DOWN", [0], 0.25)
+    enemy.addAnimation("WALK_DOWN", [0, 4, 8, 12], 0.25)
 
-    enemy.addAnimation("IDLE_UP", [1], 0.25, l3)
-    enemy.addAnimation("WALK_UP", [1, 5, 9, 13], 0.25, l4)
+    enemy.addAnimation("IDLE_UP", [1], 0.25)
+    enemy.addAnimation("WALK_UP", [1, 5, 9, 13], 0.25)
 
-    enemy.addAnimation("IDLE_LEFT", [2], 0.25, l5)
-    enemy.addAnimation("WALK_LEFT", [2, 6, 10, 14], 0.25, l6)
+    enemy.addAnimation("IDLE_LEFT", [2], 0.25)
+    enemy.addAnimation("WALK_LEFT", [2, 6, 10, 14], 0.25)
 
-    enemy.addAnimation("IDLE_RIGHT", [3], 0.25, l7)
-    enemy.addAnimation("WALK_RIGHT", [3, 7, 11, 15], 0.25, l8)
+    enemy.addAnimation("IDLE_RIGHT", [3], 0.25)
+    enemy.addAnimation("WALK_RIGHT", [3, 7, 11, 15], 0.25)
 
     //enemy.addAnimation("DEAD", [24], 0.25, l13)
 
@@ -80,11 +80,7 @@ function updateEnemy(pEnemy){
         } else {
             pEnemy.mustTeleport = false
 
-            let destX, destY
-            destX = getRand(pEnemy.target.x-25, pEnemy.target.x+25)
-            destY = getRand(pEnemy.target.y-25, pEnemy.target.y+25)
-
-            let angle = getAngle(pEnemy.x, pEnemy.y, destX, destY)
+            let angle = getAngle(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y)
             pEnemy.vx = pEnemy.speed * Math.cos(angle)
             pEnemy.vy = pEnemy.speed * Math.sin(angle)
         }
@@ -134,17 +130,43 @@ function updateEnemy(pEnemy){
 function whatDirection(){
 
     if(enemy.vx == 0 && enemy.vy == 0){
+
         if(enemy.movement == "DOWN"){
+            enemy.animationType = "IDLE_DOWN"
+            setEnemy()
 
         } else if(enemy.movement == "UP"){
+            enemy.animationType = "IDLE_UP"
+            setEnemy()
 
         } else if(enemy.movement == "LEFT"){
+            enemy.animationType = "IDLE_LEFT"
+            setEnemy()
 
         } else if(enemy.movement == "RIGHT"){
-
+            enemy.animationType = "IDLE_RIGHT"
+            setEnemy()
         }
     }
 
-    enemy.animationType = "WALK_DOWN"
-    setEnemy(false, true, false, false, false, false, false, false, false, false, false, false)
+    if(enemy.vy > 0 && Math.abs(enemy.vy) > Math.abs(enemy.vx)){
+        enemy.animationType = "WALK_DOWN"
+        enemy.movement = "DOWN"
+        setEnemy()
+    }
+    if(enemy.vy < 0 && Math.abs(enemy.vy) > Math.abs(enemy.vx)){
+        enemy.animationType = "WALK_UP"
+        enemy.movement = "UP"
+        setEnemy()
+    }
+    if(enemy.vx < 0 && Math.abs(enemy.vx) > Math.abs(enemy.vy)){
+        enemy.animationType = "WALK_LEFT"
+        enemy.movement = "LEFT"
+        setEnemy()
+    }
+    if(enemy.vx > 0 && Math.abs(enemy.vx) > Math.abs(enemy.vy)){
+        enemy.animationType = "WALK_RIGHT"
+        enemy.movement = "RIGHT"
+        setEnemy()
+    }
 }
