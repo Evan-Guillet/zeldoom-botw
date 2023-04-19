@@ -3,8 +3,8 @@ let upKey = false       // MOVE_UP
 let leftKey = false     // MOVE_LEFT
 let rightKey = false    // MOVE_RIGHT
 let spaceKey = false    // ATTACK
-let aKey = false        // SPECIAL
-let sKey = false        // SPECIAL
+let aKey = false        // SPECIAL 1
+let sKey = false        // SPECIAL 2
 
 let isLockDown = true
 let isLockUp = true

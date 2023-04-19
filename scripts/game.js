@@ -59,7 +59,6 @@ function update(dt){
         sprite.update(dt)
     })
     
-    player.startAnimation(player.animationType)
     move(dt)
     moveDown()
     moveUp()
@@ -68,6 +67,8 @@ function update(dt){
 
     updateEnemy(enemy)
     velocityEnemy(dt)
+
+    whatDirection()
 }
 
 function draw(pCtx){
@@ -81,8 +82,6 @@ function draw(pCtx){
 
     // display grid
     if(displayGrid){
-        let id = getTileAt(player.x, player.y)
-        //console.log(id)
         grid.draw(pCtx)
         pCtx.strokeStyle = "yellow"
         pCtx.lineWidth = 1
