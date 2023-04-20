@@ -4,7 +4,7 @@ function dtDisplayGrid(pCtx){
         grid.draw(pCtx)
         pCtx.strokeStyle = "yellow"
         pCtx.lineWidth = 1
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y, 16*tileScale, 16*tileScale)}
+        for(let index = 0; index < 3; index++){pCtx.strokeRect(player.x, player.y, 16*tileScale, 16*tileScale)}
     }
 }
 function dtGridHelp(){
@@ -37,27 +37,27 @@ function dtDisplayRange(pCtx, pSprite){
 function dtHotspots(pCtx){
     if(displayHotspots){
 
-        pCtx.strokeStyle = "blue"
+        pCtx.fillStyle = "blue"
         // player position [x,y]
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y, 2, 2)}
+        pCtx.fillRect(player.x, player.y, 2, 2)
 
-        pCtx.strokeStyle = "red"
+        pCtx.fillStyle = "red"
         // hotspots down
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (1*tileScale), player.y + (16*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (8*tileScale), player.y + (16*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (14*tileScale), player.y + (16*tileScale), 2, 2)}
+        pCtx.fillRect(player.x + (1*tileScale), player.y + (16*tileScale), 2, 2)
+        pCtx.fillRect(player.x + (8*tileScale), player.y + (16*tileScale), 2, 2)
+        pCtx.fillRect(player.x + (14*tileScale), player.y + (16*tileScale), 2, 2)
         // hotspots up
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (1*tileScale), player.y + (8*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (8*tileScale), player.y + (8*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (14*tileScale), player.y + (8*tileScale), 2, 2)}
+        pCtx.fillRect(player.x + (1*tileScale), player.y + (8*tileScale), 2, 2)
+        pCtx.fillRect(player.x + (8*tileScale), player.y + (8*tileScale), 2, 2)
+        pCtx.fillRect(player.x + (14*tileScale), player.y + (8*tileScale), 2, 2)
         // hotspots left
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (9*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (12*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x, player.y + (15*tileScale), 2, 2)}
+        pCtx.fillRect(player.x, player.y + (9*tileScale), 2, 2)
+        pCtx.fillRect(player.x, player.y + (12*tileScale), 2, 2)
+        pCtx.fillRect(player.x, player.y + (15*tileScale), 2, 2)
         // hotspots right
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (9*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (12*tileScale), 2, 2)}
-        for (let index = 0; index < 3; index++) {pCtx.strokeRect(player.x + (15*tileScale), player.y + (15*tileScale), 2, 2)}
+        pCtx.fillRect(player.x + (15*tileScale), player.y + (9*tileScale), 2, 2)
+        pCtx.fillRect(player.x + (15*tileScale), player.y + (12*tileScale), 2, 2)
+        pCtx.fillRect(player.x + (15*tileScale), player.y + (15*tileScale), 2, 2)
     }
 }
 function dtKeyboard(k){

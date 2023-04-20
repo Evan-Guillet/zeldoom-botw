@@ -45,6 +45,10 @@ function startGame(){
     warning.setTileSheet(16, 16)
     warning.setScale(4, 4)
 
+    if(!player.isAlive){
+
+    }
+
     gameReady = true
 }
 
@@ -86,6 +90,20 @@ function draw(pCtx){
 
     // display blood player
     if(!player.isAlive){
+        pCtx.globalAlpha = 1
+        pCtx.fillStyle = "black"
+        pCtx.fillRect(0, 0, canvas.width, canvas.height)
+        pCtx.globalAlpha = 1
+
+        pCtx.font = "bold 75px 'Press Start 2P', cursive"
+        pCtx.textAlign = "center"
+        pCtx.fillStyle = "red"
+        pCtx.fillText("YOU DIED", canvas.width/2, canvas.height/2)
+
+        pCtx.font = "bold 25px 'Press Start 2P', cursive"
+        pCtx.fillStyle = "white"
+        pCtx.fillText("Press 'SPACE'", canvas.width/2, canvas.height/2+50)
+        
         player.blood.x = player.x - (tileSize/2)*tileScale
         player.blood.y = player.y - (tileSize/2)*tileScale
         player.blood.draw(pCtx)

@@ -2,7 +2,7 @@ function player(){
     let spritesheetDarkNinja = imageLoader.getImage("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
     player = new Sprite(spritesheetDarkNinja)
     player.type = "player"
-    player.hitPoint = 100
+    player.hitPoint = 10
     player.isAlive = true
     player.soundKillIsActive = false
 
