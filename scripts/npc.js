@@ -50,7 +50,7 @@ function setEnemy(){
     enemy.addAnimation("IDLE_RIGHT", [3], 0.25)
     enemy.addAnimation("WALK_RIGHT", [3, 7, 11, 15], 0.25)
 
-    //enemy.addAnimation("DEAD", [24], 0.25, l13)
+    enemy.addAnimation("DEAD", [16], 0.25)
 
     enemy.startAnimation(enemy.animationType)
 }
