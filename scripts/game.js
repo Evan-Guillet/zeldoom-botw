@@ -106,9 +106,14 @@ function draw(pCtx){
     }
 
     // display character
-    listCharacter.forEach(sprite => {
-        sprite.draw(pCtx)
-        dtDisplayRange(pCtx, sprite)
+    listCharacter.forEach(character => {
+        if(character.type == "enemy" && enemy.isVisible){
+            character.draw(pCtx)
+
+        } else if(character.type == "player"){
+            character.draw(pCtx)
+        }
+        dtDisplayRange(pCtx, character)
     })
 
     if(displayWarning){
@@ -126,6 +131,8 @@ function isDead(){
         player.isAlive = false
         player.animationType = "DEAD"
         setplayer()
+
+        enemy.isVisible = false
 
         if(!player.soundKillIsActive){
             killSound.play()

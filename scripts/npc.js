@@ -30,6 +30,8 @@ function enimies(){
 
     enemy.state = "NONE"
 
+    enemy.isVisible = true
+
     setEnemy()
     listCharacter.push(enemy)
 }
@@ -209,4 +211,5 @@ function restartEnemy(){
     setEnemy()
     enemy.movement = "MOVEMENT_DOWN"
     enemy.firstAttack = "IDLE_DOWN"
+    enemy.isVisible = true
 }
