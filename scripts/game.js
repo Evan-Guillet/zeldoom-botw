@@ -155,6 +155,6 @@ function Hurt(pTarget){
 function isDead(){
     if(player.hitPoint <= 0){
         player.hitPoint = 0
-        console.log("Player is dead")
+        player.isAlive = false
     }
 }

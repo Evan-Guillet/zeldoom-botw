@@ -3,6 +3,7 @@ function player(){
     player = new Sprite(spritesheetDarkNinja)
     player.type = "player"
     player.hitPoint = 100
+    player.isAlive = true
 
     player.setTileSheet(16, 16)
     player.setScale(4, 4)
