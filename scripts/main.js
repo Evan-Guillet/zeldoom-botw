@@ -22,7 +22,6 @@ function run(time){
     lastUpdate = time
 
     update(dt)
-    tempo(dt)
 
     // clears the screen before redrawing the screen each time the image is refreshed
     ctx.clearRect(0, 0, canvas.width, canvas.height)

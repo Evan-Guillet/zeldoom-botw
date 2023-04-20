@@ -262,37 +262,10 @@ function keyDown(k){
                 }
             }, 750)
         }
-
-    } else if(!player.isAlive){
-        player.animationType = "DEAD"
-        setplayer()
     }
     
     // ===============| DEVTOOLS |===============
-    if(k.code == "KeyG"){
-        if(!displayGrid){
-            displayGrid = true
-
-        } else if(displayGrid){
-            displayGrid = false
-        }
-    }
-    if(k.code == "KeyH"){
-        if(!displayHotspots){
-            displayHotspots = true
-
-        } else if(displayHotspots){
-            displayHotspots = false
-        }
-    }
-    if(k.code == "KeyJ"){
-        if(!displayState){
-            displayState = true
-
-        } else if(displayState){
-            displayState = false
-        }
-    }
+    dtKeyboard(k)
 }
 
 function keyUp(k){
@@ -337,11 +310,7 @@ function keyUp(k){
             }
         }
 
-    } else if(!player.isAlive){
-        player.animationType = "DEAD"
-        setplayer()
     }
-    
 }
 
 function move(dt){
