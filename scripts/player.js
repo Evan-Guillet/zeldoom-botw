@@ -2,6 +2,7 @@ function player(){
     let spritesheetDarkNinja = imageLoader.getImage("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
     player = new Sprite(spritesheetDarkNinja)
     player.type = "player"
+    player.hitPoint = 100
 
     player.setTileSheet(16, 16)
     player.setScale(4, 4)

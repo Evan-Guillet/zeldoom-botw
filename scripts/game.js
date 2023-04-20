@@ -67,8 +67,9 @@ function update(dt){
 
     updateEnemy(enemy)
     velocityEnemy(dt)
-
     whatDirection()
+    
+    isDead()
 }
 
 function draw(pCtx){
@@ -101,10 +102,13 @@ function draw(pCtx){
                 pCtx.lineWidth = 3
                 pCtx.stroke()
 
-                pCtx.font = "30px Calibri"
+                pCtx.font = "bold 30px 'Press Start 2P', cursive"
                 pCtx.textAlign = "center"
                 pCtx.fillStyle = "yellow"
                 pCtx.fillText(enemy.state, enemy.x + 8*4, enemy.y - 16)
+
+                pCtx.fillStyle = "White"
+                pCtx.fillText(Math.floor(player.hitPoint), player.x + 8*4, player.y - 16)
             }
         }
     })
@@ -142,4 +146,15 @@ function draw(pCtx){
 
 function tempo(dt){
     
+}
+
+function Hurt(pTarget){
+    pTarget.hitPoint -= 0.1
+}
+
+function isDead(){
+    if(player.hitPoint <= 0){
+        player.hitPoint = 0
+        console.log("Player is dead")
+    }
 }

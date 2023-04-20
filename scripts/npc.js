@@ -56,6 +56,7 @@ function velocityEnemy(dt){
 function updateEnemy(pEnemy){
 
     switch (pEnemy.state){
+
     case "NONE":
         pEnemy.state = "IDLE"
         break
@@ -77,6 +78,11 @@ function updateEnemy(pEnemy){
             pEnemy.state = "IDLE"
             pEnemy.mustTeleport = true
             
+        } else if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) < 16*tileScale && pEnemy.target.type == "player"){
+            pEnemy.state = "HIT"
+            pEnemy.vx = 0
+            pEnemy.vy = 0
+
         } else {
             pEnemy.mustTeleport = false
 
@@ -87,6 +93,15 @@ function updateEnemy(pEnemy){
         break
 
     case "HIT":
+        if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) > 16*tileScale && pEnemy.target.type == "player"){
+            pEnemy.state = "ATTACK"
+
+        } else if(pEnemy.target.hitPoint != null){
+            Hurt(pEnemy.target)
+
+        } else if(pEnemy.target.hitPoint <= 0){
+            pEnemy.state = "IDLE"
+        }
         
         break
 
