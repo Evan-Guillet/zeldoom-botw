@@ -4,6 +4,10 @@ function enimies(){
     let spritesheetEnemy = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
     enemy = new Sprite(spritesheetEnemy)
     enemy.type = "enemy"
+    enemy.hitPoint = 100
+    enemy.isAlive = true
+    enemy.soundKillIsActive = false
+    enemy.soundAlertIsActive = false
 
     enemy.setTileSheet(16, 16)
     enemy.setScale(4, 4)
@@ -64,6 +68,12 @@ function updateEnemy(pEnemy){
     case "ATTACK":
         pEnemy.mustTeleport = false
 
+        if(!pEnemy.soundAlertIsActive){
+            alertSound.play()
+            pEnemy.soundAlertIsActive = true
+        }
+        
+
         displayWarning = true
         warning.x = enemy.x + (7*tileScale)
         warning.y = enemy.y - (7*tileScale)
@@ -107,6 +117,7 @@ function updateEnemy(pEnemy){
 
     case "IDLE":
         displayWarning = false
+        pEnemy.soundAlertIsActive = false
 
         let dist = getDist(pEnemy.x, pEnemy.y, player.x, player.y)
         if(dist < pEnemy.range){

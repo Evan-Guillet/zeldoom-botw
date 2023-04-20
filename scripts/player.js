@@ -4,6 +4,7 @@ function player(){
     player.type = "player"
     player.hitPoint = 100
     player.isAlive = true
+    player.soundKillIsActive = false
 
     player.setTileSheet(16, 16)
     player.setScale(4, 4)
@@ -11,6 +12,11 @@ function player(){
     player.x = (tileSize*tileScale)*5
     player.y = (tileSize*tileScale)*9
     
+    let spriteBlood = imageLoader.getImage("/asset/graphics/fx/blood.png")
+    player.blood = new Sprite(spriteBlood)
+    player.blood.setTileSheet(32, 32)
+    player.blood.setScale(4, 4)
+
     setplayer()
     listCharacter.push(player)
 }

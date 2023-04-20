@@ -16,7 +16,8 @@ function load(){
     imageLoader.add("/asset/graphics/map/map.png")
     imageLoader.add("/asset/graphics/map/grid.png")
     imageLoader.add("/asset/graphics/hud/warning.png")
-    
+    imageLoader.add("/asset/graphics/fx/blood.png")
+
     imageLoader.start(startGame)
 
     console.log("PRESS 'G': to display the grid.\nPRESS 'H': to display the hotspots collider.\nPRESS 'J': to display the detecion area.")
@@ -39,8 +40,8 @@ function startGame(){
     player()
     enimies()
 
-    let spritesheetWarning = imageLoader.getImage("/asset/graphics/hud/warning.png")
-    warning = new Sprite(spritesheetWarning)
+    let spriteWarning = imageLoader.getImage("/asset/graphics/hud/warning.png")
+    warning = new Sprite(spriteWarning)
     warning.setTileSheet(16, 16)
     warning.setScale(4, 4)
 
@@ -83,6 +84,13 @@ function draw(pCtx){
     // display hotspots collider
     dtHotspots(pCtx)
 
+    // display blood player
+    if(!player.isAlive){
+        player.blood.x = player.x - (tileSize/2)*tileScale
+        player.blood.y = player.y - (tileSize/2)*tileScale
+        player.blood.draw(pCtx)
+    }
+
     // display character
     listCharacter.forEach(sprite => {
         sprite.draw(pCtx)
@@ -104,5 +112,10 @@ function isDead(){
         player.isAlive = false
         player.animationType = "DEAD"
         setplayer()
+
+        if(!player.soundKillIsActive){
+            killSound.play()
+            player.soundKillIsActive = true
+        }
     }
 }
