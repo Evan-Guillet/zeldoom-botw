@@ -70,7 +70,7 @@ function keyDown(k){
         if(k.code == "Space"){
             spaceKey = true
 
-            if(player.movement == "MOVEMENT_DOWN" || player.movement == "IDLE_DOWN" || player.firstAttack == "IDLE_DOWN"){
+            if(player.isAlive && player.movement == "MOVEMENT_DOWN" || player.movement == "IDLE_DOWN" || player.firstAttack == "IDLE_DOWN"){
                 player.animationType = "ATTACK_DOWN"
                 setplayer()
 
@@ -91,7 +91,7 @@ function keyDown(k){
 
 
 
-            } else if(player.movement == "MOVEMENT_UP" || player.movement == "IDLE_UP"){
+            } else if(player.isAlive && player.movement == "MOVEMENT_UP" || player.movement == "IDLE_UP"){
                 player.animationType = "ATTACK_UP"
                 player.firstAttack = ""
                 setplayer()
@@ -111,7 +111,7 @@ function keyDown(k){
                 
 
 
-            } else if(player.movement == "MOVEMENT_LEFT" || player.movement == "IDLE_LEFT"){
+            } else if(player.isAlive && player.movement == "MOVEMENT_LEFT" || player.movement == "IDLE_LEFT"){
                 player.animationType = "ATTACK_LEFT"
                 player.firstAttack = ""
                 setplayer()
@@ -131,7 +131,7 @@ function keyDown(k){
                 
 
 
-            } else if(player.movement == "MOVEMENT_RIGHT" || player.movement == "IDLE_RIGHT"){
+            } else if(player.isAlive && player.movement == "MOVEMENT_RIGHT" || player.movement == "IDLE_RIGHT"){
                 player.animationType = "ATTACK_RIGHT"
                 player.firstAttack = ""
                 setplayer()
@@ -261,6 +261,13 @@ function keyDown(k){
                     setplayer()
                 }
             }, 750)
+        }
+
+    } else {
+         // ==============| RESTART |===============
+         if(k.code == "Space"){
+            restartPlayer()
+            restartEnemy()
         }
     }
     

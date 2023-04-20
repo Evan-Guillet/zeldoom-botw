@@ -45,10 +45,6 @@ function startGame(){
     warning.setTileSheet(16, 16)
     warning.setScale(4, 4)
 
-    if(!player.isAlive){
-
-    }
-
     gameReady = true
 }
 

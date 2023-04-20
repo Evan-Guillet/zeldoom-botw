@@ -2,6 +2,7 @@ function player(){
     let spritesheetDarkNinja = imageLoader.getImage("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
     player = new Sprite(spritesheetDarkNinja)
     player.type = "player"
+    player.maxHitPoint = 10
     player.hitPoint = 10
     player.isAlive = true
     player.soundKillIsActive = false
@@ -48,4 +49,17 @@ function setplayer(){
     player.addAnimation("SPECIAL_2", [27], 0.25)
 
     player.startAnimation(player.animationType)
+}
+
+function restartPlayer(){
+    player.isAlive = true
+    player.hitPoint = player.maxHitPoint
+    player.isAlive = true
+    player.soundKillIsActive = false
+    player.x = (tileSize*tileScale)*5
+    player.y = (tileSize*tileScale)*9
+    player.animationType = "IDLE_DOWN"
+    setplayer()
+    player.movement = "MOVEMENT_DOWN"
+    player.firstAttack = "IDLE_DOWN"
 }

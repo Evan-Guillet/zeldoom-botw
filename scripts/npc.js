@@ -4,7 +4,8 @@ function enimies(){
     let spritesheetEnemy = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
     enemy = new Sprite(spritesheetEnemy)
     enemy.type = "enemy"
-    enemy.hitPoint = 100
+    enemy.maxHitPoint = 50
+    enemy.hitPoint = 50
     enemy.isAlive = true
     enemy.soundKillIsActive = false
     enemy.soundAlertIsActive = false
@@ -195,4 +196,17 @@ function whatDirection(){
         enemy.movement = "RIGHT"
         setEnemy()
     }
+}
+
+function restartEnemy(){
+    enemy.isAlive = true
+    enemy.hitPoint = enemy.maxHitPoint
+    enemy.isAlive = true
+    enemy.soundKillIsActive = false
+    enemy.x = (tileSize*tileScale)*10
+    enemy.y = (tileSize*tileScale)*9
+    enemy.animationType = "IDLE_DOWN"
+    setEnemy()
+    enemy.movement = "MOVEMENT_DOWN"
+    enemy.firstAttack = "IDLE_DOWN"
 }
