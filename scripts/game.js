@@ -46,7 +46,7 @@ function startGame(){
     warning.setTileSheet(16, 16)
     warning.setScale(4, 4)
 
-    heart()
+    hearts()
 
     gameReady = true
 }
@@ -70,6 +70,7 @@ function update(dt){
     whatDirection()
     
     isDead()
+    howManyHearts()
 }
 
 function draw(pCtx){
@@ -124,7 +125,7 @@ function draw(pCtx){
         warning.draw(pCtx)
     }
 
-    heart.draw(pCtx)
+    hearts.draw(pCtx)
 }
 
 function Hurt(pTarget){
