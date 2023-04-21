@@ -24,9 +24,17 @@ function dtDisplayRange(pCtx, pSprite){
             pCtx.lineWidth = 3
             pCtx.stroke()
 
+            pCtx.globalAlpha = 0.25
+            pCtx.beginPath()
+            pCtx.arc(enemy.x + 8*4, enemy.y + 8*4, 230, 0, Math.PI * 2, true)
+            pCtx.fillStyle = "yellow"
+            pCtx.lineWidth = 3
+            pCtx.fill()
+            pCtx.globalAlpha = 1
+
             pCtx.font = "bold 30px 'Press Start 2P', cursive"
             pCtx.textAlign = "center"
-            pCtx.fillStyle = "yellow"
+            pCtx.fillStyle = "white"
             pCtx.fillText(enemy.state, enemy.x + 8*4, enemy.y - 16)
 
             pCtx.fillStyle = "White"

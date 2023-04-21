@@ -17,6 +17,7 @@ function load(){
     imageLoader.add("/asset/graphics/map/grid.png")
     imageLoader.add("/asset/graphics/hud/warning.png")
     imageLoader.add("/asset/graphics/fx/blood.png")
+    imageLoader.add("/asset/graphics/hud/heart.png")
 
     imageLoader.start(startGame)
 
@@ -44,6 +45,8 @@ function startGame(){
     warning = new Sprite(spriteWarning)
     warning.setTileSheet(16, 16)
     warning.setScale(4, 4)
+
+    heart()
 
     gameReady = true
 }
@@ -81,6 +84,8 @@ function draw(pCtx){
     // display grid
     dtDisplayGrid(pCtx)
 
+    dtDisplayRange(pCtx, enemy)
+
     // display hotspots collider
     dtHotspots(pCtx)
 
@@ -113,12 +118,13 @@ function draw(pCtx){
         } else if(character.type == "player"){
             character.draw(pCtx)
         }
-        dtDisplayRange(pCtx, character)
     })
 
     if(displayWarning){
         warning.draw(pCtx)
     }
+
+    heart.draw(pCtx)
 }
 
 function Hurt(pTarget){
