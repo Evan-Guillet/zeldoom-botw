@@ -25,7 +25,7 @@ function keyDown(k){
 
     if(player.isAlive){
         // ===============| MOVEMENT |===============
-        if(k.code == "ArrowDown"){
+        if(k.code == "KeyS"){
 
             isActiveDown = true
             moveDown()
@@ -35,7 +35,7 @@ function keyDown(k){
             player.firstAttack = ""
             setplayer()
         }
-        if(k.code == "ArrowUp"){
+        if(k.code == "KeyW"){
 
             isActiveUp = true
             moveUp()
@@ -45,7 +45,7 @@ function keyDown(k){
             player.firstAttack = ""
             setplayer()
         }
-        if(k.code == "ArrowLeft"){
+        if(k.code == "KeyA"){
 
             isActiveLeft = true
             moveLeft()
@@ -55,7 +55,7 @@ function keyDown(k){
             player.firstAttack = ""
             setplayer()
         }
-        if(k.code == "ArrowRight"){
+        if(k.code == "KeyD"){
 
             isActiveRight = true
             moveRight()
@@ -152,7 +152,7 @@ function keyDown(k){
         }
 
         // ===============| SPECIAL 1 |===============
-        if(k.code == "KeyA"){
+        if(k.code == "ShiftLeft"){
             aKey = true
 
             player.animationType = "SPECIAL_1"
@@ -208,7 +208,7 @@ function keyDown(k){
         }
 
         // ===============| SPECIAL 2 |===============
-        if(k.code == "KeyS"){
+        if(k.code == "ControlLeft"){
             sKey = true
 
             player.animationType = "SPECIAL_2"
@@ -279,7 +279,7 @@ function keyUp(k){
     k.preventDefault()
 
     // ===============| MOVEMENT |===============
-    if(k.code == "ArrowDown"){
+    if(k.code == "KeyS"){
         downKey = false
         isActiveDown = false
         if(!upKey && !leftKey && !rightKey){
@@ -288,7 +288,7 @@ function keyUp(k){
             setplayer()
         }
     }
-    if(k.code == "ArrowUp"){
+    if(k.code == "KeyW"){
         upKey = false
         isActiveUp = false
         if(!downKey && !leftKey && !rightKey){
@@ -297,7 +297,7 @@ function keyUp(k){
             setplayer()
         }
     }
-    if(k.code == "ArrowLeft"){
+    if(k.code == "KeyA"){
         leftKey = false
         isActiveLeft = false
         if(!downKey && !upKey && !rightKey){
@@ -306,7 +306,7 @@ function keyUp(k){
             setplayer()
         }
     }
-    if(k.code == "ArrowRight"){
+    if(k.code == "KeyD"){
         rightKey = false
         isActiveRight = false
         if(!downKey && !upKey && !leftKey){
