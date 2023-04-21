@@ -59,6 +59,8 @@ function restartPlayer(){
     player.soundKillIsActive = false
     player.x = (tileSize*tileScale)*5
     player.y = (tileSize*tileScale)*9
+    player.vx = 0
+    player.vy = 0
     player.animationType = "IDLE_DOWN"
     setplayer()
     player.movement = "MOVEMENT_DOWN"

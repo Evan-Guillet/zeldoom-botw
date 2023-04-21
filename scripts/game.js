@@ -136,10 +136,13 @@ function isDead(){
     if(player.hitPoint <= 0){
         player.hitPoint = 0
         player.isAlive = false
+        player.vx = 0
+        player.vy = 0
         player.animationType = "DEAD"
         setplayer()
 
         enemy.isVisible = false
+        displayWarning = false
 
         if(!player.soundKillIsActive){
             killSound.play()

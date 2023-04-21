@@ -278,45 +278,42 @@ function keyDown(k){
 function keyUp(k){
     k.preventDefault()
 
-    if(player.isAlive){
-        // ===============| MOVEMENT |===============
-        if(k.code == "ArrowDown"){
-            downKey = false
-            isActiveDown = false
-            if(!upKey && !leftKey && !rightKey){
-                player.animationType = "IDLE_DOWN"
-                player.movement = "IDLE_DOWN"
-                setplayer()
-            }
+    // ===============| MOVEMENT |===============
+    if(k.code == "ArrowDown"){
+        downKey = false
+        isActiveDown = false
+        if(!upKey && !leftKey && !rightKey){
+            player.animationType = "IDLE_DOWN"
+            player.movement = "IDLE_DOWN"
+            setplayer()
         }
-        if(k.code == "ArrowUp"){
-            upKey = false
-            isActiveUp = false
-            if(!downKey && !leftKey && !rightKey){
-                player.animationType = "IDLE_UP"
-                player.movement = "IDLE_UP"
-                setplayer()
-            }
+    }
+    if(k.code == "ArrowUp"){
+        upKey = false
+        isActiveUp = false
+        if(!downKey && !leftKey && !rightKey){
+            player.animationType = "IDLE_UP"
+            player.movement = "IDLE_UP"
+            setplayer()
         }
-        if(k.code == "ArrowLeft"){
-            leftKey = false
-            isActiveLeft = false
-            if(!downKey && !upKey && !rightKey){
-                player.animationType = "IDLE_LEFT"
-                player.movement = "IDLE_LEFT"
-                setplayer()
-            }
+    }
+    if(k.code == "ArrowLeft"){
+        leftKey = false
+        isActiveLeft = false
+        if(!downKey && !upKey && !rightKey){
+            player.animationType = "IDLE_LEFT"
+            player.movement = "IDLE_LEFT"
+            setplayer()
         }
-        if(k.code == "ArrowRight"){
-            rightKey = false
-            isActiveRight = false
-            if(!downKey && !upKey && !leftKey){
-                player.animationType = "IDLE_RIGHT"
-                player.movement = "IDLE_RIGHT"
-                setplayer()
-            }
+    }
+    if(k.code == "ArrowRight"){
+        rightKey = false
+        isActiveRight = false
+        if(!downKey && !upKey && !leftKey){
+            player.animationType = "IDLE_RIGHT"
+            player.movement = "IDLE_RIGHT"
+            setplayer()
         }
-
     }
 }
 

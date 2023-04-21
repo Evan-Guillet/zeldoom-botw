@@ -36,9 +36,6 @@ function dtDisplayRange(pCtx, pSprite){
             pCtx.textAlign = "center"
             pCtx.fillStyle = "white"
             pCtx.fillText(enemy.state, enemy.x + 8*4, enemy.y - 16)
-
-            pCtx.fillStyle = "White"
-            pCtx.fillText(Math.floor(player.hitPoint), player.x + 8*4, player.y - 16)
         }
     }
 }
