@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'ninjaadventureregular';
+    src: url('/asset/graphics/hud/font/normal_font-webfont.woff2') format('woff2'),
+         url('/asset/graphics/hud/font/normal_font-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{
+    font-family: 'ninjaadventureregular', sans-serif;
+}
