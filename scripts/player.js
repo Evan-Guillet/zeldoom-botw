@@ -52,6 +52,32 @@ function setplayer(){
     player.startAnimation(player.animationType)
 }
 
+function canHit(){
+    if(getDist(player.x, player.y, enemy.x, enemy.y) < 16*tileScale && spaceKey){
+        enemy.hitPoint -= 10
+        spaceKey = false
+    }
+}
+
+function playerIsDead(){
+    if(player.hitPoint <= 0){
+        player.hitPoint = 0
+        player.isAlive = false
+        player.vx = 0
+        player.vy = 0
+        player.animationType = "DEAD"
+        setplayer()
+
+        enemy.isVisible = false
+        displayWarning = false
+
+        if(!player.soundKillIsActive){
+            killSound.play()
+            player.soundKillIsActive = true
+        }
+    }
+}
+
 function restartPlayer(){
     player.isAlive = true
     player.hitPoint = player.maxHitPoint

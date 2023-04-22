@@ -315,6 +315,10 @@ function keyUp(k){
             setplayer()
         }
     }
+
+    if(k.code == "Space"){
+        spaceKey = false
+    }
 }
 
 function move(dt){

@@ -65,12 +65,14 @@ function update(dt){
     moveLeft()
     moveRight()
 
+    playerIsDead()
+    howManyHearts()
+    canHit()
+
     updateEnemy(enemy)
     velocityEnemy(dt)
     whatDirection()
-    
-    isDead()
-    howManyHearts()
+    enemyIsDead()
 }
 
 function draw(pCtx){
@@ -128,25 +130,4 @@ function draw(pCtx){
     hearts.draw(pCtx)
 }
 
-function Hurt(pTarget){
-    pTarget.hitPoint -= 0.1
-}
 
-function isDead(){
-    if(player.hitPoint <= 0){
-        player.hitPoint = 0
-        player.isAlive = false
-        player.vx = 0
-        player.vy = 0
-        player.animationType = "DEAD"
-        setplayer()
-
-        enemy.isVisible = false
-        displayWarning = false
-
-        if(!player.soundKillIsActive){
-            killSound.play()
-            player.soundKillIsActive = true
-        }
-    }
-}

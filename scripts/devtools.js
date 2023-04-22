@@ -32,10 +32,12 @@ function dtDisplayRange(pCtx, pSprite){
             pCtx.fill()
             pCtx.globalAlpha = 1
 
-            pCtx.font = "bold 30px 'Press Start 2P', cursive"
+            pCtx.font = "bold 30px 'ninjaadventureregular', cursive"
             pCtx.textAlign = "center"
             pCtx.fillStyle = "white"
             pCtx.fillText(enemy.state, enemy.x + 8*4, enemy.y - 16)
+            pCtx.fillStyle = "red"
+            pCtx.fillText(enemy.hitPoint, enemy.x + 8*4, enemy.y + (16+8)*tileScale)
         }
     }
 }

@@ -76,26 +76,29 @@ function updateEnemy(pEnemy){
             pEnemy.soundAlertIsActive = true
         }
         
-
         displayWarning = true
         warning.x = enemy.x + (7*tileScale)
         warning.y = enemy.y - (7*tileScale)
 
+        // NO TARGET
         if(pEnemy.target == null){
             pEnemy.mustTeleport = false
             pEnemy.state = "IDLE"
 
+        // TARGET OU OF RANGE
         } else if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) > pEnemy.range && pEnemy.target.type == "player"){
             pEnemy.vx = 0
             pEnemy.vy = 0
             pEnemy.state = "IDLE"
             pEnemy.mustTeleport = true
             
+        // TARGET ON RANGE
         } else if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) < 16*tileScale && pEnemy.target.type == "player"){
             pEnemy.state = "HIT"
             pEnemy.vx = 0
             pEnemy.vy = 0
 
+        // TARGET DETECTED
         } else {
             pEnemy.mustTeleport = false
 
@@ -131,6 +134,7 @@ function updateEnemy(pEnemy){
         } else{
             if(pEnemy.mustTeleport){
 
+                /*
                 let cooldown = new Promise((resolve, reject) => {
                     
                 })
@@ -141,7 +145,7 @@ function updateEnemy(pEnemy){
                     pEnemy.mustTeleport = false
                 })
 
-                /*
+                
                 setTimeout(function(){
                     if(pEnemy.mustTeleport){
                         pEnemy.x = pEnemy.spawnX
@@ -153,6 +157,14 @@ function updateEnemy(pEnemy){
             }
         }
         break
+
+    case "DEAD":
+        enemy.isAlive = false
+        enemy.vx = 0
+        enemy.vy = 0
+        displayWarning = false
+        break
+
     }
 }
 
@@ -196,6 +208,19 @@ function whatDirection(){
     if(enemy.vx > 0 && Math.abs(enemy.vx) > Math.abs(enemy.vy)){
         enemy.animationType = "WALK_RIGHT"
         enemy.movement = "RIGHT"
+        setEnemy()
+    }
+}
+
+function Hurt(pTarget){
+    pTarget.hitPoint -= 0.1
+}
+
+function enemyIsDead(){
+    if(enemy.hitPoint <= 0){
+        enemy.hitPoint = 0
+        enemy.state = "DEAD"
+        enemy.animationType = "DEAD"
         setEnemy()
     }
 }
