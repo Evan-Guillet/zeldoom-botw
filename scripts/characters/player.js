@@ -11,8 +11,8 @@ function player(){
     player.setTileSheet(16, 16)
     player.setScale(4, 4)
 
-    player.x = (tileSize*tileScale)*5
-    player.y = (tileSize*tileScale)*9
+    player.x = (TILE_SIZE*TILE_SCALE)*5
+    player.y = (TILE_SIZE*TILE_SCALE)*9
     
     let spriteBlood = imageLoader.getImage("/asset/graphics/fx/blood.png")
     player.blood = new Sprite(spriteBlood)
@@ -53,7 +53,7 @@ function setplayer(){
 }
 
 function canHit(){
-    if(getDist(player.x, player.y, enemy.x, enemy.y) < 16*tileScale && spaceKey){
+    if(getDist(player.x, player.y, enemy.x, enemy.y) < 16*TILE_SCALE && spaceKey){
         enemy.hitPoint -= 10
         spaceKey = false
     }
@@ -83,8 +83,8 @@ function restartPlayer(){
     player.hitPoint = player.maxHitPoint
     player.isAlive = true
     player.soundKillIsActive = false
-    player.x = (tileSize*tileScale)*5
-    player.y = (tileSize*tileScale)*9
+    player.x = (TILE_SIZE*TILE_SCALE)*5
+    player.y = (TILE_SIZE*TILE_SCALE)*9
     player.vx = 0
     player.vy = 0
     player.animationType = "IDLE_DOWN"

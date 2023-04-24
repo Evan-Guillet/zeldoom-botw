@@ -3,8 +3,8 @@ let gameReady = false
 let listMap = []
 let listCharacter = []
 
-const tileSize = 16
-const tileScale = 4
+const TILE_SIZE = 16
+const TILE_SCALE = 4
 
 function load(){
     // retrieves the activated and released keys
@@ -108,8 +108,8 @@ function draw(pCtx){
         pCtx.fillStyle = "white"
         pCtx.fillText("Press      'SPACE'", canvas.width/2, canvas.height/2+50)
         
-        player.blood.x = player.x - (tileSize/2)*tileScale
-        player.blood.y = player.y - (tileSize/2)*tileScale
+        player.blood.x = player.x - (TILE_SIZE/2)*TILE_SCALE
+        player.blood.y = player.y - (TILE_SIZE/2)*TILE_SCALE
         player.blood.draw(pCtx)
     }
 

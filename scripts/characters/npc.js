@@ -13,8 +13,8 @@ function enimies(){
     enemy.setTileSheet(16, 16)
     enemy.setScale(4, 4)
 
-    enemy.spawnX = (tileSize*tileScale)*10
-    enemy.spawnY = (tileSize*tileScale)*9
+    enemy.spawnX = (TILE_SIZE*TILE_SCALE)*10
+    enemy.spawnY = (TILE_SIZE*TILE_SCALE)*9
 
     enemy.x = enemy.spawnX
     enemy.y = enemy.spawnY
@@ -77,8 +77,8 @@ function updateEnemy(pEnemy){
         }
         
         displayWarning = true
-        warning.x = enemy.x + (7*tileScale)
-        warning.y = enemy.y - (7*tileScale)
+        warning.x = enemy.x + (7*TILE_SCALE)
+        warning.y = enemy.y - (7*TILE_SCALE)
 
         // NO TARGET
         if(pEnemy.target == null){
@@ -93,7 +93,7 @@ function updateEnemy(pEnemy){
             pEnemy.mustTeleport = true
             
         // TARGET ON RANGE
-        } else if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) < 16*tileScale && pEnemy.target.type == "player"){
+        } else if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) < 16*TILE_SCALE && pEnemy.target.type == "player"){
             pEnemy.state = "HIT"
             pEnemy.vx = 0
             pEnemy.vy = 0
@@ -109,7 +109,7 @@ function updateEnemy(pEnemy){
         break
 
     case "HIT":
-        if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) > 16*tileScale && pEnemy.target.type == "player"){
+        if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) > 16*TILE_SCALE && pEnemy.target.type == "player"){
             pEnemy.state = "ATTACK"
 
         } else if(pEnemy.target.hitPoint != null){
@@ -133,27 +133,7 @@ function updateEnemy(pEnemy){
 
         } else{
             if(pEnemy.mustTeleport){
-
-                /*
-                let cooldown = new Promise((resolve, reject) => {
-                    
-                })
-
-                cooldown.then(() => {
-                    pEnemy.x = pEnemy.spawnX
-                    pEnemy.y = pEnemy.spawnY
-                    pEnemy.mustTeleport = false
-                })
-
                 
-                setTimeout(function(){
-                    if(pEnemy.mustTeleport){
-                        pEnemy.x = pEnemy.spawnX
-                        pEnemy.y = pEnemy.spawnY
-                        pEnemy.mustTeleport = false
-                    }
-                }, 5000)
-                */
             }
         }
         break
@@ -164,7 +144,6 @@ function updateEnemy(pEnemy){
         enemy.vy = 0
         displayWarning = false
         break
-
     }
 }
 
@@ -230,8 +209,8 @@ function restartEnemy(){
     enemy.hitPoint = enemy.maxHitPoint
     enemy.isAlive = true
     enemy.soundKillIsActive = false
-    enemy.x = (tileSize*tileScale)*10
-    enemy.y = (tileSize*tileScale)*9
+    enemy.x = (TILE_SIZE*TILE_SCALE)*10
+    enemy.y = (TILE_SIZE*TILE_SCALE)*9
     enemy.animationType = "IDLE_DOWN"
     setEnemy()
     enemy.movement = "MOVEMENT_DOWN"

@@ -19,8 +19,8 @@ const map = [
 
 function getTileAt(pX, pY){
 
-    let column = Math.floor(pX/(tileSize*tileScale)) + 1
-    let line = Math.floor(pY/(tileSize*tileScale)) + 1
+    let column = Math.floor(pX/(TILE_SIZE*TILE_SCALE)) + 1
+    let line = Math.floor(pY/(TILE_SIZE*TILE_SCALE)) + 1
 
     if((column > 0) && (column < map[0].length) && (line > 0) && (line <= map.length)){
         let idCase = map[line][column]
@@ -32,26 +32,26 @@ function getTileAt(pX, pY){
 
 // hotspots
 function collideDown(pCharacter){
-    let id1 = getTileAt(pCharacter.x + (1*tileScale), pCharacter.y + (16*tileScale))
-    let id2 = getTileAt(pCharacter.x + (8*tileScale), pCharacter.y + (16*tileScale))
-    let id3 = getTileAt(pCharacter.x + (14*tileScale), pCharacter.y + (16*tileScale))
+    let id1 = getTileAt(pCharacter.x + (1*TILE_SCALE), pCharacter.y + (16*TILE_SCALE))
+    let id2 = getTileAt(pCharacter.x + (8*TILE_SCALE), pCharacter.y + (16*TILE_SCALE))
+    let id3 = getTileAt(pCharacter.x + (14*TILE_SCALE), pCharacter.y + (16*TILE_SCALE))
     return id1 || id2 || id3
 }
 function collideUp(pCharacter){
-    let id1 = getTileAt(pCharacter.x + (1*tileScale), pCharacter.y + (8*tileScale))
-    let id2 = getTileAt(pCharacter.x + (8*tileScale), pCharacter.y + (8*tileScale))
-    let id3 = getTileAt(pCharacter.x + (14*tileScale), pCharacter.y + (8*tileScale))
+    let id1 = getTileAt(pCharacter.x + (1*TILE_SCALE), pCharacter.y + (8*TILE_SCALE))
+    let id2 = getTileAt(pCharacter.x + (8*TILE_SCALE), pCharacter.y + (8*TILE_SCALE))
+    let id3 = getTileAt(pCharacter.x + (14*TILE_SCALE), pCharacter.y + (8*TILE_SCALE))
     return id1 || id2 || id3
 }
 function collideLeft(pCharacter){
-    let id1 = getTileAt(pCharacter.x, pCharacter.y + (9*tileScale))
-    let id2 = getTileAt(pCharacter.x, pCharacter.y + (12*tileScale))
-    let id3 = getTileAt(pCharacter.x, pCharacter.y + (15*tileScale))
+    let id1 = getTileAt(pCharacter.x, pCharacter.y + (9*TILE_SCALE))
+    let id2 = getTileAt(pCharacter.x, pCharacter.y + (12*TILE_SCALE))
+    let id3 = getTileAt(pCharacter.x, pCharacter.y + (15*TILE_SCALE))
     return id1 || id2 || id3
 }
 function collideRight(pCharacter){
-    let id1 = getTileAt(pCharacter.x + (15*tileScale), pCharacter.y + (9*tileScale))
-    let id2 = getTileAt(pCharacter.x + (15*tileScale), pCharacter.y + (12*tileScale))
-    let id3 = getTileAt(pCharacter.x + (15*tileScale), pCharacter.y + (15*tileScale))
+    let id1 = getTileAt(pCharacter.x + (15*TILE_SCALE), pCharacter.y + (9*TILE_SCALE))
+    let id2 = getTileAt(pCharacter.x + (15*TILE_SCALE), pCharacter.y + (12*TILE_SCALE))
+    let id3 = getTileAt(pCharacter.x + (15*TILE_SCALE), pCharacter.y + (15*TILE_SCALE))
     return id1 || id2 || id3
 }
