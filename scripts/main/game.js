@@ -59,6 +59,8 @@ function update(dt){
         sprite.update(dt)
     })
     
+    
+
     move(dt)
     moveDown()
     moveUp()

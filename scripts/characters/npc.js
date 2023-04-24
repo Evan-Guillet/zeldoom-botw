@@ -2,8 +2,12 @@ let displayWarning = false
 
 function enimies(){
     let spritesheetEnemy = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
-    enemy = new Sprite(spritesheetEnemy)
-    enemy.type = "enemy"
+    enemy = new Sprite(spritesheetEnemy,
+        (TILE_SIZE*TILE_SCALE)*10,
+        (TILE_SIZE*TILE_SCALE)*9,
+        "enemy"
+    )
+
     enemy.maxHitPoint = 50
     enemy.hitPoint = 50
     enemy.isAlive = true
@@ -13,11 +17,6 @@ function enimies(){
     enemy.setTileSheet(16, 16)
     enemy.setScale(4, 4)
 
-    enemy.spawnX = (TILE_SIZE*TILE_SCALE)*10
-    enemy.spawnY = (TILE_SIZE*TILE_SCALE)*9
-
-    enemy.x = enemy.spawnX
-    enemy.y = enemy.spawnY
     enemy.vx = 0
     enemy.vy = 0
 

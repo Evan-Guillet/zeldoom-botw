@@ -1,7 +1,10 @@
 function player(){
     let spritesheetDarkNinja = imageLoader.getImage("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
-    player = new Sprite(spritesheetDarkNinja)
-    player.type = "player"
+    player = new Sprite(spritesheetDarkNinja, 
+        (TILE_SIZE*TILE_SCALE)*5,
+        (TILE_SIZE*TILE_SCALE)*9,
+        "player"
+    )
 
     player.maxHitPoint = 100
     player.hitPoint = player.maxHitPoint
@@ -10,20 +13,17 @@ function player(){
 
     player.setTileSheet(16, 16)
     player.setScale(4, 4)
-
-    player.x = (TILE_SIZE*TILE_SCALE)*5
-    player.y = (TILE_SIZE*TILE_SCALE)*9
     
     let spriteBlood = imageLoader.getImage("/asset/graphics/fx/blood.png")
     player.blood = new Sprite(spriteBlood)
     player.blood.setTileSheet(32, 32)
     player.blood.setScale(4, 4)
 
-    setplayer()
+    setPlayer()
     listCharacter.push(player)
 }
 
-function setplayer(){
+function setPlayer(){
     
     player.addAnimation("IDLE_DOWN", [0], 0.25)
     player.addAnimation("WALK_DOWN", [0, 4, 8, 12], 0.25)
@@ -66,7 +66,7 @@ function playerIsDead(){
         player.vx = 0
         player.vy = 0
         player.animationType = "DEAD"
-        setplayer()
+        setPlayer()
 
         enemy.isVisible = false
         displayWarning = false
@@ -88,7 +88,7 @@ function restartPlayer(){
     player.vx = 0
     player.vy = 0
     player.animationType = "IDLE_DOWN"
-    setplayer()
+    setPlayer()
     player.movement = "MOVEMENT_DOWN"
     player.firstAttack = "IDLE_DOWN"
 }
