@@ -1,6 +1,6 @@
 let displayWarning = false
 
-function enimies(){
+function enemy(){
     let spritesheetEnemy = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
     enemy = new Sprite(spritesheetEnemy,
         (TILE_SIZE*TILE_SCALE)*10,

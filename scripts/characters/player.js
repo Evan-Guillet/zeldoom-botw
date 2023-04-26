@@ -8,6 +8,7 @@ function player(){
 
     player.maxHitPoint = 100
     player.hitPoint = player.maxHitPoint
+    player.damagePerSecond = 10
     player.isAlive = true
     player.soundKillIsActive = false
 
@@ -22,6 +23,20 @@ function player(){
     setPlayer()
     listCharacter.push(player)
 }
+
+function playerManager(){
+
+    let playerManager = new Character()
+
+    let targetTab = []
+    targetTab.push(playerManager.getTargetsOnRange(listCharacter, TILE_SIZE*TILE_SCALE))
+
+    playerManager.hit(player, targetTab)
+}
+
+
+
+
 
 function setPlayer(){
     
@@ -53,7 +68,7 @@ function setPlayer(){
 }
 
 function canHit(){
-    if(getDist(player.x, player.y, enemy.x, enemy.y) < 16*TILE_SCALE && spaceKey){
+    if(getDist(player.x, player.y, enemy.x, enemy.y) < TILE_SIZE*TILE_SCALE && spaceKey){
         enemy.hitPoint -= 10
         spaceKey = false
     }

@@ -39,7 +39,7 @@ function startGame(){
     listCharacter = []
 
     player()
-    enimies()
+    enemy()
 
     let spriteWarning = imageLoader.getImage("/asset/graphics/hud/warning.png")
     warning = new Sprite(spriteWarning)
@@ -55,11 +55,9 @@ function update(dt){
 
     if(!gameReady){return}
     
-    listCharacter.forEach(sprite => {
-        sprite.update(dt)
+    listCharacter.forEach(character => {
+        character.update(dt)
     })
-    
-    
 
     move(dt)
     moveDown()
@@ -75,6 +73,8 @@ function update(dt){
     velocityEnemy(dt)
     whatDirection()
     enemyIsDead()
+
+    playerManager()
 }
 
 function draw(pCtx){
