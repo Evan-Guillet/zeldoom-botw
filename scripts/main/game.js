@@ -116,17 +116,18 @@ function draw(pCtx){
 
     // display character
     listCharacter.forEach(character => {
-        if(character.type == "enemy" && enemy.isVisible){
+        if(character.type == "enemy" && player.isAlive){
             character.draw(pCtx)
+            if(displayWarning){
+                warning.draw(pCtx)
+            }
 
         } else if(character.type == "player"){
             character.draw(pCtx)
         }
     })
 
-    if(displayWarning){
-        warning.draw(pCtx)
-    }
+    
 
     hearts.draw(pCtx)
 }
