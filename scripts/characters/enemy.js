@@ -36,10 +36,7 @@ function enemy(){
 function enemyManager(dt){
 
     enemyManage.move(enemy, dt)
-
-    if(enemyManage.inHitRange(enemy, player)){
-        enemyManage.hit(enemy, player)
-    }
+    enemyManage.animationDirection(enemyManage)
 
     enemyManage.isDead(enemy)
 }
@@ -94,20 +91,24 @@ function enemyStateMachine(pEnemy){
         }
 
     case "HIT":
-        if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) > 16*TILE_SCALE
-            &&
-            pEnemy.target.type == "player"){
+        let hitDist = getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y)
 
+        if(hitDist > pEnemy.rangeHit && pEnemy.target.type == "player"){
             pEnemy.state = "ATTACK"
 
-        } else if(pEnemy.target.hitPoint != null){
-            enemyManage.hit(pEnemy, pEnemy.target)
-            //Hurt(pEnemy.target)
+        } else if(
+            hitDist < pEnemy.rangeHit &&
+            pEnemy.target.hitPoint != null &&
+            pEnemy.target.hitPoint >= 0
+            ){
+
+            if(enemyManage.inHitRange(enemy, player)){
+                enemyManage.hit(pEnemy, pEnemy.target)
+            }
 
         } else if(pEnemy.target.hitPoint <= 0){
             pEnemy.state = "IDLE"
         }
-        
         break
 
     case "IDLE":
@@ -160,7 +161,7 @@ function velocityEnemy(dt){
 */
 
 
-
+/*
 function whatDirection(){
 
     if(enemy.vx == 0 && enemy.vy == 0){
@@ -204,6 +205,8 @@ function whatDirection(){
         enemyManage.setAnimation(enemy)
     }
 }
+*/
+
 /*
 function Hurt(pTarget){
     pTarget.hitPoint -= 0.1

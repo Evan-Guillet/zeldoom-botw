@@ -28,7 +28,7 @@ function startPlayer(){
 
 function playerManager(){
 
-    if(playerManage.inHitRange(player, enemy)){
+    if(playerManage.inHitRange(player, enemy) && spaceKey){
         playerManage.hit(player, enemy)
     }
 

@@ -55,51 +55,63 @@ class Character {
     }
 
     animationDirection(pCharacter){
+        console.log("0")
         if(pCharacter.vx == 0 && pCharacter.vy == 0){
+            console.log("1")
 
             if(pCharacter.movement == "DOWN"){
+                console.log("1.1")
                 pCharacter.animationType = "IDLE_DOWN"
-                setEnemy()
+                pCharacter.setAnimation(pCharacter)
     
             } else if(pCharacter.movement == "UP"){
+                console.log("1.2")
                 pCharacter.animationType = "IDLE_UP"
-                setEnemy()
+                pCharacter.setAnimation(pCharacter)
     
             } else if(pCharacter.movement == "LEFT"){
+                console.log("1.3")
                 pCharacter.animationType = "IDLE_LEFT"
-                setEnemy()
+                pCharacter.setAnimation(pCharacter)
     
             } else if(pCharacter.movement == "RIGHT"){
+                console.log("1.4")
                 pCharacter.animationType = "IDLE_RIGHT"
-                setEnemy()
+                pCharacter.setAnimation(pCharacter)
             }
         }
     
         if(pCharacter.vy > 0 && Math.abs(pCharacter.vy) > Math.abs(pCharacter.vx)){
+            console.log("2.1")
             pCharacter.animationType = "WALK_DOWN"
             pCharacter.movement = "DOWN"
-            setEnemy()
+            pCharacter.setAnimation(pCharacter)
         }
         if(pCharacter.vy < 0 && Math.abs(pCharacter.vy) > Math.abs(pCharacter.vx)){
+            console.log("2.2")
             pCharacter.animationType = "WALK_UP"
             pCharacter.movement = "UP"
-            setEnemy()
+            pCharacter.setAnimation(pCharacter)
         }
         if(pCharacter.vx < 0 && Math.abs(pCharacter.vx) > Math.abs(pCharacter.vy)){
+            console.log("2.3")
             pCharacter.animationType = "WALK_LEFT"
             pCharacter.movement = "LEFT"
-            setEnemy()
+            pCharacter.setAnimation(pCharacter)
         }
         if(pCharacter.vx > 0 && Math.abs(pCharacter.vx) > Math.abs(pCharacter.vy)){
+            console.log("2.4")
             pCharacter.animationType = "WALK_RIGHT"
             pCharacter.movement = "RIGHT"
-            setEnemy()
+            pCharacter.setAnimation(pCharacter)
         }
     }
 
+    /*
     detectionArea(pCharacter){
         pCharacter
     }
+    */
 
     inHitRange(pCharacter, pTarget){
 
@@ -156,6 +168,7 @@ class Character {
         } else if(pCharacter.type == "enemy"){
             enemyManage.setAnimation(enemy)
             pCharacter.isVisible = true
+            pCharacter.state = "IDLE"
         }
     }
 

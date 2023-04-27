@@ -34,12 +34,27 @@ function dtDisplayRange(pCtx, pSprite){
             pCtx.fill()
             pCtx.globalAlpha = 1
 
+            pCtx.beginPath()
+            pCtx.arc(enemy.x + 8*4, enemy.y + 8*4, enemy.rangeHit, 0, Math.PI * 2, true)
+            pCtx.strokeStyle = "red"
+            pCtx.lineWidth = 3
+            pCtx.stroke()
+
+            pCtx.globalAlpha = 0.25
+            pCtx.beginPath()
+            pCtx.arc(enemy.x + 8*4, enemy.y + 8*4, enemy.rangeHit, 0, Math.PI * 2, true)
+            pCtx.fillStyle = "red"
+            pCtx.lineWidth = 3
+            pCtx.fill()
+            pCtx.globalAlpha = 1
+
             pCtx.font = "bold 30px 'ninjaadventureregular', cursive"
             pCtx.textAlign = "center"
             pCtx.fillStyle = "white"
-            pCtx.fillText(enemy.state, enemy.x + 8*4, enemy.y - 16)
-            pCtx.fillStyle = "red"
-            pCtx.fillText(enemy.hitPoint, enemy.x + 8*4, enemy.y + (16+8)*TILE_SCALE)
+            pCtx.fillText(enemy.state, enemy.x + 8*4, enemy.y - 48)
+
+            pCtx.fillStyle = "blue"
+            pCtx.fillText("HP:    " + enemy.hitPoint, enemy.x + 8*4, enemy.y + 32*TILE_SCALE)
         }
     }
 }

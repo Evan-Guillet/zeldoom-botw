@@ -77,7 +77,6 @@ function update(dt){
     moveRight()
 
     enemyStateMachine(enemy)
-    whatDirection()
 }
 
 function draw(pCtx){
