@@ -28,7 +28,7 @@ function keyDown(k){
             player.animationType = "WALK_DOWN"
             player.movement = "MOVEMENT_DOWN"
             player.firstAttack = ""
-            setPlayer()
+            playerManage.setAnimation(player)
         }
         if(k.code == "KeyW"){
 
@@ -38,7 +38,7 @@ function keyDown(k){
             player.animationType = "WALK_UP"
             player.movement = "MOVEMENT_UP"
             player.firstAttack = ""
-            setPlayer()
+            playerManage.setAnimation(player)
         }
         if(k.code == "KeyA"){
 
@@ -48,7 +48,7 @@ function keyDown(k){
             player.animationType = "WALK_LEFT"
             player.movement = "MOVEMENT_LEFT"
             player.firstAttack = ""
-            setPlayer()
+            playerManage.setAnimation(player)
         }
         if(k.code == "KeyD"){
 
@@ -58,7 +58,7 @@ function keyDown(k){
             player.animationType = "WALK_RIGHT"
             player.movement = "MOVEMENT_RIGHT"
             player.firstAttack = ""
-            setPlayer()
+            playerManage.setAnimation(player)
         }
 
         // ===============| ATTACK |===============
@@ -67,20 +67,20 @@ function keyDown(k){
 
             if(player.isAlive && player.movement == "MOVEMENT_DOWN" || player.movement == "IDLE_DOWN" || player.firstAttack == "IDLE_DOWN"){
                 player.animationType = "ATTACK_DOWN"
-                setPlayer()
+                playerManage.setAnimation(player)
 
                 setTimeout(function() {
                     if(player.movement == "MOVEMENT_DOWN"){
                         player.animationType = "WALK_DOWN"
                         player.movement = "MOVEMENT_DOWN"
                         player.firstAttack = ""
-                        setPlayer()
+                        playerManage.setAnimation(player)
 
                     } else if(player.movement == "IDLE_DOWN" || player.firstAttack == "IDLE_DOWN"){
                         player.animationType = "IDLE_DOWN"
                         player.movement = "IDLE_DOWN"
                         player.firstAttack = ""
-                        setPlayer()
+                        playerManage.setAnimation(player)
                     }
                 }, 350)
 
@@ -89,18 +89,18 @@ function keyDown(k){
             } else if(player.isAlive && player.movement == "MOVEMENT_UP" || player.movement == "IDLE_UP"){
                 player.animationType = "ATTACK_UP"
                 player.firstAttack = ""
-                setPlayer()
+                playerManage.setAnimation(player)
 
                 setTimeout(function() {
                     if(player.movement == "MOVEMENT_UP"){
                         player.animationType = "WALK_UP"
                         player.movement = "MOVEMENT_UP"
-                        setPlayer()
+                        playerManage.setAnimation(player)
 
                     } else if(player.movement == "IDLE_UP"){
                         player.animationType = "IDLE_UP"
                         player.movement = "IDLE_UP"
-                        setPlayer()
+                        playerManage.setAnimation(player)
                     }
                 }, 350)
                 
@@ -109,18 +109,18 @@ function keyDown(k){
             } else if(player.isAlive && player.movement == "MOVEMENT_LEFT" || player.movement == "IDLE_LEFT"){
                 player.animationType = "ATTACK_LEFT"
                 player.firstAttack = ""
-                setPlayer()
+                playerManage.setAnimation(player)
 
                 setTimeout(function() {
                     if(player.movement == "MOVEMENT_LEFT"){
                         player.animationType = "WALK_LEFT"
                         player.movement = "MOVEMENT_LEFT"
-                        setPlayer()
+                        playerManage.setAnimation(player)
 
                     } else if(player.movement == "IDLE_LEFT"){
                         player.animationType = "IDLE_LEFT"
                         player.movement = "IDLE_LEFT"
-                        setPlayer()
+                        playerManage.setAnimation(player)
                     }
                 }, 350)
                 
@@ -129,18 +129,18 @@ function keyDown(k){
             } else if(player.isAlive && player.movement == "MOVEMENT_RIGHT" || player.movement == "IDLE_RIGHT"){
                 player.animationType = "ATTACK_RIGHT"
                 player.firstAttack = ""
-                setPlayer()
+                playerManage.setAnimation(player)
 
                 setTimeout(function() {
                     if(player.movement == "MOVEMENT_RIGHT"){
                         player.animationType = "WALK_RIGHT"
                         player.movement = "MOVEMENT_RIGHT"
-                        setPlayer()
+                        playerManage.setAnimation(player)
 
                     } else if(player.movement == "IDLE_RIGHT"){
                         player.animationType = "IDLE_RIGHT"
                         player.movement = "IDLE_RIGHT"
-                        setPlayer()
+                        playerManage.setAnimation(player)
                     }
                 }, 350)
             }
@@ -151,53 +151,53 @@ function keyDown(k){
             aKey = true
 
             player.animationType = "SPECIAL_1"
-            setPlayer()
+            playerManage.setAnimation(player)
 
             setTimeout(function(){
                 if(player.movement == "MOVEMENT_DOWN"){
                     downKey = true
                     player.animationType = "WALK_DOWN"
                     player.movement = "MOVEMENT_DOWN"
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "MOVEMENT_UP"){
                     upKey = true
                     player.animationType = "WALK_UP"
                     player.movement = "MOVEMENT_UP"
-                    setPlayer()
+                    playerManage.setAnimation(player)
                     
                 } else if(player.movement == "MOVEMENT_LEFT"){
                     leftKey = true
                     player.animationType = "WALK_LEFT"
                     player.movement = "MOVEMENT_LEFT"
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "MOVEMENT_RIGHT"){
                     rightKey = true
                     player.animationType = "WALK_RIGHT"
                     player.movement = "MOVEMENT_RIGHT"
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "IDLE_DOWN" || player.firstSpecial == "IDLE_DOWN"){
                     player.animationType = "IDLE_DOWN"
                     player.movement = "IDLE_DOWN"
                     player.firstSpecial = ""
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "IDLE_UP"){
                     player.animationType = "IDLE_UP"
                     player.movement = "IDLE_UP"
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "IDLE_LEFT"){
                     player.animationType = "IDLE_LEFT"
                     player.movement = "IDLE_LEFT"
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "IDLE_RIGHT"){
                     player.animationType = "IDLE_RIGHT"
                     player.movement = "IDLE_RIGHT"
-                    setPlayer()
+                    playerManage.setAnimation(player)
                 }
             }, 750)
         }
@@ -207,53 +207,53 @@ function keyDown(k){
             sKey = true
 
             player.animationType = "SPECIAL_2"
-            setPlayer()
+            playerManage.setAnimation(player)
 
             setTimeout(function() {
                 if(player.movement == "MOVEMENT_DOWN"){
                     downKey = true
                     player.animationType = "WALK_DOWN"
                     player.movement = "MOVEMENT_DOWN"
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "MOVEMENT_UP"){
                     upKey = true
                     player.animationType = "WALK_UP"
                     player.movement = "MOVEMENT_UP"
-                    setPlayer()
+                    playerManage.setAnimation(player)
                     
                 } else if(player.movement == "MOVEMENT_LEFT"){
                     leftKey = true
                     player.animationType = "WALK_LEFT"
                     player.movement = "MOVEMENT_LEFT"
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "MOVEMENT_RIGHT"){
                     rightKey = true
                     player.animationType = "WALK_RIGHT"
                     player.movement = "MOVEMENT_RIGHT"
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "IDLE_DOWN" || player.firstSpecial == "IDLE_DOWN"){
                     player.animationType = "IDLE_DOWN"
                     player.movement = "IDLE_DOWN"
                     player.firstSpecial = ""
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "IDLE_UP"){
                     player.animationType = "IDLE_UP"
                     player.movement = "IDLE_UP"
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "IDLE_LEFT"){
                     player.animationType = "IDLE_LEFT"
                     player.movement = "IDLE_LEFT"
-                    setPlayer()
+                    playerManage.setAnimation(player)
 
                 } else if(player.movement == "IDLE_RIGHT"){
                     player.animationType = "IDLE_RIGHT"
                     player.movement = "IDLE_RIGHT"
-                    setPlayer()
+                    playerManage.setAnimation(player)
                 }
             }, 750)
         }
@@ -261,7 +261,7 @@ function keyDown(k){
     } else {
          // ==============| RESTART |===============
          if(k.code == "Space"){
-            restartPlayer()
+            playerManage.restore(player)
             restartEnemy()
         }
     }
@@ -280,7 +280,7 @@ function keyUp(k){
         if(!upKey && !leftKey && !rightKey){
             player.animationType = "IDLE_DOWN"
             player.movement = "IDLE_DOWN"
-            setPlayer()
+            playerManage.setAnimation(player)
         }
     }
     if(k.code == "KeyW"){
@@ -289,7 +289,7 @@ function keyUp(k){
         if(!downKey && !leftKey && !rightKey){
             player.animationType = "IDLE_UP"
             player.movement = "IDLE_UP"
-            setPlayer()
+            playerManage.setAnimation(player)
         }
     }
     if(k.code == "KeyA"){
@@ -298,7 +298,7 @@ function keyUp(k){
         if(!downKey && !upKey && !rightKey){
             player.animationType = "IDLE_LEFT"
             player.movement = "IDLE_LEFT"
-            setPlayer()
+            playerManage.setAnimation(player)
         }
     }
     if(k.code == "KeyD"){
@@ -307,7 +307,7 @@ function keyUp(k){
         if(!downKey && !upKey && !leftKey){
             player.animationType = "IDLE_RIGHT"
             player.movement = "IDLE_RIGHT"
-            setPlayer()
+            playerManage.setAnimation(player)
         }
     }
 

@@ -109,7 +109,10 @@ function updateEnemy(pEnemy){
         }
 
     case "HIT":
-        if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) > 16*TILE_SCALE && pEnemy.target.type == "player"){
+        if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) > 16*TILE_SCALE
+            &&
+            pEnemy.target.type == "player"){
+
             pEnemy.state = "ATTACK"
 
         } else if(pEnemy.target.hitPoint != null){

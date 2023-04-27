@@ -1,4 +1,4 @@
-function player(){
+function startPlayer(){
     let spritesheetDarkNinja = imageLoader.getImage("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
     player = new Sprite(spritesheetDarkNinja, 
         (TILE)*5,
@@ -6,38 +6,40 @@ function player(){
         "player"
     )
 
+    player.spawnX = (TILE)*5
+    player.spawnY = (TILE)*9
     player.maxHitPoint = 100
     player.hitPoint = player.maxHitPoint
     player.damagePerSecond = 10
     player.isAlive = true
-    player.soundKillIsActive = false
-
-    player.setTileSheet(16, 16)
-    player.setScale(4, 4)
     
     let spriteBlood = imageLoader.getImage("/asset/graphics/fx/blood.png")
     player.blood = new Sprite(spriteBlood)
     player.blood.setTileSheet(32, 32)
     player.blood.setScale(4, 4)
 
-    setPlayer()
+    player.setTileSheet(16, 16)
+    player.setScale(4, 4)
+
+    playerManage.setAnimation(player)
     listCharacter.push(player)
 }
 
 function playerManager(){
 
-    let playerManager = new Character()
+    playerManage.isDead(player)
 
     let targetTab = []
-    targetTab.push(playerManager.inHitDist(listCharacter, TILE))
+    targetTab.push(playerManage.inHitDist(listCharacter, TILE))
 
-    playerManager.hit(player, targetTab)
+    playerManage.hit(player, targetTab)
 }
 
 
 
 
 
+/*
 function setPlayer(){
     
     player.addAnimation("IDLE_DOWN", [0], 0.25)
@@ -66,7 +68,9 @@ function setPlayer(){
 
     player.startAnimation(player.animationType)
 }
+*/
 
+/*
 function canHit(){
     if(getDist(player.x, player.y, enemy.x, enemy.y) < TILE && spaceKey){
         enemy.hitPoint -= 10
@@ -92,11 +96,11 @@ function playerIsDead(){
         }
     }
 }
+*/
 
 function restartPlayer(){
     player.isAlive = true
     player.hitPoint = player.maxHitPoint
-    player.isAlive = true
     player.soundKillIsActive = false
     player.x = (TILE)*5
     player.y = (TILE)*9

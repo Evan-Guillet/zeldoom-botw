@@ -130,7 +130,7 @@ class Character {
             pCharacter.animationType = "DEAD"
 
             if(pCharacter.type == "player"){
-                setPlayer()
+                playerManage.setAnimation(player)
 
             } else if(pCharacter.type == "enemy"){
                 pCharacter.state = "DEAD"
@@ -138,6 +138,26 @@ class Character {
             }
 
             return true
+        }
+    }
+
+    restore(pCharacter){
+        pCharacter.isAlive = true
+        pCharacter.hitPoint = pCharacter.maxHitPoint
+        pCharacter.x = pCharacter.spawnX
+        pCharacter.y = pCharacter.spawnY
+        pCharacter.vx = 0
+        pCharacter.vy = 0
+
+        pCharacter.animationType = "IDLE_DOWN"
+        pCharacter.movement = "MOVEMENT_DOWN"
+        pCharacter.firstAttack = "IDLE_DOWN"
+
+        if(pCharacter.type == "player"){
+            playerManage.setAnimation(player)
+
+        } else if(pCharacter.type == "enemy"){
+            
         }
     }
 

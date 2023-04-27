@@ -1,7 +1,11 @@
+let playerManage = new Character()
+
 let imageLoader = new ImageLoader()
 let gameReady = false
 let listMap = []
 let listCharacter = []
+
+
 
 const TILE_SIZE = 16
 const TILE_SCALE = 4
@@ -40,7 +44,7 @@ function startGame(){
 
     listCharacter = []
 
-    player()
+    startPlayer()
     enemy()
 
     let spriteWarning = imageLoader.getImage("/asset/graphics/hud/warning.png")
@@ -61,22 +65,26 @@ function update(dt){
         character.update(dt)
     })
 
+    playerManager()
+
+    soundBox()
+
     move(dt)
     moveDown()
     moveUp()
     moveLeft()
     moveRight()
 
-    playerIsDead()
+    //playerIsDead()
+    //canHit()
     howManyHearts()
-    canHit()
 
     updateEnemy(enemy)
     velocityEnemy(dt)
     whatDirection()
     enemyIsDead()
 
-    playerManager()
+    
 }
 
 function draw(pCtx){
@@ -88,16 +96,13 @@ function draw(pCtx){
         sprite.draw(pCtx)
     })
 
-    // display grid
+    // DEVTOOLS
     dtDisplayGrid(pCtx)
-
     dtDisplayRange(pCtx, enemy)
-
-    // display hotspots collider
     dtHotspots(pCtx)
 
     // display blood player
-    if(!player.isAlive){
+    if(playerManage.isDead(player)){
         pCtx.globalAlpha = 1
         pCtx.fillStyle = "black"
         pCtx.fillRect(0, 0, canvas.width, canvas.height)
