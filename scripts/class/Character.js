@@ -55,6 +55,16 @@ class Character {
     }
 
     animationDirection(pCharacter){
+
+        let entityManager
+
+        if(pCharacter.type == "player"){
+            entityManager = playerManage
+
+        } else if(pCharacter.type == "enemy"){
+            entityManager = enemyManage
+        }
+
         console.log("0")
         if(pCharacter.vx == 0 && pCharacter.vy == 0){
             console.log("1")
@@ -62,22 +72,22 @@ class Character {
             if(pCharacter.movement == "DOWN"){
                 console.log("1.1")
                 pCharacter.animationType = "IDLE_DOWN"
-                pCharacter.setAnimation(pCharacter)
+                entityManager.setAnimation(pCharacter)
     
             } else if(pCharacter.movement == "UP"){
                 console.log("1.2")
                 pCharacter.animationType = "IDLE_UP"
-                pCharacter.setAnimation(pCharacter)
+                entityManager.setAnimation(pCharacter)
     
             } else if(pCharacter.movement == "LEFT"){
                 console.log("1.3")
                 pCharacter.animationType = "IDLE_LEFT"
-                pCharacter.setAnimation(pCharacter)
+                entityManager.setAnimation(pCharacter)
     
             } else if(pCharacter.movement == "RIGHT"){
                 console.log("1.4")
                 pCharacter.animationType = "IDLE_RIGHT"
-                pCharacter.setAnimation(pCharacter)
+                entityManager.setAnimation(pCharacter)
             }
         }
     
@@ -85,25 +95,25 @@ class Character {
             console.log("2.1")
             pCharacter.animationType = "WALK_DOWN"
             pCharacter.movement = "DOWN"
-            pCharacter.setAnimation(pCharacter)
+            entityManager.setAnimation(pCharacter)
         }
         if(pCharacter.vy < 0 && Math.abs(pCharacter.vy) > Math.abs(pCharacter.vx)){
             console.log("2.2")
             pCharacter.animationType = "WALK_UP"
             pCharacter.movement = "UP"
-            pCharacter.setAnimation(pCharacter)
+            entityManager.setAnimation(pCharacter)
         }
         if(pCharacter.vx < 0 && Math.abs(pCharacter.vx) > Math.abs(pCharacter.vy)){
             console.log("2.3")
             pCharacter.animationType = "WALK_LEFT"
             pCharacter.movement = "LEFT"
-            pCharacter.setAnimation(pCharacter)
+            entityManager.setAnimation(pCharacter)
         }
         if(pCharacter.vx > 0 && Math.abs(pCharacter.vx) > Math.abs(pCharacter.vy)){
             console.log("2.4")
             pCharacter.animationType = "WALK_RIGHT"
             pCharacter.movement = "RIGHT"
-            pCharacter.setAnimation(pCharacter)
+            entityManager.setAnimation(pCharacter)
         }
     }
 

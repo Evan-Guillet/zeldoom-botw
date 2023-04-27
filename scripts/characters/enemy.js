@@ -1,6 +1,6 @@
 let displayWarning = false
 
-function enemy(){
+function startEnemy(){
     let spritesheetEnemy = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
     enemy = new Sprite(spritesheetEnemy,
         (TILE)*10,
@@ -36,8 +36,9 @@ function enemy(){
 function enemyManager(dt){
 
     enemyManage.move(enemy, dt)
-    enemyManage.animationDirection(enemyManage)
+    enemyManage.animationDirection(enemy)
 
+    //console.log("vx: " + enemy.vx + " ; vy: " + enemy.vy)
     enemyManage.isDead(enemy)
 }
 
@@ -131,36 +132,6 @@ function enemyStateMachine(pEnemy){
     }
 }
 
-
-
-
-/*
-function enemyManage.setAnimation(enemy){
-    
-    enemy.addAnimation("IDLE_DOWN", [0], 0.25)
-    enemy.addAnimation("WALK_DOWN", [0, 4, 8, 12], 0.25)
-
-    enemy.addAnimation("IDLE_UP", [1], 0.25)
-    enemy.addAnimation("WALK_UP", [1, 5, 9, 13], 0.25)
-
-    enemy.addAnimation("IDLE_LEFT", [2], 0.25)
-    enemy.addAnimation("WALK_LEFT", [2, 6, 10, 14], 0.25)
-
-    enemy.addAnimation("IDLE_RIGHT", [3], 0.25)
-    enemy.addAnimation("WALK_RIGHT", [3, 7, 11, 15], 0.25)
-
-    enemy.addAnimation("DEAD", [16], 0.25)
-
-    enemy.startAnimation(enemy.animationType)
-}
-
-function velocityEnemy(dt){
-    enemy.x += enemy.vx*dt
-    enemy.y += enemy.vy*dt
-}
-*/
-
-
 /*
 function whatDirection(){
 
@@ -204,36 +175,5 @@ function whatDirection(){
         enemy.movement = "RIGHT"
         enemyManage.setAnimation(enemy)
     }
-}
-*/
-
-/*
-function Hurt(pTarget){
-    pTarget.hitPoint -= 0.1
-}
-
-/*
-function enemyIsDead(){
-    if(enemy.hitPoint <= 0){
-        enemy.hitPoint = 0
-        enemy.state = "DEAD"
-        enemy.animationType = "DEAD"
-        enemyManage.setAnimation(enemy)
-    }
-}
-
-
-function restartEnemy(){
-    enemy.isAlive = true
-    enemy.hitPoint = enemy.maxHitPoint
-    enemy.x = (TILE)*10
-    enemy.y = (TILE)*9
-
-    enemy.animationType = "IDLE_DOWN"
-    enemy.movement = "MOVEMENT_DOWN"
-    enemy.firstAttack = "IDLE_DOWN"
-
-    enemyManage.setAnimation(enemy)
-    enemy.isVisible = true
 }
 */

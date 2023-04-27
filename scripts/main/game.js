@@ -44,7 +44,7 @@ function startGame(){
     listCharacter = []
 
     startPlayer()
-    enemy()
+    startEnemy()
 
     let spriteWarning = imageLoader.getImage("/asset/graphics/hud/warning.png")
     warning = new Sprite(spriteWarning)
