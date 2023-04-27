@@ -1,8 +1,8 @@
 function player(){
     let spritesheetDarkNinja = imageLoader.getImage("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
     player = new Sprite(spritesheetDarkNinja, 
-        (TILE_SIZE*TILE_SCALE)*5,
-        (TILE_SIZE*TILE_SCALE)*9,
+        (TILE)*5,
+        (TILE)*9,
         "player"
     )
 
@@ -29,7 +29,7 @@ function playerManager(){
     let playerManager = new Character()
 
     let targetTab = []
-    targetTab.push(playerManager.getTargetsOnRange(listCharacter, TILE_SIZE*TILE_SCALE))
+    targetTab.push(playerManager.inHitDist(listCharacter, TILE))
 
     playerManager.hit(player, targetTab)
 }
@@ -68,7 +68,7 @@ function setPlayer(){
 }
 
 function canHit(){
-    if(getDist(player.x, player.y, enemy.x, enemy.y) < TILE_SIZE*TILE_SCALE && spaceKey){
+    if(getDist(player.x, player.y, enemy.x, enemy.y) < TILE && spaceKey){
         enemy.hitPoint -= 10
         spaceKey = false
     }
@@ -98,8 +98,8 @@ function restartPlayer(){
     player.hitPoint = player.maxHitPoint
     player.isAlive = true
     player.soundKillIsActive = false
-    player.x = (TILE_SIZE*TILE_SCALE)*5
-    player.y = (TILE_SIZE*TILE_SCALE)*9
+    player.x = (TILE)*5
+    player.y = (TILE)*9
     player.vx = 0
     player.vy = 0
     player.animationType = "IDLE_DOWN"

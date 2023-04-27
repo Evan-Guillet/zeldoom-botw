@@ -3,8 +3,8 @@ let displayWarning = false
 function enemy(){
     let spritesheetEnemy = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
     enemy = new Sprite(spritesheetEnemy,
-        (TILE_SIZE*TILE_SCALE)*10,
-        (TILE_SIZE*TILE_SCALE)*9,
+        (TILE)*10,
+        (TILE)*9,
         "enemy"
     )
 
@@ -79,33 +79,34 @@ function updateEnemy(pEnemy){
         warning.x = enemy.x + (7*TILE_SCALE)
         warning.y = enemy.y - (7*TILE_SCALE)
 
+        let distTarget = getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y)
+
         // NO TARGET
         if(pEnemy.target == null){
-            pEnemy.mustTeleport = false
             pEnemy.state = "IDLE"
 
-        // TARGET OU OF RANGE
-        } else if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) > pEnemy.range && pEnemy.target.type == "player"){
+        // TARGET OUT OF RANGE
+        } else if(distTarget > pEnemy.range && pEnemy.target.type == "player"){
+            displayWarning = false
             pEnemy.vx = 0
             pEnemy.vy = 0
             pEnemy.state = "IDLE"
-            pEnemy.mustTeleport = true
-            
-        // TARGET ON RANGE
-        } else if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) < 16*TILE_SCALE && pEnemy.target.type == "player"){
-            pEnemy.state = "HIT"
-            pEnemy.vx = 0
-            pEnemy.vy = 0
+            pEnemy.target = null
 
         // TARGET DETECTED
-        } else {
-            pEnemy.mustTeleport = false
+        } else if(distTarget < pEnemy.range && pEnemy.target.type == "player") {
 
             let angle = getAngle(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y)
             pEnemy.vx = pEnemy.speed * Math.cos(angle)
             pEnemy.vy = pEnemy.speed * Math.sin(angle)
+
+        // TARGET ON RANGE
+        } else if(distTarget < 16*TILE_SCALE && pEnemy.target.type == "player"){
+            pEnemy.state = "HIT"
+            pEnemy.vx = 0
+            pEnemy.vy = 0
+            break
         }
-        break
 
     case "HIT":
         if(getDist(pEnemy.x, pEnemy.y, pEnemy.target.x, pEnemy.target.y) > 16*TILE_SCALE && pEnemy.target.type == "player"){
@@ -123,17 +124,11 @@ function updateEnemy(pEnemy){
     case "IDLE":
         displayWarning = false
         pEnemy.soundAlertIsActive = false
-
+        
         let dist = getDist(pEnemy.x, pEnemy.y, player.x, player.y)
         if(dist < pEnemy.range){
             pEnemy.state = "ATTACK"
             pEnemy.target = player
-            pEnemy.mustTeleport = false
-
-        } else{
-            if(pEnemy.mustTeleport){
-                
-            }
         }
         break
 
@@ -208,8 +203,8 @@ function restartEnemy(){
     enemy.hitPoint = enemy.maxHitPoint
     enemy.isAlive = true
     enemy.soundKillIsActive = false
-    enemy.x = (TILE_SIZE*TILE_SCALE)*10
-    enemy.y = (TILE_SIZE*TILE_SCALE)*9
+    enemy.x = (TILE)*10
+    enemy.y = (TILE)*9
     enemy.animationType = "IDLE_DOWN"
     setEnemy()
     enemy.movement = "MOVEMENT_DOWN"

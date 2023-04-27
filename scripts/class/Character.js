@@ -49,7 +49,7 @@ class Character {
         }
     }
 
-    velocity(pCharacter, dt){
+    move(pCharacter, dt){
         pCharacter.x += pCharacter.vx*dt
         pCharacter.y += pCharacter.vy*dt
     }
@@ -97,11 +97,11 @@ class Character {
         }
     }
 
-    detectionArea(){
-
+    detectionArea(pCharacter){
+        pCharacter
     }
 
-    getTargetsOnRange(pListCharacter, pRange){
+    inHitDist(pListCharacter, pRange){
 
         let targetTab = []
 

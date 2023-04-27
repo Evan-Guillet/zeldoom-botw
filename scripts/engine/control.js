@@ -6,11 +6,6 @@ let spaceKey = false    // ATTACK
 let aKey = false        // SPECIAL 1
 let sKey = false        // SPECIAL 2
 
-let isLockDown = true
-let isLockUp = true
-let isLockLeft = true
-let isLockRight = true
-
 let isActiveDown = false
 let isActiveUp = false
 let isActiveLeft = false
@@ -339,60 +334,40 @@ function move(dt){
 function moveDown(){
     if(isActiveDown){
         if(collideDown(player) == 0){
-            isLockDown = false
-
-            if(!isLockDown){
-                downKey = true
-            }
+            downKey = true
         }
         if(collideDown(player) == 1){
             downKey = false
-            isLockDown = true
         }
     }
 }
 function moveUp(){
     if(isActiveUp){
         if(collideUp(player) == 0){
-            isLockUp = false
-
-            if(!isLockUp){
-                upKey = true
-            }
+            upKey = true
         }
         if(collideUp(player) == 1){
             upKey = false
-            isLockUp = true
         }
     }
 }
 function moveLeft(){
     if(isActiveLeft){
         if(collideLeft(player) == 0){
-            isLockLeft = false
-
-            if(!isLockLeft){
-                leftKey = true
-            }
+            leftKey = true
         }
         if(collideLeft(player) == 1){
             leftKey = false
-            isLockLeft = true
         }
     }
 }
 function moveRight(){
     if(isActiveRight){
         if(collideRight(player) == 0){
-            isLockRight = false
-
-            if(!isLockRight){
-                rightKey = true
-            }
+            rightKey = true
         }
         if(collideRight(player) == 1){
             rightKey = false
-            isLockRight = true
         }
     }
 }

@@ -4,8 +4,8 @@ function hearts(){
     hearts.setTileSheet(80, 16)
     hearts.setScale(4, 4)
 
-    hearts.x = (TILE_SIZE*TILE_SCALE)*0.25
-    hearts.y = (TILE_SIZE*TILE_SCALE)*0.25
+    hearts.x = (TILE)*0.25
+    hearts.y = (TILE)*0.25
 
     setHearts()
 }

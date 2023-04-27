@@ -6,6 +6,8 @@ let listCharacter = []
 const TILE_SIZE = 16
 const TILE_SCALE = 4
 
+const TILE = TILE_SIZE*TILE_SCALE
+
 function load(){
     // retrieves the activated and released keys
     document.addEventListener("keydown", keyDown, false)
@@ -131,5 +133,3 @@ function draw(pCtx){
 
     hearts.draw(pCtx)
 }
-
-

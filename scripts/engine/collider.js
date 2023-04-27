@@ -19,8 +19,8 @@ const map = [
 
 function getTileAt(pX, pY){
 
-    let column = Math.floor(pX/(TILE_SIZE*TILE_SCALE)) + 1
-    let line = Math.floor(pY/(TILE_SIZE*TILE_SCALE)) + 1
+    let column = Math.floor(pX/(TILE)) + 1
+    let line = Math.floor(pY/(TILE)) + 1
 
     if((column > 0) && (column < map[0].length) && (line > 0) && (line <= map.length)){
         let idCase = map[line][column]
