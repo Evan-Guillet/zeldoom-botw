@@ -101,26 +101,21 @@ class Character {
         pCharacter
     }
 
-    inHitRange(pCharacter, pListCharacter){
+    inHitRange(pCharacter, pTarget){
 
-        let targetTab = []
+        let distTarget = getDist(pCharacter.x, pCharacter.y, pTarget.x, pTarget.y)
 
-        pListCharacter.forEach(target => {
-            let distTarget = getDist(pCharacter.x, pCharacter.y, target.x, target.y)
-
-            if(distTarget < pCharacter.rangeHit){
-                if(target.type != pCharacter.type){
-                    targetTab.push(target)
-                }
+        if(distTarget < pCharacter.rangeHit){
+            if(pTarget.type != pCharacter.type){
+                return true
             }
-        })
-        return targetTab
+        }
+
+        return false
     }
 
-    hit(pCharacter, pTargetTab){
-        pTargetTab.forEach(target => {
-            target.hitPoint -= pCharacter.damagePerSecond
-        })
+    hit(pCharacter, pTarget){
+        pTarget.hitPoint -= pCharacter.damagePerSecond
     }
 
     isDead(pCharacter){
@@ -136,7 +131,7 @@ class Character {
 
             } else if(pCharacter.type == "enemy"){
                 pCharacter.state = "DEAD"
-                setEnemy()
+                enemyManage.setAnimation(enemy)
             }
 
             return true

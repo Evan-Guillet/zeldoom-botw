@@ -28,12 +28,11 @@ function startPlayer(){
 
 function playerManager(){
 
+    if(playerManage.inHitRange(player, enemy)){
+        playerManage.hit(player, enemy)
+    }
+
     playerManage.isDead(player)
-
-    let targetTab = []
-    targetTab.push(playerManage.inHitRange(player, listCharacter))
-
-    playerManage.hit(player, targetTab)
 }
 
 

@@ -20,6 +20,7 @@ function enemy(){
     enemy.range = 200
     enemy.rangeHit = TILE
     enemy.target = null
+    enemy.damagePerSecond = 0.1
 
     enemy.movement = "DOWN"
     enemy.state = "NONE"
@@ -36,10 +37,9 @@ function enemyManager(dt){
 
     enemyManage.move(enemy, dt)
 
-    let targetTab = []
-    targetTab.push(enemyManage.inHitRange(enemy, listCharacter))
-
-    enemyManage.hit(enemy, targetTab)
+    if(enemyManage.inHitRange(enemy, player)){
+        enemyManage.hit(enemy, player)
+    }
 
     enemyManage.isDead(enemy)
 }
@@ -101,7 +101,8 @@ function enemyStateMachine(pEnemy){
             pEnemy.state = "ATTACK"
 
         } else if(pEnemy.target.hitPoint != null){
-            Hurt(pEnemy.target)
+            enemyManage.hit(pEnemy, pEnemy.target)
+            //Hurt(pEnemy.target)
 
         } else if(pEnemy.target.hitPoint <= 0){
             pEnemy.state = "IDLE"
@@ -203,7 +204,7 @@ function whatDirection(){
         enemyManage.setAnimation(enemy)
     }
 }
-
+/*
 function Hurt(pTarget){
     pTarget.hitPoint -= 0.1
 }
