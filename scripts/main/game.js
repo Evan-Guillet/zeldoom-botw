@@ -1,11 +1,10 @@
 let playerManage = new Character()
+let enemyManage = new Character()
 
 let imageLoader = new ImageLoader()
 let gameReady = false
 let listMap = []
 let listCharacter = []
-
-
 
 const TILE_SIZE = 16
 const TILE_SCALE = 4
@@ -66,8 +65,10 @@ function update(dt){
     })
 
     playerManager()
+    enemyManager(dt)
 
     soundBox()
+    howManyHearts()
 
     move(dt)
     moveDown()
@@ -75,16 +76,8 @@ function update(dt){
     moveLeft()
     moveRight()
 
-    //playerIsDead()
-    //canHit()
-    howManyHearts()
-
-    updateEnemy(enemy)
-    velocityEnemy(dt)
+    enemyStateMachine(enemy)
     whatDirection()
-    enemyIsDead()
-
-    
 }
 
 function draw(pCtx){

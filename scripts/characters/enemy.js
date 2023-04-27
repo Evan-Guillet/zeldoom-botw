@@ -8,58 +8,43 @@ function enemy(){
         "enemy"
     )
 
+    enemy.spawnX = (TILE)*10
+    enemy.spawnY = (TILE)*9
     enemy.maxHitPoint = 50
     enemy.hitPoint = 50
     enemy.isAlive = true
-    enemy.soundKillIsActive = false
-    enemy.soundAlertIsActive = false
-
-    enemy.setTileSheet(16, 16)
-    enemy.setScale(4, 4)
-
     enemy.vx = 0
     enemy.vy = 0
 
     enemy.speed = 50
     enemy.range = 200
+    enemy.rangeHit = TILE
     enemy.target = null
-    enemy.mustTeleport = false
 
     enemy.movement = "DOWN"
-
     enemy.state = "NONE"
-
     enemy.isVisible = true
 
-    setEnemy()
+    enemy.setTileSheet(16, 16)
+    enemy.setScale(4, 4)
+
+    enemyManage.setAnimation(enemy)
     listCharacter.push(enemy)
 }
 
-function setEnemy(){
-    
-    enemy.addAnimation("IDLE_DOWN", [0], 0.25)
-    enemy.addAnimation("WALK_DOWN", [0, 4, 8, 12], 0.25)
+function enemyManager(dt){
 
-    enemy.addAnimation("IDLE_UP", [1], 0.25)
-    enemy.addAnimation("WALK_UP", [1, 5, 9, 13], 0.25)
+    enemyManage.move(enemy, dt)
 
-    enemy.addAnimation("IDLE_LEFT", [2], 0.25)
-    enemy.addAnimation("WALK_LEFT", [2, 6, 10, 14], 0.25)
+    let targetTab = []
+    targetTab.push(enemyManage.inHitRange(enemy, listCharacter))
 
-    enemy.addAnimation("IDLE_RIGHT", [3], 0.25)
-    enemy.addAnimation("WALK_RIGHT", [3, 7, 11, 15], 0.25)
+    enemyManage.hit(enemy, targetTab)
 
-    enemy.addAnimation("DEAD", [16], 0.25)
-
-    enemy.startAnimation(enemy.animationType)
+    enemyManage.isDead(enemy)
 }
 
-function velocityEnemy(dt){
-    enemy.x += enemy.vx*dt
-    enemy.y += enemy.vy*dt
-}
-
-function updateEnemy(pEnemy){
+function enemyStateMachine(pEnemy){
 
     switch (pEnemy.state){
 
@@ -144,47 +129,78 @@ function updateEnemy(pEnemy){
     }
 }
 
+
+
+
+/*
+function enemyManage.setAnimation(enemy){
+    
+    enemy.addAnimation("IDLE_DOWN", [0], 0.25)
+    enemy.addAnimation("WALK_DOWN", [0, 4, 8, 12], 0.25)
+
+    enemy.addAnimation("IDLE_UP", [1], 0.25)
+    enemy.addAnimation("WALK_UP", [1, 5, 9, 13], 0.25)
+
+    enemy.addAnimation("IDLE_LEFT", [2], 0.25)
+    enemy.addAnimation("WALK_LEFT", [2, 6, 10, 14], 0.25)
+
+    enemy.addAnimation("IDLE_RIGHT", [3], 0.25)
+    enemy.addAnimation("WALK_RIGHT", [3, 7, 11, 15], 0.25)
+
+    enemy.addAnimation("DEAD", [16], 0.25)
+
+    enemy.startAnimation(enemy.animationType)
+}
+
+function velocityEnemy(dt){
+    enemy.x += enemy.vx*dt
+    enemy.y += enemy.vy*dt
+}
+*/
+
+
+
 function whatDirection(){
 
     if(enemy.vx == 0 && enemy.vy == 0){
 
         if(enemy.movement == "DOWN"){
             enemy.animationType = "IDLE_DOWN"
-            setEnemy()
+            enemyManage.setAnimation(enemy)
 
         } else if(enemy.movement == "UP"){
             enemy.animationType = "IDLE_UP"
-            setEnemy()
+            enemyManage.setAnimation(enemy)
 
         } else if(enemy.movement == "LEFT"){
             enemy.animationType = "IDLE_LEFT"
-            setEnemy()
+            enemyManage.setAnimation(enemy)
 
         } else if(enemy.movement == "RIGHT"){
             enemy.animationType = "IDLE_RIGHT"
-            setEnemy()
+            enemyManage.setAnimation(enemy)
         }
     }
 
     if(enemy.vy > 0 && Math.abs(enemy.vy) > Math.abs(enemy.vx)){
         enemy.animationType = "WALK_DOWN"
         enemy.movement = "DOWN"
-        setEnemy()
+        enemyManage.setAnimation(enemy)
     }
     if(enemy.vy < 0 && Math.abs(enemy.vy) > Math.abs(enemy.vx)){
         enemy.animationType = "WALK_UP"
         enemy.movement = "UP"
-        setEnemy()
+        enemyManage.setAnimation(enemy)
     }
     if(enemy.vx < 0 && Math.abs(enemy.vx) > Math.abs(enemy.vy)){
         enemy.animationType = "WALK_LEFT"
         enemy.movement = "LEFT"
-        setEnemy()
+        enemyManage.setAnimation(enemy)
     }
     if(enemy.vx > 0 && Math.abs(enemy.vx) > Math.abs(enemy.vy)){
         enemy.animationType = "WALK_RIGHT"
         enemy.movement = "RIGHT"
-        setEnemy()
+        enemyManage.setAnimation(enemy)
     }
 }
 
@@ -192,25 +208,28 @@ function Hurt(pTarget){
     pTarget.hitPoint -= 0.1
 }
 
+/*
 function enemyIsDead(){
     if(enemy.hitPoint <= 0){
         enemy.hitPoint = 0
         enemy.state = "DEAD"
         enemy.animationType = "DEAD"
-        setEnemy()
+        enemyManage.setAnimation(enemy)
     }
 }
+
 
 function restartEnemy(){
     enemy.isAlive = true
     enemy.hitPoint = enemy.maxHitPoint
-    enemy.isAlive = true
-    enemy.soundKillIsActive = false
     enemy.x = (TILE)*10
     enemy.y = (TILE)*9
+
     enemy.animationType = "IDLE_DOWN"
-    setEnemy()
     enemy.movement = "MOVEMENT_DOWN"
     enemy.firstAttack = "IDLE_DOWN"
+
+    enemyManage.setAnimation(enemy)
     enemy.isVisible = true
 }
+*/

@@ -262,7 +262,7 @@ function keyDown(k){
          // ==============| RESTART |===============
          if(k.code == "Space"){
             playerManage.restore(player)
-            restartEnemy()
+            enemyManage.restore(enemy)
         }
     }
     

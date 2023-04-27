@@ -101,15 +101,17 @@ class Character {
         pCharacter
     }
 
-    inHitDist(pListCharacter, pRange){
+    inHitRange(pCharacter, pListCharacter){
 
         let targetTab = []
 
-        pListCharacter.forEach(character => {
-            if((character.type == "enemy") &&
-                (getDist(player.x, player.y, character.x, character.y) < pRange)){
-                
-                targetTab.push(character)
+        pListCharacter.forEach(target => {
+            let distTarget = getDist(pCharacter.x, pCharacter.y, target.x, target.y)
+
+            if(distTarget < pCharacter.rangeHit){
+                if(target.type != pCharacter.type){
+                    targetTab.push(target)
+                }
             }
         })
         return targetTab
@@ -157,7 +159,8 @@ class Character {
             playerManage.setAnimation(player)
 
         } else if(pCharacter.type == "enemy"){
-            
+            enemyManage.setAnimation(enemy)
+            pCharacter.isVisible = true
         }
     }
 

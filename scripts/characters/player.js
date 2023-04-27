@@ -11,6 +11,7 @@ function startPlayer(){
     player.maxHitPoint = 100
     player.hitPoint = player.maxHitPoint
     player.damagePerSecond = 10
+    player.rangeHit = TILE
     player.isAlive = true
     
     let spriteBlood = imageLoader.getImage("/asset/graphics/fx/blood.png")
@@ -30,7 +31,7 @@ function playerManager(){
     playerManage.isDead(player)
 
     let targetTab = []
-    targetTab.push(playerManage.inHitDist(listCharacter, TILE))
+    targetTab.push(playerManage.inHitRange(player, listCharacter))
 
     playerManage.hit(player, targetTab)
 }
@@ -68,9 +69,7 @@ function setPlayer(){
 
     player.startAnimation(player.animationType)
 }
-*/
 
-/*
 function canHit(){
     if(getDist(player.x, player.y, enemy.x, enemy.y) < TILE && spaceKey){
         enemy.hitPoint -= 10
@@ -96,7 +95,7 @@ function playerIsDead(){
         }
     }
 }
-*/
+
 
 function restartPlayer(){
     player.isAlive = true
@@ -111,3 +110,4 @@ function restartPlayer(){
     player.movement = "MOVEMENT_DOWN"
     player.firstAttack = "IDLE_DOWN"
 }
+*/
