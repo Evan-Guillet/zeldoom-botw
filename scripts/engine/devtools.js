@@ -85,6 +85,7 @@ function dtHotspots(pCtx){
         pCtx.fillRect(player.x + (15*TILE_SCALE), player.y + (15*TILE_SCALE), 2, 2)
     }
 }
+
 function dtKeyboard(k){
     if(k.code == "KeyG"){
         if(!displayGrid){

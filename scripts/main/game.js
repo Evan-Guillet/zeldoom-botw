@@ -3,7 +3,7 @@ let enemyManage = new Character()
 
 let imageLoader = new ImageLoader()
 let gameReady = false
-let listMap = []
+let lismap = []
 let listCharacter = []
 
 const TILE_SIZE = 16
@@ -20,9 +20,10 @@ function load(){
     imageLoader.add("/asset/graphics/Actor/Monsters/Owl.png")
     imageLoader.add("/asset/graphics/map/map.png")
     imageLoader.add("/asset/graphics/map/grid.png")
-    imageLoader.add("/asset/graphics/hud/warning.png")
+    imageLoader.add("/asset/graphics/hud/alerte.png")
     imageLoader.add("/asset/graphics/fx/blood.png")
     imageLoader.add("/asset/graphics/hud/heart.png")
+    imageLoader.add("/asset/graphics/actor/characters/shadow.png")
 
     imageLoader.start(startGame)
 
@@ -31,13 +32,10 @@ function load(){
 
 function startGame(){
 
-    listMap = []
-
-    let map = imageLoader.getImage("/asset/graphics/map/map.png")
-    level = new Sprite(map)
-    level.setTileSheet(224, 224)
-    level.setScale(4, 4)
-    listMap.push(level)
+    let mapSpirte = imageLoader.getImage("/asset/graphics/map/map.png")
+    map = new Sprite(mapSpirte)
+    map.setTileSheet(224, 224)
+    map.setScale(4, 4)
 
     dtGridHelp()
 
@@ -45,11 +43,6 @@ function startGame(){
 
     startPlayer()
     startEnemy()
-
-    let spriteWarning = imageLoader.getImage("/asset/graphics/hud/warning.png")
-    warning = new Sprite(spriteWarning)
-    warning.setTileSheet(16, 16)
-    warning.setScale(4, 4)
 
     hearts()
 
@@ -67,7 +60,7 @@ function update(dt){
     playerManager()
     enemyManager(dt)
 
-    soundBox()
+    enemyStateMachine(enemy)
     howManyHearts()
 
     move(dt)
@@ -75,8 +68,6 @@ function update(dt){
     moveUp()
     moveLeft()
     moveRight()
-
-    enemyStateMachine(enemy)
 }
 
 function draw(pCtx){
@@ -84,50 +75,34 @@ function draw(pCtx){
     if(!gameReady){return}
 
     // display map
-    listMap.forEach(sprite => {
-        sprite.draw(pCtx)
-    })
+    map.draw(pCtx)
 
     // DEVTOOLS
     dtDisplayGrid(pCtx)
     dtDisplayRange(pCtx, enemy)
     dtHotspots(pCtx)
 
-    // display blood player
-    if(playerManage.isDead(player)){
-        pCtx.globalAlpha = 1
-        pCtx.fillStyle = "black"
-        pCtx.fillRect(0, 0, canvas.width, canvas.height)
-        pCtx.globalAlpha = 1
+    gameOverScreen(pCtx)
 
-        pCtx.font = "bold 75px 'ninjaadventureregular', cursive"
-        pCtx.textAlign = "center"
-        pCtx.fillStyle = "red"
-        pCtx.fillText("YOU    DIED", canvas.width/2, canvas.height/2)
-
-        pCtx.font = "bold 25px 'ninjaadventureregular', cursive"
-        pCtx.fillStyle = "white"
-        pCtx.fillText("Press      'SPACE'", canvas.width/2, canvas.height/2+50)
-        
-        player.blood.x = player.x - (TILE_SIZE/2)*TILE_SCALE
-        player.blood.y = player.y - (TILE_SIZE/2)*TILE_SCALE
-        player.blood.draw(pCtx)
+    // display blood
+    if(!enemy.isAlive){
+        enemy.blood.draw(pCtx)
     }
 
     // display character
     listCharacter.forEach(character => {
         if(character.type == "enemy" && player.isAlive){
+            enemy.shadow.draw(pCtx)
             character.draw(pCtx)
-            if(displayWarning){
-                warning.draw(pCtx)
-            }
 
         } else if(character.type == "player"){
             character.draw(pCtx)
         }
     })
 
-    
+    if(enemyManage.detectionArea(enemy, player)){
+        enemy.alerte.draw(pCtx)
+    }
 
     hearts.draw(pCtx)
 }

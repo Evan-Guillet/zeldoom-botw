@@ -65,66 +65,58 @@ class Character {
             entityManager = enemyManage
         }
 
-        console.log("0")
         if(pCharacter.vx == 0 && pCharacter.vy == 0){
-            console.log("1")
 
             if(pCharacter.movement == "DOWN"){
-                console.log("1.1")
                 pCharacter.animationType = "IDLE_DOWN"
                 entityManager.setAnimation(pCharacter)
     
             } else if(pCharacter.movement == "UP"){
-                console.log("1.2")
                 pCharacter.animationType = "IDLE_UP"
                 entityManager.setAnimation(pCharacter)
     
             } else if(pCharacter.movement == "LEFT"){
-                console.log("1.3")
                 pCharacter.animationType = "IDLE_LEFT"
                 entityManager.setAnimation(pCharacter)
     
             } else if(pCharacter.movement == "RIGHT"){
-                console.log("1.4")
                 pCharacter.animationType = "IDLE_RIGHT"
                 entityManager.setAnimation(pCharacter)
             }
         }
     
         if(pCharacter.vy > 0 && Math.abs(pCharacter.vy) > Math.abs(pCharacter.vx)){
-            console.log("2.1")
             pCharacter.animationType = "WALK_DOWN"
             pCharacter.movement = "DOWN"
             entityManager.setAnimation(pCharacter)
         }
         if(pCharacter.vy < 0 && Math.abs(pCharacter.vy) > Math.abs(pCharacter.vx)){
-            console.log("2.2")
             pCharacter.animationType = "WALK_UP"
             pCharacter.movement = "UP"
             entityManager.setAnimation(pCharacter)
         }
         if(pCharacter.vx < 0 && Math.abs(pCharacter.vx) > Math.abs(pCharacter.vy)){
-            console.log("2.3")
             pCharacter.animationType = "WALK_LEFT"
             pCharacter.movement = "LEFT"
             entityManager.setAnimation(pCharacter)
         }
         if(pCharacter.vx > 0 && Math.abs(pCharacter.vx) > Math.abs(pCharacter.vy)){
-            console.log("2.4")
             pCharacter.animationType = "WALK_RIGHT"
             pCharacter.movement = "RIGHT"
             entityManager.setAnimation(pCharacter)
         }
     }
 
-    /*
-    detectionArea(pCharacter){
-        pCharacter
+    detectionArea(pCharacter, pTarget){
+        let dist = getDist(pCharacter.x, pCharacter.y, pTarget.x, pTarget.y)
+
+        if(dist < pCharacter.range){
+            return true
+        }
+        return false
     }
-    */
 
     inHitRange(pCharacter, pTarget){
-
         let distTarget = getDist(pCharacter.x, pCharacter.y, pTarget.x, pTarget.y)
 
         if(distTarget < pCharacter.rangeHit){
@@ -142,6 +134,9 @@ class Character {
 
     isDead(pCharacter){
         if(pCharacter.hitPoint <= 0){
+
+            if(pCharacter.isAlive){killSound.play()}
+
             pCharacter.hitPoint = 0
             pCharacter.isAlive = false
             pCharacter.vx = 0
@@ -154,6 +149,9 @@ class Character {
             } else if(pCharacter.type == "enemy"){
                 pCharacter.state = "DEAD"
                 enemyManage.setAnimation(enemy)
+                enemy.blood.x = enemy.x - (TILE_SIZE/2)*TILE_SCALE
+                enemy.blood.y = enemy.y - (TILE_SIZE/2)*TILE_SCALE
+                firstAlerteSound = true
             }
 
             return true
@@ -177,7 +175,6 @@ class Character {
 
         } else if(pCharacter.type == "enemy"){
             enemyManage.setAnimation(enemy)
-            pCharacter.isVisible = true
             pCharacter.state = "IDLE"
         }
     }

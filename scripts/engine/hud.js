@@ -123,3 +123,30 @@ function howManyHearts() {
         setHearts()
     }
 }
+
+function gameOverScreen(pCtx){
+    if(playerManage.isDead(player)){
+
+        // black background
+        pCtx.globalAlpha = 1
+        pCtx.fillStyle = "black"
+        pCtx.fillRect(0, 0, canvas.width, canvas.height)
+        pCtx.globalAlpha = 1
+
+        // title
+        pCtx.font = "bold 75px 'ninjaadventureregular', cursive"
+        pCtx.textAlign = "center"
+        pCtx.fillStyle = "red"
+        pCtx.fillText("YOU    DIED", canvas.width/2, canvas.height/2)
+
+        // button
+        pCtx.font = "bold 25px 'ninjaadventureregular', cursive"
+        pCtx.fillStyle = "white"
+        pCtx.fillText("Press      'SPACE'", canvas.width/2, canvas.height/2+50)
+        
+        // display blood
+        player.blood.x = player.x - (TILE_SIZE/2)*TILE_SCALE
+        player.blood.y = player.y - (TILE_SIZE/2)*TILE_SCALE
+        player.blood.draw(pCtx)
+    }
+}
