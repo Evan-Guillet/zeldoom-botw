@@ -106,7 +106,7 @@ class Character {
             entityManager.setAnimation(pCharacter)
         }
     }
-
+    
     detectionArea(pCharacter, pTarget){
         let dist = getDist(pCharacter.x, pCharacter.y, pTarget.x, pTarget.y)
 
@@ -176,18 +176,6 @@ class Character {
         } else if(pCharacter.type == "enemy"){
             enemyManage.setAnimation(enemy)
             pCharacter.state = "IDLE"
-        }
-    }
-
-    soundBox(pSound){
-        switch (pSound) {
-            case "kill":
-                killSound.play()
-                break
-            
-            case "alert":
-                alertSound.play()
-                break
         }
     }
 }

@@ -64,10 +64,12 @@ function update(dt){
     howManyHearts()
 
     move(dt)
+    
     moveDown()
     moveUp()
     moveLeft()
     moveRight()
+    
 }
 
 function draw(pCtx){

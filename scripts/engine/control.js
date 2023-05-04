@@ -6,10 +6,10 @@ let spaceKey = false    // ATTACK
 let aKey = false        // SPECIAL 1
 let sKey = false        // SPECIAL 2
 
-let isActiveDown = false
-let isActiveUp = false
-let isActiveLeft = false
-let isActiveRight = false
+let isActiveDown = ""
+let isActiveUp = ""
+let isActiveLeft = ""
+let isActiveRight = ""
 
 let displayGrid = false
 let displayHotspots = false
@@ -22,42 +22,42 @@ function keyDown(k){
         // ===============| MOVEMENT |===============
         if(k.code == "KeyS"){
 
-            isActiveDown = true
-            moveDown()
-
             player.animationType = "WALK_DOWN"
             player.movement = "MOVEMENT_DOWN"
             player.firstAttack = ""
+
+            isActiveDown = "KeyS"
+            moveDown()
             playerManage.setAnimation(player)
         }
         if(k.code == "KeyW"){
 
-            isActiveUp = true
-            moveUp()
-
             player.animationType = "WALK_UP"
             player.movement = "MOVEMENT_UP"
             player.firstAttack = ""
+
+            isActiveUp = "KeyW"
+            moveUp()
             playerManage.setAnimation(player)
         }
         if(k.code == "KeyA"){
-
-            isActiveLeft = true
-            moveLeft()
             
             player.animationType = "WALK_LEFT"
             player.movement = "MOVEMENT_LEFT"
             player.firstAttack = ""
+
+            isActiveLeft = "KeyA"
+            moveLeft()
             playerManage.setAnimation(player)
         }
         if(k.code == "KeyD"){
-
-            isActiveRight = true
-            moveRight()
             
             player.animationType = "WALK_RIGHT"
             player.movement = "MOVEMENT_RIGHT"
             player.firstAttack = ""
+
+            isActiveRight = "KeyD"
+            moveRight()
             playerManage.setAnimation(player)
         }
 
