@@ -10,7 +10,7 @@ function startPlayer(){
     player.spawnY = (TILE)*9
     player.maxHitPoint = 100
     player.hitPoint = player.maxHitPoint
-    player.damagePerSecond = 10
+    player.damagePerSecond = 1
     player.rangeHit = TILE
     player.isAlive = true
     

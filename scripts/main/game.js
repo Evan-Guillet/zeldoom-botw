@@ -1,9 +1,10 @@
 let playerManage = new Character()
 let enemyManage = new Character()
 
+let inventory = new Inventory()
+
 let imageLoader = new ImageLoader()
 let gameReady = false
-let lismap = []
 let listCharacter = []
 
 const TILE_SIZE = 16
@@ -24,6 +25,7 @@ function load(){
     imageLoader.add("/asset/graphics/fx/blood.png")
     imageLoader.add("/asset/graphics/hud/heart.png")
     imageLoader.add("/asset/graphics/actor/characters/shadow.png")
+    imageLoader.add("/asset/graphics/Items/weapons/sword_2/sprite_sheet_in_hand.png")
 
     imageLoader.start(startGame)
 
@@ -46,6 +48,11 @@ function startGame(){
 
     hearts()
 
+    let swordSprite = "/asset/graphics/Items/weapons/sword_2/sprite_sheet_in_hand.png"
+    inventory.createItem("sword", swordSprite, 10, 1)
+
+    console.log(inventory.inventory)
+
     gameReady = true
 }
 
@@ -64,7 +71,6 @@ function update(dt){
     howManyHearts()
 
     move(dt)
-    
     moveDown()
     moveUp()
     moveLeft()
