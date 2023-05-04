@@ -18,7 +18,7 @@ let displayState = false
 function keyDown(k){
     k.preventDefault()
 
-    if(player.isAlive){
+    if(player.isAlive && gameReady){
         // ===============| MOVEMENT |===============
         if(k.code == "KeyS"){
 
@@ -258,14 +258,20 @@ function keyDown(k){
             }, 750)
         }
 
-    } else {
-         // ==============| RESTART |===============
-         if(k.code == "Space"){
+    // ==============| RESTART |===============
+    } else if(!player.isAlive && gameReady){
+        if(k.code == "Space"){
             playerManage.restore(player)
             enemyManage.restore(enemy)
         }
+
+    // ==============| START |===============
+    } else if(player.isAlive && !gameReady){
+        if(k.code == "Space"){
+            gameReady = true
+        }
     }
-    
+
     // ===============| DEVTOOLS |===============
     dtKeyboard(k)
 }

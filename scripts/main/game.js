@@ -50,10 +50,6 @@ function startGame(){
 
     let swordSprite = "/asset/graphics/Items/weapons/sword_2/sprite_sheet_in_hand.png"
     inventory.createItem("sword", swordSprite, 10, 1)
-
-    console.log(inventory.inventory)
-
-    gameReady = true
 }
 
 function update(dt){
@@ -80,7 +76,10 @@ function update(dt){
 
 function draw(pCtx){
 
-    if(!gameReady){return}
+    if(!gameReady){
+        startScreen(pCtx)
+        return
+    }
 
     // display map
     map.draw(pCtx)
