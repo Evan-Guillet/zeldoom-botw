@@ -1,8 +1,6 @@
 let playerManage = new Character()
 let enemyManage = new Character()
 
-let inventory = new Inventory()
-
 let imageLoader = new ImageLoader()
 let gameReady = false
 let listCharacter = []
@@ -17,6 +15,9 @@ function load(){
     document.addEventListener("keydown", keyDown, false)
     document.addEventListener("keyup", keyUp, false)
 
+    // detects the click of the mouse
+    document.addEventListener("click", click, false)
+
     imageLoader.add("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
     imageLoader.add("/asset/graphics/Actor/Monsters/Owl.png")
     imageLoader.add("/asset/graphics/map/map.png")
@@ -25,7 +26,8 @@ function load(){
     imageLoader.add("/asset/graphics/fx/blood.png")
     imageLoader.add("/asset/graphics/hud/heart.png")
     imageLoader.add("/asset/graphics/actor/characters/shadow.png")
-    imageLoader.add("/asset/graphics/Items/weapons/sword_2/sprite_sheet_in_hand.png")
+    imageLoader.add("/asset/graphics/hud/control.png")
+    imageLoader.add("/asset/graphics/hud/menu.png")
 
     imageLoader.start(startGame)
 
@@ -33,6 +35,16 @@ function load(){
 }
 
 function startGame(){
+
+    let menuSprite = imageLoader.getImage("/asset/graphics/hud/menu.png")
+    menu = new Sprite(menuSprite)
+    menu.setTileSheet(224, 224)
+    menu.setScale(4, 4)
+
+    let controlSprite = imageLoader.getImage("/asset/graphics/hud/control.png")
+    control = new Sprite(controlSprite)
+    control.setTileSheet(224, 224)
+    control.setScale(4, 4)
 
     let mapSpirte = imageLoader.getImage("/asset/graphics/map/map.png")
     map = new Sprite(mapSpirte)
@@ -47,9 +59,6 @@ function startGame(){
     startEnemy()
 
     hearts()
-
-    let swordSprite = "/asset/graphics/Items/weapons/sword_2/sprite_sheet_in_hand.png"
-    inventory.createItem("sword", swordSprite, 10, 1)
 }
 
 function update(dt){
@@ -71,7 +80,6 @@ function update(dt){
     moveUp()
     moveLeft()
     moveRight()
-    
 }
 
 function draw(pCtx){

@@ -125,28 +125,10 @@ function howManyHearts() {
 }
 
 function startScreen(pCtx){
-    // black background
-    pCtx.globalAlpha = 1
-    pCtx.fillStyle = "white"
-    pCtx.fillRect(0, 0, canvas.width, canvas.height)
-    pCtx.globalAlpha = 1
-
-    // title
-    pCtx.font = "bold 75px 'ninjaadventureregular', cursive"
-    pCtx.textAlign = "center"
-    pCtx.fillStyle = "black"
-    pCtx.fillText("PLAY", canvas.width/2, canvas.height/2)
-
-    // subtitle
-    pCtx.font = "bold 20px 'ninjaadventureregular', cursive"
-    pCtx.fillStyle = "grey"
-    pCtx.fillText("PRESS     SPACE", canvas.width/2, canvas.height/2+50)
-
-    // subtitle
-    pCtx.font = "bold 20px 'ninjaadventureregular', cursive"
-    pCtx.fillStyle = "black"
-    pCtx.fillText("ZQSD : movement", canvas.width/2, canvas.height/2+100)
-    pCtx.fillText("SPACE : attack", canvas.width/2, canvas.height/2+125)
+    menu.draw(pCtx)
+    if(displayControl){
+        control.draw(pCtx)
+    }
 }
 
 function gameOverScreen(pCtx){

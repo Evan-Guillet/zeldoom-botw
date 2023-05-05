@@ -15,6 +15,46 @@ let displayGrid = false
 let displayHotspots = false
 let displayState = false
 
+let displayControl = false
+
+function click(pClick){
+
+    if(!gameReady){
+        // ===============| PLAY GAME |===============
+        if((pClick.pageX >= 340) &&
+            (pClick.pageX <= 552) &&
+            (pClick.pageY >= 500) &&
+            (pClick.pageY <= 560)
+            ){
+
+            gameReady = true
+        }
+
+        // ===============| DISPLAY HELP CONTROL |===============
+        if((pClick.pageX >= 340) &&
+            (pClick.pageX <= 552) &&
+            (pClick.pageY >= 584) &&
+            (pClick.pageY <= 644)
+            ){
+
+            displayControl = true
+        }
+
+        // ===============| OUT HELP CONTROL |===============
+        if(displayControl){
+            if((pClick.pageX >= 40) &&
+                (pClick.pageX <= 200) &&
+                (pClick.pageY >= 40) &&
+                (pClick.pageY <= 60)
+                ){
+
+                displayControl = false
+            }
+        }
+        
+    }
+}
+
 function keyDown(k){
     k.preventDefault()
 
@@ -265,10 +305,9 @@ function keyDown(k){
             enemyManage.restore(enemy)
         }
 
-    // ==============| START |===============
-    } else if(player.isAlive && !gameReady){
-        if(k.code == "Space"){
-            gameReady = true
+    } else if(player.isAlive && !gameReady && displayControl){
+        if(k.code == "Escape"){
+            displayControl = false
         }
     }
 
