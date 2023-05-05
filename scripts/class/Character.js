@@ -178,4 +178,10 @@ class Character {
             pCharacter.state = "IDLE"
         }
     }
+
+    win(pTarget){
+        if(!pTarget.isAlive){
+            return true
+        }
+    }
 }

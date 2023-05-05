@@ -157,3 +157,7 @@ function gameOverScreen(pCtx){
         player.blood.draw(pCtx)
     }
 }
+
+function winScreen(pCtx){
+    win.draw(pCtx)
+}

@@ -28,6 +28,7 @@ function load(){
     imageLoader.add("/asset/graphics/actor/characters/shadow.png")
     imageLoader.add("/asset/graphics/hud/control.png")
     imageLoader.add("/asset/graphics/hud/menu.png")
+    imageLoader.add("/asset/graphics/hud/win.png")
 
     imageLoader.start(startGame)
 
@@ -45,6 +46,11 @@ function startGame(){
     control = new Sprite(controlSprite)
     control.setTileSheet(224, 224)
     control.setScale(4, 4)
+
+    let winSprite = imageLoader.getImage("/asset/graphics/hud/win.png")
+    win = new Sprite(winSprite)
+    win.setTileSheet(224, 224)
+    win.setScale(4, 4)
 
     let mapSpirte = imageLoader.getImage("/asset/graphics/map/map.png")
     map = new Sprite(mapSpirte)
@@ -115,9 +121,13 @@ function draw(pCtx){
         }
     })
 
-    if(enemyManage.detectionArea(enemy, player)){
+    if(enemyManage.detectionArea(enemy, player) && enemy.isAlive){
         enemy.alerte.draw(pCtx)
     }
 
     hearts.draw(pCtx)
+
+    if(playerManage.win(enemy)){
+        winScreen(pCtx)
+    }
 }

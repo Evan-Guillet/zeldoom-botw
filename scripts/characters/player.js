@@ -32,5 +32,5 @@ function playerManager(){
         playerManage.hit(player, enemy)
     }
 
-    playerManage.isDead(player)
+    playerManage.isDead(player, enemy)
 }
