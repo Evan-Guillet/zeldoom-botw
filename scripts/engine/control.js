@@ -28,6 +28,7 @@ function click(pClick){
             ){
 
             gameReady = true
+            acceptSound.play()
         }
 
         // ===============| DISPLAY HELP CONTROL |===============
@@ -38,6 +39,7 @@ function click(pClick){
             ){
 
             displayControl = true
+            acceptSound.play()
         }
 
         // ===============| OUT HELP CONTROL |===============
@@ -49,16 +51,49 @@ function click(pClick){
                 ){
 
                 displayControl = false
+                cancelSound.play()
             }
         }
-        
+
+    } else if(gameReady){
+        // ===============| OUT WIN SCREEN |===============
+        if(playerManage.win(enemy)){
+            if((pClick.pageX >= 40) &&
+                (pClick.pageX <= 200) &&
+                (pClick.pageY >= 40) &&
+                (pClick.pageY <= 60)
+                ){
+
+                gameReady = false
+                playerManage.restore(player)
+                enemyManage.restore(enemy)
+                firstWinSound = true
+                acceptSound.play()
+            }
+        }
+
+        // ===============| OUT GAMEOVER SCREEN |===============
+        if(playerManage.isDead(player)){
+            if((pClick.pageX >= 40) &&
+                (pClick.pageX <= 200) &&
+                (pClick.pageY >= 40) &&
+                (pClick.pageY <= 60)
+                ){
+
+                gameReady = false
+                playerManage.restore(player)
+                enemyManage.restore(enemy)
+                firstGameoverSound = true
+                acceptSound.play()
+            }
+        }
     }
 }
 
 function keyDown(k){
     k.preventDefault()
 
-    if(player.isAlive && gameReady){
+    if(player.isAlive && gameReady && !playerManage.win(enemy) && !playerManage.lose(player)){
         // ===============| MOVEMENT |===============
         if(k.code == "KeyS"){
 
@@ -299,15 +334,20 @@ function keyDown(k){
         }
 
     // ==============| RESTART |===============
-    } else if(!player.isAlive && gameReady){
-        if(k.code == "Space"){
-            playerManage.restore(player)
-            enemyManage.restore(enemy)
-        }
-
     } else if(player.isAlive && !gameReady && displayControl){
         if(k.code == "Escape"){
             displayControl = false
+            cancelSound.play()
+        }
+
+    } else if(player.isAlive && playerManage.win(enemy) || !player.isAlive && playerManage.lose(player)){
+        if(k.code == "Escape"){
+            gameReady = false
+            playerManage.restore(player)
+            enemyManage.restore(enemy)
+            acceptSound.play()
+            firstWinSound = true
+            firstGameoverSound = true
         }
     }
 

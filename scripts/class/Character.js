@@ -129,7 +129,10 @@ class Character {
     }
 
     hit(pCharacter, pTarget){
-        pTarget.hitPoint -= pCharacter.damagePerSecond
+        if(pTarget.isAlive){
+            pTarget.hitPoint -= pCharacter.damagePerSecond
+            hitSound.play()
+        }
     }
 
     isDead(pCharacter){
@@ -181,6 +184,12 @@ class Character {
 
     win(pTarget){
         if(!pTarget.isAlive){
+            return true
+        }
+    }
+
+    lose(pCharacter){
+        if(!pCharacter.isAlive){
             return true
         }
     }

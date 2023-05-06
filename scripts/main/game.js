@@ -29,6 +29,7 @@ function load(){
     imageLoader.add("/asset/graphics/hud/control.png")
     imageLoader.add("/asset/graphics/hud/menu.png")
     imageLoader.add("/asset/graphics/hud/win.png")
+    imageLoader.add("/asset/graphics/hud/lose.png")
 
     imageLoader.start(startGame)
 
@@ -51,6 +52,11 @@ function startGame(){
     win = new Sprite(winSprite)
     win.setTileSheet(224, 224)
     win.setScale(4, 4)
+
+    let loseSprite = imageLoader.getImage("/asset/graphics/hud/lose.png")
+    lose = new Sprite(loseSprite)
+    lose.setTileSheet(224, 224)
+    lose.setScale(4, 4)
 
     let mapSpirte = imageLoader.getImage("/asset/graphics/map/map.png")
     map = new Sprite(mapSpirte)
@@ -103,8 +109,6 @@ function draw(pCtx){
     dtDisplayRange(pCtx, enemy)
     dtHotspots(pCtx)
 
-    gameOverScreen(pCtx)
-
     // display blood
     if(!enemy.isAlive){
         enemy.blood.draw(pCtx)
@@ -116,7 +120,7 @@ function draw(pCtx){
             enemy.shadow.draw(pCtx)
             character.draw(pCtx)
 
-        } else if(character.type == "player"){
+        } else if(character.type == "player" && character.isAlive){
             character.draw(pCtx)
         }
     })
@@ -125,9 +129,15 @@ function draw(pCtx){
         enemy.alerte.draw(pCtx)
     }
 
-    hearts.draw(pCtx)
+    if(player.isAlive){
+        hearts.draw(pCtx)
+    }
 
     if(playerManage.win(enemy)){
         winScreen(pCtx)
+    }
+
+    if(playerManage.lose(player)){
+        gameOverScreen(pCtx)
     }
 }
