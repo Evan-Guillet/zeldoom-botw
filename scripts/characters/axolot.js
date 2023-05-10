@@ -67,6 +67,7 @@ function axolotStateMachine(pAxolot){
         if(axolotManage.detectionArea(pAxolot, player)){
             if(axolot.firstAlerteSound){
                 alertSound.play()
+                siuuuSound.play()
                 axolot.firstAlerteSound = false
             }
         }

@@ -147,7 +147,7 @@ class Character {
     isDead(pCharacter){
         if(pCharacter.hitPoint <= 0){
 
-            if(pCharacter.isAlive){killSound.play()}
+            if(pCharacter.isAlive){bonkSound.play()}
 
             pCharacter.hitPoint = 0
             pCharacter.isAlive = false

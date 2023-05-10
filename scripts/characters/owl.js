@@ -67,6 +67,7 @@ function owlStateMachine(powl){
         if(owlManage.detectionArea(powl, player)){
             if(owl.firstAlerteSound){
                 alertSound.play()
+                siuuuSound.play()
                 owl.firstAlerteSound = false
             }
         }

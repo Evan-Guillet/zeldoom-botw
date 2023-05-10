@@ -67,6 +67,7 @@ function skullStateMachine(pSkull){
         if(skullManage.detectionArea(pSkull, player)){
             if(skull.firstAlerteSound){
                 alertSound.play()
+                siuuuSound.play()
                 skull.firstAlerteSound = false
             }
         }

@@ -37,6 +37,7 @@ function load(){
     imageLoader.add("/asset/graphics/hud/win.png")
     imageLoader.add("/asset/graphics/hud/lose.png")
     imageLoader.add("/asset/graphics/hud/lose.png")
+    imageLoader.add("/asset/graphics/hud/plus_one_level.png")
 
     imageLoader.start(startGame)
 }
@@ -99,13 +100,7 @@ function update(dt){
     skullStateMachine(skull)
     howManyHearts()
 
-    if(player.isAlive && owl.isAlive && axolot.isAlive && racoon.isAlive && skull.isAlive){
-        backgroundMusic.play()
-
-    } else if(!player.isAlive || !owl.isAlive && !axolot.isAlive && !racoon.isAlive && !skull.isAlive){
-        backgroundMusic.pause()
-        backgroundMusic.currentTime = 0
-    }
+    //musicInBackground()
 
     move(dt)
     moveDown()

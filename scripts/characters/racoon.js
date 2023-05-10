@@ -67,6 +67,7 @@ function racoonStateMachine(pRacoon){
         if(racoonManage.detectionArea(pRacoon, player)){
             if(racoon.firstAlerteSound){
                 alertSound.play()
+                siuuuSound.play()
                 racoon.firstAlerteSound = false
             }
         }
