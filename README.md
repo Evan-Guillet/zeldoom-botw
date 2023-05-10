@@ -17,7 +17,7 @@ If development proceeds quickly, it will also be possible to save your game, rec
 
 
 
-# Controls ⌨ 🖱️
+# Controls ⌨
 | Key | Description |
 | :---: | :---: |
 | `ZQSD` | Move |
