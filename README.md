@@ -5,7 +5,7 @@ Zelda: BOTW is a Zelda-style adventure game where you roam a map full of hostile
 
 # How to run ⬇
 1. Download this repository `git clone https://github.com/Evan-Guillet/zeldoom-botw.git`
-2. Assurez-vous que [`LiveServer`](https://github.com/ritwickdey/vscode-live-server) de ritwickdey est installé. 
+2. Make sure that [`LiveServer`](https://github.com/ritwickdey/vscode-live-server) from ritwickdey is installed. 
 3. Launch `index.html` with LiveServer and enjoy!
 
 
