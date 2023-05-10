@@ -100,7 +100,7 @@ function update(dt){
     skullStateMachine(skull)
     howManyHearts()
 
-    //musicInBackground()
+    musicInBackground()
 
     move(dt)
     moveDown()
