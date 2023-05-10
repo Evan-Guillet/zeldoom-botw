@@ -1,5 +1,5 @@
 function startPlayer(){
-    let spritesheetDarkNinja = imageLoader.getImage("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
+    let spritesheetDarkNinja = imageLoader.getImage("/asset/graphics/actor/dark_ninja.png")
     player = new Sprite(spritesheetDarkNinja, 
         (TILE)*5,
         (TILE)*9,
@@ -14,7 +14,7 @@ function startPlayer(){
     player.rangeHit = TILE
     player.isAlive = true
 
-    let spriteShadow = imageLoader.getImage("/asset/graphics/actor/characters/shadow.png")
+    let spriteShadow = imageLoader.getImage("/asset/graphics/actor/shadow.png")
     player.shadow = new Sprite(spriteShadow)
     player.shadow.setTileSheet(32, 32)
     player.shadow.setScale(4, 4)

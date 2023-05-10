@@ -1,5 +1,5 @@
 function startAxolot(){
-    let spritesheetAxolot = imageLoader.getImage("/asset/graphics/Actor/Monsters/axolot_blue/sprite_sheet.png")
+    let spritesheetAxolot = imageLoader.getImage("/asset/graphics/actor/axolot.png")
     axolot = new Sprite(spritesheetAxolot,
         (TILE)*1,
         (TILE)*1,
@@ -30,7 +30,7 @@ function startAxolot(){
     axolot.alerte.setTileSheet(16, 16)
     axolot.alerte.setScale(4, 4)
 
-    let spriteShadow = imageLoader.getImage("/asset/graphics/actor/characters/shadow.png")
+    let spriteShadow = imageLoader.getImage("/asset/graphics/actor/shadow.png")
     axolot.shadow = new Sprite(spriteShadow)
     axolot.shadow.setTileSheet(32, 32)
     axolot.shadow.setScale(4, 4)

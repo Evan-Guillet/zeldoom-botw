@@ -1,5 +1,5 @@
 function startRacoon(){
-    let spritesheetRacoon = imageLoader.getImage("/asset/graphics/Actor/Monsters/racoon/sprite_sheet.png")
+    let spritesheetRacoon = imageLoader.getImage("/asset/graphics/actor/racoon.png")
     racoon = new Sprite(spritesheetRacoon,
         (TILE)*1,
         (TILE)*13,
@@ -30,7 +30,7 @@ function startRacoon(){
     racoon.alerte.setTileSheet(16, 16)
     racoon.alerte.setScale(4, 4)
 
-    let spriteShadow = imageLoader.getImage("/asset/graphics/actor/characters/shadow.png")
+    let spriteShadow = imageLoader.getImage("/asset/graphics/actor/shadow.png")
     racoon.shadow = new Sprite(spriteShadow)
     racoon.shadow.setTileSheet(32, 32)
     racoon.shadow.setScale(4, 4)

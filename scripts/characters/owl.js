@@ -1,5 +1,5 @@
 function startOwl(){
-    let spritesheetOwl = imageLoader.getImage("/asset/graphics/Actor/Monsters/Owl.png")
+    let spritesheetOwl = imageLoader.getImage("/asset/graphics/actor/owl.png")
     owl = new Sprite(spritesheetOwl,
         (TILE)*10,
         (TILE)*9,
@@ -30,7 +30,7 @@ function startOwl(){
     owl.alerte.setTileSheet(16, 16)
     owl.alerte.setScale(4, 4)
 
-    let spriteShadow = imageLoader.getImage("/asset/graphics/actor/characters/shadow.png")
+    let spriteShadow = imageLoader.getImage("/asset/graphics/actor/shadow.png")
     owl.shadow = new Sprite(spriteShadow)
     owl.shadow.setTileSheet(32, 32)
     owl.shadow.setScale(4, 4)

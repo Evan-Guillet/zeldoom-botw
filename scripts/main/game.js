@@ -21,17 +21,14 @@ function load(){
     // detects the click of the mouse
     document.addEventListener("click", click, false)
 
-    imageLoader.add("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
-
-    imageLoader.add("/asset/graphics/Actor/Monsters/Owl.png")
-    imageLoader.add("/asset/graphics/Actor/Monsters/axolot_blue/sprite_sheet.png")
-    imageLoader.add("/asset/graphics/Actor/Monsters/racoon/sprite_sheet.png")
-    imageLoader.add("/asset/graphics/Actor/Monsters/skull/sprite_sheet.png")
-
-    imageLoader.add("/asset/graphics/actor/characters/shadow.png")
+    imageLoader.add("/asset/graphics/actor/dark_ninja.png")
+    imageLoader.add("/asset/graphics/actor/owl.png")
+    imageLoader.add("/asset/graphics/actor/axolot.png")
+    imageLoader.add("/asset/graphics/actor/racoon.png")
+    imageLoader.add("/asset/graphics/actor/skull.png")
+    imageLoader.add("/asset/graphics/actor/shadow.png")
 
     imageLoader.add("/asset/graphics/map/map.png")
-    imageLoader.add("/asset/graphics/map/grid.png")
 
     imageLoader.add("/asset/graphics/hud/alerte.png")
     imageLoader.add("/asset/graphics/hud/heart.png")
@@ -40,8 +37,6 @@ function load(){
     imageLoader.add("/asset/graphics/hud/win.png")
     imageLoader.add("/asset/graphics/hud/lose.png")
     imageLoader.add("/asset/graphics/hud/lose.png")
-
-    imageLoader.add("/asset/graphics/fx/blood.png")
 
     imageLoader.start(startGame)
 }

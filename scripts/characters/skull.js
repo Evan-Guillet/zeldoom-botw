@@ -1,5 +1,5 @@
 function startSkull(){
-    let spritesheetSkull = imageLoader.getImage("/asset/graphics/Actor/Monsters/skull/sprite_sheet.png")
+    let spritesheetSkull = imageLoader.getImage("/asset/graphics/actor/skull.png")
     skull = new Sprite(spritesheetSkull,
         (TILE)*11,
         (TILE)*3,
@@ -30,7 +30,7 @@ function startSkull(){
     skull.alerte.setTileSheet(16, 16)
     skull.alerte.setScale(4, 4)
 
-    let spriteShadow = imageLoader.getImage("/asset/graphics/actor/characters/shadow.png")
+    let spriteShadow = imageLoader.getImage("/asset/graphics/actor/shadow.png")
     skull.shadow = new Sprite(spriteShadow)
     skull.shadow.setTileSheet(32, 32)
     skull.shadow.setScale(4, 4)
