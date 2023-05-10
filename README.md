@@ -1,5 +1,5 @@
 # Zeldoom : Breath of the Waaagh ⚔
-Zeldoom: BOTW is a Zelda-like adventure game. Roam a map filled with hostile enemies, collect equipment and weapons, and fight unforgiving bosses. Watch out for traps!
+Zelda: BOTW is a Zelda-style adventure game where you roam a map full of hostile enemies!
 
 
 
@@ -11,13 +11,13 @@ Zeldoom: BOTW is a Zelda-like adventure game. Roam a map filled with hostile ene
 
 
 # Goal 🎯
-Perform various actions while exploring or in combat: run, hit, dash, heal yourself, and cast spells. But also loot items, randomly generated, which you can store in your which you can store in your inventory. Confront enemies with simple artificial intelligence and gaining levels to increase your power. All this under a ambient music and sound design.
+Perform various actions while exploring or in combat: run, hit, dash, heal yourself, and cast spells. Confront enemies with simple artificial intelligence and gaining levels to increase your power. All this under a ambient music and sound design.
 
 If development proceeds quickly, it will also be possible to save your game, recording the level you were in before with your filled inventory. Perhaps even the possibility of solving sound-based puzzles to be replayed in order or to reconstitute an old statue to destroy.
 
 
 
-# Controls ⌨
+# Controls ⌨ 🖱️
 | Key | Description |
 | :---: | :---: |
 | `ZQSD` | Move |
@@ -33,7 +33,7 @@ The whole project is coded in JavaScript + HTML and CSS. The project is saved an
 
 
 # Development time ⌛
-3 April – 12 May • 40 days
+3 April – 11 May • 40 days
 
 
 
