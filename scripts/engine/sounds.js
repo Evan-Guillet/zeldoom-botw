@@ -1,6 +1,5 @@
 const killSound = new Audio("/asset/sounds/game/kill.wav")
 const alertSound = new Audio("/asset/sounds/game/alert_2.wav")
-let firstAlerteSound = true
 
 const gameoverSound = new Audio("/asset/sounds/game/game_over_2.wav")
 let firstGameoverSound = true

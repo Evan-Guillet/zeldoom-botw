@@ -13,11 +13,13 @@ function startPlayer(){
     player.damagePerSecond = 1
     player.rangeHit = TILE
     player.isAlive = true
-    
-    let spriteBlood = imageLoader.getImage("/asset/graphics/fx/blood.png")
-    player.blood = new Sprite(spriteBlood)
-    player.blood.setTileSheet(32, 32)
-    player.blood.setScale(4, 4)
+
+    let spriteShadow = imageLoader.getImage("/asset/graphics/actor/characters/shadow.png")
+    player.shadow = new Sprite(spriteShadow)
+    player.shadow.setTileSheet(32, 32)
+    player.shadow.setScale(4, 4)
+    player.shadow.x = player.x + 2*TILE_SCALE
+    player.shadow.y = player.y + 12*TILE_SCALE
 
     player.setTileSheet(16, 16)
     player.setScale(4, 4)
@@ -28,9 +30,21 @@ function startPlayer(){
 
 function playerManager(){
 
-    if(playerManage.inHitRange(player, enemy) && spaceKey){
-        playerManage.hit(player, enemy)
+    player.shadow.x = player.x + 2*TILE_SCALE
+    player.shadow.y = player.y + 12*TILE_SCALE
+
+    if(playerManage.inHitRange(player, owl) && spaceKey){
+        playerManage.hit(player, owl)
+    }
+    if(playerManage.inHitRange(player, axolot) && spaceKey){
+        playerManage.hit(player, axolot)
+    }
+    if(playerManage.inHitRange(player, racoon) && spaceKey){
+        playerManage.hit(player, racoon)
+    }
+    if(playerManage.inHitRange(player, skull) && spaceKey){
+        playerManage.hit(player, skull)
     }
 
-    playerManage.isDead(player, enemy)
+    playerManage.isDead(player, owl)
 }

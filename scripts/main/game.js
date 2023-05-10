@@ -1,5 +1,8 @@
 let playerManage = new Character()
-let enemyManage = new Character()
+let owlManage = new Character()
+let axolotManage = new Character()
+let racoonManage = new Character()
+let skullManage = new Character()
 
 let imageLoader = new ImageLoader()
 let gameReady = false
@@ -19,21 +22,28 @@ function load(){
     document.addEventListener("click", click, false)
 
     imageLoader.add("/asset/graphics/actor/characters/dark_ninja/sprite_sheet.png")
+
     imageLoader.add("/asset/graphics/Actor/Monsters/Owl.png")
+    imageLoader.add("/asset/graphics/Actor/Monsters/axolot_blue/sprite_sheet.png")
+    imageLoader.add("/asset/graphics/Actor/Monsters/racoon/sprite_sheet.png")
+    imageLoader.add("/asset/graphics/Actor/Monsters/skull/sprite_sheet.png")
+
+    imageLoader.add("/asset/graphics/actor/characters/shadow.png")
+
     imageLoader.add("/asset/graphics/map/map.png")
     imageLoader.add("/asset/graphics/map/grid.png")
+
     imageLoader.add("/asset/graphics/hud/alerte.png")
-    imageLoader.add("/asset/graphics/fx/blood.png")
     imageLoader.add("/asset/graphics/hud/heart.png")
-    imageLoader.add("/asset/graphics/actor/characters/shadow.png")
     imageLoader.add("/asset/graphics/hud/control.png")
     imageLoader.add("/asset/graphics/hud/menu.png")
     imageLoader.add("/asset/graphics/hud/win.png")
     imageLoader.add("/asset/graphics/hud/lose.png")
+    imageLoader.add("/asset/graphics/hud/lose.png")
+
+    imageLoader.add("/asset/graphics/fx/blood.png")
 
     imageLoader.start(startGame)
-
-    console.log("PRESS 'G': to display the grid.\nPRESS 'H': to display the hotspots collider.\nPRESS 'J': to display the detecion area.")
 }
 
 function startGame(){
@@ -63,12 +73,13 @@ function startGame(){
     map.setTileSheet(224, 224)
     map.setScale(4, 4)
 
-    dtGridHelp()
-
     listCharacter = []
-
+    
+    startOwl()
+    startAxolot()
+    startRacoon()
+    startSkull()
     startPlayer()
-    startEnemy()
 
     hearts()
 }
@@ -82,15 +93,21 @@ function update(dt){
     })
 
     playerManager()
-    enemyManager(dt)
+    owlManager(dt)
+    axolotManager(dt)
+    racoonManager(dt)
+    skullManager(dt)
 
-    enemyStateMachine(enemy)
+    owlStateMachine(owl)
+    axolotStateMachine(axolot)
+    racoonStateMachine(racoon)
+    skullStateMachine(skull)
     howManyHearts()
 
-    if(!playerManage.win(enemy) && !playerManage.lose(player)){
+    if(player.isAlive && owl.isAlive && axolot.isAlive && racoon.isAlive && skull.isAlive){
         backgroundMusic.play()
 
-    } else {
+    } else if(!player.isAlive || !owl.isAlive && !axolot.isAlive && !racoon.isAlive && !skull.isAlive){
         backgroundMusic.pause()
         backgroundMusic.currentTime = 0
     }
@@ -109,43 +126,36 @@ function draw(pCtx){
         return
     }
 
-    // display map
     map.draw(pCtx)
-
-    // DEVTOOLS
-    dtDisplayGrid(pCtx)
-    dtDisplayRange(pCtx, enemy)
-    dtHotspots(pCtx)
-
-    // display blood
-    if(!enemy.isAlive){
-        enemy.blood.draw(pCtx)
-    }
 
     // display character
     listCharacter.forEach(character => {
-        if(character.type == "enemy" && player.isAlive){
-            enemy.shadow.draw(pCtx)
-            character.draw(pCtx)
-
-        } else if(character.type == "player" && character.isAlive){
-            character.draw(pCtx)
-        }
+        if(character.isAlive){character.shadow.draw(pCtx)}
+        character.draw(pCtx)
     })
 
-    if(enemyManage.detectionArea(enemy, player) && enemy.isAlive){
-        enemy.alerte.draw(pCtx)
+    if(owlManage.detectionArea(owl, player) && owl.isAlive){
+        owl.alerte.draw(pCtx)
+
+    } else if(axolotManage.detectionArea(axolot, player) && axolot.isAlive){
+        axolot.alerte.draw(pCtx)
+
+    } else if(racoonManage.detectionArea(racoon, player) && racoon.isAlive){
+        racoon.alerte.draw(pCtx)
+
+    } else if(skullManage.detectionArea(skull, player) && skull.isAlive){
+        skull.alerte.draw(pCtx)
     }
 
     if(player.isAlive){
         hearts.draw(pCtx)
     }
 
-    if(playerManage.win(enemy)){
+    if(!owl.isAlive && !axolot.isAlive && !racoon.isAlive && !skull.isAlive){
         winScreen(pCtx)
     }
 
-    if(playerManage.lose(player)){
+    if(!player.isAlive){
         gameOverScreen(pCtx)
     }
 }

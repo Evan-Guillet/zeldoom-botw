@@ -57,7 +57,7 @@ function click(pClick){
 
     } else if(gameReady){
         // ===============| OUT WIN SCREEN |===============
-        if(playerManage.win(enemy)){
+        if(!owl.isAlive && !axolot.isAlive && !racoon.isAlive && !skull.isAlive){
             if((pClick.pageX >= 40) &&
                 (pClick.pageX <= 200) &&
                 (pClick.pageY >= 40) &&
@@ -66,7 +66,10 @@ function click(pClick){
 
                 gameReady = false
                 playerManage.restore(player)
-                enemyManage.restore(enemy)
+                owlManage.restore(owl)
+                axolotManage.restore(axolot)
+                racoonManage.restore(racoon)
+                skullManage.restore(skull)
                 firstWinSound = true
                 acceptSound.play()
             }
@@ -82,7 +85,10 @@ function click(pClick){
 
                 gameReady = false
                 playerManage.restore(player)
-                enemyManage.restore(enemy)
+                owlManage.restore(owl)
+                axolotManage.restore(axolot)
+                racoonManage.restore(racoon)
+                skullManage.restore(skull)
                 firstGameoverSound = true
                 acceptSound.play()
             }
@@ -93,7 +99,7 @@ function click(pClick){
 function keyDown(k){
     k.preventDefault()
 
-    if(player.isAlive && gameReady && !playerManage.win(enemy) && !playerManage.lose(player)){
+    if(gameReady){
         // ===============| MOVEMENT |===============
         if(k.code == "KeyS"){
 
@@ -139,7 +145,6 @@ function keyDown(k){
         // ===============| ATTACK |===============
         if(k.code == "Space"){
             spaceKey = true
-            hitSound.play()
 
             if(player.isAlive && player.movement == "MOVEMENT_DOWN" || player.movement == "IDLE_DOWN" || player.firstAttack == "IDLE_DOWN"){
                 player.animationType = "ATTACK_DOWN"
@@ -335,25 +340,30 @@ function keyDown(k){
         }
 
     // ==============| RESTART |===============
-    } else if(player.isAlive && !gameReady && displayControl){
+    }
+    if(!gameReady && displayControl){
         if(k.code == "Escape"){
             displayControl = false
             cancelSound.play()
         }
 
-    } else if(player.isAlive && playerManage.win(enemy) || !player.isAlive && playerManage.lose(player)){
+    }
+    if(gameReady && player.isAlive && !owl.isAlive && !axolot.isAlive && !racoon.isAlive && !skull.isAlive || 
+        gameReady && !player.isAlive && owl.isAlive && axolot.isAlive && racoon.isAlive && skull.isAlive
+        ){
+
         if(k.code == "Escape"){
             gameReady = false
             playerManage.restore(player)
-            enemyManage.restore(enemy)
+            owlManage.restore(owl)
+            axolotManage.restore(axolot)
+            racoonManage.restore(racoon)
+            skullManage.restore(skull)
             acceptSound.play()
             firstWinSound = true
             firstGameoverSound = true
         }
     }
-
-    // ===============| DEVTOOLS |===============
-    dtKeyboard(k)
 }
 
 function keyUp(k){

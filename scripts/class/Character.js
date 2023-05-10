@@ -30,7 +30,7 @@ class Character {
 
 
 
-        } else if(pCharacter.type == "enemy"){
+        } else if(pCharacter.type == "owl" || pCharacter.type == "axolot"  || pCharacter.type == "racoon" || pCharacter.type == "skull"){
             pCharacter.addAnimation("IDLE_DOWN", [0], 0.25)
             pCharacter.addAnimation("WALK_DOWN", [0, 4, 8, 12], 0.25)
 
@@ -61,8 +61,17 @@ class Character {
         if(pCharacter.type == "player"){
             entityManager = playerManage
 
-        } else if(pCharacter.type == "enemy"){
-            entityManager = enemyManage
+        } else if(pCharacter.type == "owl"){
+            entityManager = owlManage
+
+        } else if(pCharacter.type == "axolot"){
+            entityManager = axolotManage
+
+        } else if(pCharacter.type == "racoon"){
+            entityManager = racoonManage
+
+        } else if(pCharacter.type == "skull"){
+            entityManager = skullManage
         }
 
         if(pCharacter.vx == 0 && pCharacter.vy == 0){
@@ -149,12 +158,25 @@ class Character {
             if(pCharacter.type == "player"){
                 playerManage.setAnimation(player)
 
-            } else if(pCharacter.type == "enemy"){
+            } else if(pCharacter.type == "owl"){
                 pCharacter.state = "DEAD"
-                enemyManage.setAnimation(enemy)
-                enemy.blood.x = enemy.x - (TILE_SIZE/2)*TILE_SCALE
-                enemy.blood.y = enemy.y - (TILE_SIZE/2)*TILE_SCALE
-                firstAlerteSound = true
+                owlManage.setAnimation(owl)
+                owl.firstAlerteSound = true
+                
+            } else if(pCharacter.type == "axolot"){
+                pCharacter.state = "DEAD"
+                axolotManage.setAnimation(axolot)
+                axolot.firstAlerteSound = true
+
+            } else if(pCharacter.type == "racoon"){
+                pCharacter.state = "DEAD"
+                racoonManage.setAnimation(racoon)
+                racoon.firstAlerteSound = true
+
+            } else if(pCharacter.type == "skull"){
+                pCharacter.state = "DEAD"
+                skullManage.setAnimation(skull)
+                skull.firstAlerteSound = true
             }
 
             return true
@@ -176,21 +198,21 @@ class Character {
         if(pCharacter.type == "player"){
             playerManage.setAnimation(player)
 
-        } else if(pCharacter.type == "enemy"){
-            enemyManage.setAnimation(enemy)
+        } else if(pCharacter.type == "owl"){
+            owlManage.setAnimation(owl)
             pCharacter.state = "IDLE"
-        }
-    }
 
-    win(pTarget){
-        if(!pTarget.isAlive){
-            return true
-        }
-    }
+        } else if(pCharacter.type == "axolot"){
+            axolotManage.setAnimation(axolot)
+            pCharacter.state = "IDLE"
 
-    lose(pCharacter){
-        if(!pCharacter.isAlive){
-            return true
+        } else if(pCharacter.type == "racoon"){
+            racoonManage.setAnimation(racoon)
+            pCharacter.state = "IDLE"
+
+        } else if(pCharacter.type == "skull"){
+            skullManage.setAnimation(skull)
+            pCharacter.state = "IDLE"
         }
     }
 }
