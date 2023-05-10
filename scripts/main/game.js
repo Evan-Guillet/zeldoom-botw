@@ -87,6 +87,14 @@ function update(dt){
     enemyStateMachine(enemy)
     howManyHearts()
 
+    if(!playerManage.win(enemy) && !playerManage.lose(player)){
+        backgroundMusic.play()
+
+    } else {
+        backgroundMusic.pause()
+        backgroundMusic.currentTime = 0
+    }
+
     move(dt)
     moveDown()
     moveUp()

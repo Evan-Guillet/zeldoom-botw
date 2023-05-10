@@ -11,3 +11,5 @@ const hitSound = new Audio("/asset/sounds/game/hit.wav")
 
 const acceptSound = new Audio("/asset/sounds/menu/accept.wav")
 const cancelSound = new Audio("/asset/sounds/menu/accept_2.wav")
+
+const backgroundMusic = new Audio("/asset/musics/2_the_cave.wav")

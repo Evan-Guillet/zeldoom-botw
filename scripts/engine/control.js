@@ -139,6 +139,7 @@ function keyDown(k){
         // ===============| ATTACK |===============
         if(k.code == "Space"){
             spaceKey = true
+            hitSound.play()
 
             if(player.isAlive && player.movement == "MOVEMENT_DOWN" || player.movement == "IDLE_DOWN" || player.firstAttack == "IDLE_DOWN"){
                 player.animationType = "ATTACK_DOWN"
