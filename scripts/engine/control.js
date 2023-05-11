@@ -21,8 +21,8 @@ function click(pClick){
 
     if(!gameReady){
         // ===============| PLAY GAME |===============
-        if((pClick.pageX >= 340) &&
-            (pClick.pageX <= 552) &&
+        if((pClick.pageX >= 788) &&
+            (pClick.pageX <= 1000) &&
             (pClick.pageY >= 500) &&
             (pClick.pageY <= 560)
             ){
@@ -32,8 +32,8 @@ function click(pClick){
         }
 
         // ===============| DISPLAY HELP CONTROL |===============
-        if((pClick.pageX >= 340) &&
-            (pClick.pageX <= 552) &&
+        if((pClick.pageX >= 788) &&
+            (pClick.pageX <= 1000) &&
             (pClick.pageY >= 584) &&
             (pClick.pageY <= 644)
             ){

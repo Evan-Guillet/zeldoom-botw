@@ -46,27 +46,27 @@ function startGame(){
 
     let menuSprite = imageLoader.getImage("/asset/graphics/hud/menu.png")
     menu = new Sprite(menuSprite)
-    menu.setTileSheet(224, 224)
+    menu.setTileSheet(448, 224)
     menu.setScale(4, 4)
 
     let controlSprite = imageLoader.getImage("/asset/graphics/hud/control.png")
     control = new Sprite(controlSprite)
-    control.setTileSheet(224, 224)
+    control.setTileSheet(448, 224)
     control.setScale(4, 4)
 
     let winSprite = imageLoader.getImage("/asset/graphics/hud/win.png")
     win = new Sprite(winSprite)
-    win.setTileSheet(224, 224)
+    win.setTileSheet(448, 224)
     win.setScale(4, 4)
 
     let loseSprite = imageLoader.getImage("/asset/graphics/hud/lose.png")
     lose = new Sprite(loseSprite)
-    lose.setTileSheet(224, 224)
+    lose.setTileSheet(448, 224)
     lose.setScale(4, 4)
 
     let mapSpirte = imageLoader.getImage("/asset/graphics/map/map.png")
     map = new Sprite(mapSpirte)
-    map.setTileSheet(224, 224)
+    map.setTileSheet(448, 224)
     map.setScale(4, 4)
 
     listCharacter = []

@@ -1,13 +1,13 @@
 function startOwl(){
     let spritesheetOwl = imageLoader.getImage("/asset/graphics/actor/owl.png")
     owl = new Sprite(spritesheetOwl,
-        (TILE)*10,
-        (TILE)*9,
+        (TILE)*2,
+        (TILE)*6,
         "owl"
     )
 
-    owl.spawnX = (TILE)*10
-    owl.spawnY = (TILE)*9
+    owl.spawnX = (TILE)*2
+    owl.spawnY = (TILE)*6
     owl.maxHitPoint = 50
     owl.hitPoint = 50
     owl.isAlive = true

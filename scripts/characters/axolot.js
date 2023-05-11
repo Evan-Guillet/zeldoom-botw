@@ -1,13 +1,13 @@
 function startAxolot(){
     let spritesheetAxolot = imageLoader.getImage("/asset/graphics/actor/axolot.png")
     axolot = new Sprite(spritesheetAxolot,
-        (TILE)*1,
-        (TILE)*1,
+        (TILE)*16,
+        (TILE)*12,
         "axolot"
     )
 
-    axolot.spawnX = (TILE)*1
-    axolot.spawnY = (TILE)*1
+    axolot.spawnX = (TILE)*16
+    axolot.spawnY = (TILE)*12
     axolot.maxHitPoint = 50
     axolot.hitPoint = 50
     axolot.isAlive = true

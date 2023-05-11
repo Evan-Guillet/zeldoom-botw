@@ -1,13 +1,13 @@
 function startRacoon(){
     let spritesheetRacoon = imageLoader.getImage("/asset/graphics/actor/racoon.png")
     racoon = new Sprite(spritesheetRacoon,
-        (TILE)*1,
-        (TILE)*13,
+        (TILE)*25,
+        (TILE)*3,
         "racoon"
     )
 
-    racoon.spawnX = (TILE)*1
-    racoon.spawnY = (TILE)*13
+    racoon.spawnX = (TILE)*25
+    racoon.spawnY = (TILE)*3
     racoon.maxHitPoint = 50
     racoon.hitPoint = 50
     racoon.isAlive = true
