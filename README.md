@@ -28,7 +28,7 @@ If development proceeds quickly, it will also be possible to save your game, rec
 
 
 # Technical stuff ⚙️
-The whole project is coded in JavaScript + HTML and CSS. The project is saved and available on a Github repository.
+The whole project is coded in JavaScript + HTML. The project is saved and available on a Github repository.
 
 
 
